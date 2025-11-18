@@ -4,7 +4,7 @@ function App() {
   const { data, isLoading, error } = useQuery({
     queryKey: ["hello"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:3000/api/hello");
+      const res = await fetch("/api/hello");
       return res.json();
     },
   });
