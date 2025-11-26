@@ -1,0 +1,47 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Add SSH private key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+
+          # 1. 최신 코드 pull
+          cd ~/inha-choi
+          git pull
+
+          # 2. 프론트 빌드
+          cd apps/front
+          pnpm install --frozen-lockfile
+          pnpm build
+
+          # 3. 서버 업데이트
+          cd ../server
+          pnpm install --frozen-lockfile
+
+          # 4. Nginx 설정 적용
+          cd ~/inha-choi
+          sudo cp infra/nginx/inhachoi.conf /etc/nginx/sites-enabled/inhachoi.conf
+          sudo nginx -t
+          sudo systemctl reload nginx
+
+          # 5. PM2 재시작
+          pm2 restart all || pm2 start src/index.js --name server
+
+          echo "🚀 배포 완료"
+          EOF
