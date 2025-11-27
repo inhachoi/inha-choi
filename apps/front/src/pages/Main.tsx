@@ -1,5 +1,3 @@
-import { NavigationBar } from "../components/NavigationBar";
-
 export function Main() {
-  return <NavigationBar />;
+  return <div>메인 화면입니다.</div>;
 }
