@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { Logo } from "../components/Logo";
-import { TextButton } from "../components/TextButton";
+import { Logo, TextButton } from "../components";
 
 export function NavigationBar() {
   return (
@@ -21,7 +20,7 @@ const Container = styled.nav`
   align-items: center;
   width: 100%;
   padding: 10px 5%;
-  background: skyblue;
+  background: white;
 
   position: fixed;
   top: 0;

@@ -1,3 +1,9 @@
 export function Main() {
-  return <div>메인 화면개발 중...</div>;
+  return (
+    <>
+      {Array.from({ length: 100 }).map((_, index) => (
+        <div key={index}>Main 화면 개발 중...</div>
+      ))}
+    </>
+  );
 }

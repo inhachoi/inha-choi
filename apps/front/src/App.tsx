@@ -7,20 +7,20 @@ function App() {
   return (
     <BrowserRouter>
       <NavigationBar />
-      <Wrapper>
+      <RoutesWrapper>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/Study" element={<Study />} />
           <Route path="/Visitor" element={<Visitor />} />
         </Routes>
-      </Wrapper>
+      </RoutesWrapper>
     </BrowserRouter>
   );
 }
 
 export default App;
 
-const Wrapper = styled.div`
+const RoutesWrapper = styled.div`
   margin-top: 60px;
 `;
