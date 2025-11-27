@@ -1,24 +1,26 @@
-import { useQuery } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Main, Posts, Study, Visitor } from "./pages";
+import { NavigationBar } from "./widgets/NavigationBar";
+import styled from "@emotion/styled";
 
 function App() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["hello"],
-    queryFn: async () => {
-      const res = await fetch("/api/hello");
-      return res.json();
-    },
-  });
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error occurred 😢</div>;
-
   return (
-    <div style={{ fontSize: "20px", padding: "20px" }}>
-      <h1>Front ↔ Server 연결 성공 🎉</h1>
-      <p>{data.message}</p>
-      <p>Time: {data.time}</p>
-    </div>
+    <BrowserRouter>
+      <NavigationBar />
+      <RoutesWrapper>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/Study" element={<Study />} />
+          <Route path="/Visitor" element={<Visitor />} />
+        </Routes>
+      </RoutesWrapper>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+const RoutesWrapper = styled.div`
+  margin-top: 60px;
+`;

@@ -1,0 +1,35 @@
+import styled from "@emotion/styled";
+import { Logo, TextButton } from "../components";
+
+export function NavigationBar() {
+  return (
+    <Container>
+      <Logo />
+      <TextButtonGroup>
+        <TextButton toGo="/posts">Posts</TextButton>
+        <TextButton toGo="/study">Study</TextButton>
+        <TextButton toGo="/visitor">Visitor</TextButton>
+      </TextButtonGroup>
+    </Container>
+  );
+}
+
+const Container = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 5%;
+  background: white;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+`;
+
+const TextButtonGroup = styled.section`
+  display: flex;
+  gap: 15px;
+`;
