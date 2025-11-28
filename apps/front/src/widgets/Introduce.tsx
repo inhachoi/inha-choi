@@ -20,7 +20,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 50px;
-  padding: 10px 30px;
+  padding: 30px 0 0 0;
 `;
 
 const Img = styled.img`

@@ -2,12 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Main, Posts, Study, Visitor } from "./pages";
 import { NavigationBar } from "./widgets/NavigationBar";
 import styled from "@emotion/styled";
+import { colors } from "@toss/tds-colors";
 
 function App() {
   return (
     <BrowserRouter>
       <NavigationBar />
-      <Container>        
+      <Container>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/posts" element={<Posts />} />
@@ -25,7 +26,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width:720px;
+  background: ${colors.grey50};
   margin: 60px auto 0 auto;
 `;
