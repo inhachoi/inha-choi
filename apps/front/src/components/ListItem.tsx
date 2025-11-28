@@ -18,7 +18,12 @@ const Container = styled.div`
   cursor: pointer;
   box-sizing: border-box;
 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
   &:hover {
     background: ${colors.grey100};
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   }
 `;

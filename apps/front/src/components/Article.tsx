@@ -10,7 +10,10 @@ interface ArticleProps {
 export function Article({ children }: ArticleProps) {
   return (
     <Container>
-      <Thumbnail src={velog} alt="" />
+      <ThumbnailWrapper>
+        <Thumbnail src={velog} alt="썸네일 사진" />
+      </ThumbnailWrapper>
+
       {children}
     </Container>
   );
@@ -29,14 +32,24 @@ const Container = styled.article`
   box-sizing: border-box;
   overflow: hidden;
 
-  transition: transform 0.25 ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 
   &:hover {
     background: ${colors.grey100};
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   }
+
+  &:hover div > img {
+    transform: scale(1.1);
+  }
+`;
+
+const ThumbnailWrapper = styled.div`
+  object-fit: cover;
+  overflow: hidden;
+  flex-shrink: 0;
 `;
 
 const Thumbnail = styled.img`

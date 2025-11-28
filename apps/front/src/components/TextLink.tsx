@@ -29,7 +29,12 @@ const Container = styled.a`
   color: black;
   text-decoration: none;
 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
   &:hover {
     background: ${colors.grey100};
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   }
 `;
