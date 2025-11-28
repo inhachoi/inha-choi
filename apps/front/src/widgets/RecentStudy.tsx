@@ -1,13 +1,13 @@
-import { Title, Article } from "../components";
+import { Title, ListItem } from "../components";
 import styled from "@emotion/styled";
 
 export function RecentStudy() {
   return (
     <Container>
       <Title>Recent Study</Title>
-      <Article>동기 / 비동기</Article>
-      <Article>Infinity + Virtual Scroll</Article>
-      <Article>Glitch Text</Article>
+      <ListItem>Study 1</ListItem>
+      <ListItem>Study 2</ListItem>
+      <ListItem>Study 3</ListItem>
     </Container>
   );
 }

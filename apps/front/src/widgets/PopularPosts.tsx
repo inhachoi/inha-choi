@@ -18,8 +18,3 @@ const Container = styled.div`
   width: 700px;
   gap: 10px;
 `;
-
-const Img = styled.img`
-  height: 100%;
-  border-radius: 10px;
-`;

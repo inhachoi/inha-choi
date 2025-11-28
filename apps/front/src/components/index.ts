@@ -2,4 +2,7 @@ export { LogoButton } from "./LogoButton";
 export { TextButton } from "./TextButton";
 export { GlitchText } from "./GlitchText";
 export { Title } from "./Title";
+export { ListItem } from "./ListItem";
+export { TextLink } from "./TextLink";
 export { Article } from "./Article";
+export { Date } from "./Date";

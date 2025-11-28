@@ -5,9 +5,9 @@ export function Main() {
   return (
     <Container>
       <Introduce />
+      <Contribution />
       <PopularPosts />
       <RecentStudy />
-      <Contribution />
     </Container>
   );
 }
@@ -20,3 +20,4 @@ const Container = styled.div`
   width: 100%;
   gap: 70px;
 `;
+
