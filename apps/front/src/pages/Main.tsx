@@ -1,9 +1,23 @@
+import styled from "@emotion/styled";
+import { Contribution, Introduce, PopularPosts, RecentStudy } from "../widgets";
+
 export function Main() {
   return (
-    <>
-      {Array.from({ length: 100 }).map((_, index) => (
-        <div key={index}>언주 바보 ㅋㅋ</div>
-      ))}
-    </>
+    <Container>
+      <Introduce />
+      <Contribution />
+      <PopularPosts />
+      <RecentStudy />
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 70px;
+`;
+

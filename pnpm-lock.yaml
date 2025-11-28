@@ -26,6 +26,9 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: ^5.90.2
         version: 5.90.2(@tanstack/react-query@5.90.10(react@19.2.0))(react@19.2.0)
+      '@toss/tds-colors':
+        specifier: ^0.1.0
+        version: 0.1.0
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -596,6 +599,9 @@ packages:
     resolution: {integrity: sha512-BKLss9Y8PQ9IUjPYQiv3/Zmlx92uxffUOX8ZZNoQlCIZBJPT5M+GOMQj7xislvVQ6l1BstBjcX0XB/aHfFYVNw==}
     peerDependencies:
       react: ^18 || ^19
+
+  '@toss/tds-colors@0.1.0':
+    resolution: {integrity: sha512-NVV6vpcqobw8NBD7EKFS+muvmiyDsUItzzko9ib2RufU2DywlSb4A/4EyBO9EFV/Ff28ODrWySIuS6MjzDpiPw==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -2174,6 +2180,8 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.90.10
       react: 19.2.0
+
+  '@toss/tds-colors@0.1.0': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
