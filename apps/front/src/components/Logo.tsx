@@ -5,7 +5,7 @@ export function Logo() {
   const navigate = useNavigate();
   return (
     <Img
-      src="../../public/choi.png"
+      src="../src/assets/choi.png"
       alt="홈페이지 로고"
       onClick={() => navigate("/")}
     />
