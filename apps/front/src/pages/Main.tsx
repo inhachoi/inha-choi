@@ -1,9 +1,15 @@
+import { GlitchText } from "../components";
+import styled from "@emotion/styled";
+
 export function Main() {
   return (
-    <>
-      {Array.from({ length: 100 }).map((_, index) => (
-        <div key={index}>언주 바보 ㅋㅋ</div>
-      ))}
-    </>
+    <Container>
+      <GlitchText>내 이름은 경일</GlitchText>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  padding: 10px;
+  background: pink;
+`;
