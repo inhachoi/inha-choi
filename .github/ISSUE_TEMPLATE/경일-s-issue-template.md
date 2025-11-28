@@ -8,10 +8,9 @@ assignees: inhachoi
 ---
 
 ## 📝Description
-전반적인 작업 내용을 작성합니다.
+<!-- 전반적인 작업 내용을 작성합니다.  -->
 
 <br/>
 
 ## ✅Todos
-- [ ] Todo
-- [ ] Todo
+- Todo
