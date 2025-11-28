@@ -1,11 +1,14 @@
 import type { ReactNode } from "react";
 import styled from "@emotion/styled";
+import { colors } from "@toss/tds-colors";
 
 export function GlitchText({ children }: { children: ReactNode }) {
   return <Container>{children}</Container>;
 }
 
 const Container = styled.div`
+  line-height: 1.3;
+
   @keyframes wiggle {
     0% {
       transform: skewX(24deg);
@@ -17,13 +20,13 @@ const Container = styled.div`
       transform: skewX(55deg);
     }
     7.5% {
-      transform: skewX(-90deg);
+      transform: skewX(-50deg);
     }
     10% {
       transform: skewX(29deg);
     }
     12.5% {
-      transform: skewX(-90deg);
+      transform: skewX(-30deg);
     }
     15% {
       transform: skewX(3deg);
@@ -43,8 +46,10 @@ const Container = styled.div`
   }
 
   font-size: 2rem;
-  color: white;
+  color: ${colors.grey900};
   animation: wiggle 3s infinite;
-  text-shadow: 0.3rem 0.1rem rgba(189, 33, 106, 0.8),
-    -0.2rem -0.1rem rgba(255, 145, 0, 0.8), -0.3rem 0rem rgb(88, 75, 238);
+  text-shadow: 0.3rem 0.1rem ${colors.grey200},
+    -0.2rem -0.1rem ${colors.grey100};
+
+  overflow: hidden;
 `;

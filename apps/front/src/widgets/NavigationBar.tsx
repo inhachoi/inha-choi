@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { Logo, TextButton } from "../components";
+import { LogoButton, TextButton } from "../components";
 
 export function NavigationBar() {
   return (
     <Container>
-      <Logo />
+      <LogoButton />
       <TextButtonGroup>
         <TextButton toGo="/posts">Posts</TextButton>
         <TextButton toGo="/study">Study</TextButton>
