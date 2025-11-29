@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { LogoButton, TextButton } from "../components";
+import { colors } from "@toss/tds-colors";
 
 export function NavigationBar() {
   return (
@@ -27,6 +28,8 @@ const Container = styled.nav`
   left: 0;
   z-index: 1000;
   box-sizing: border-box;
+
+  box-shadow: 0 4px 50px ${colors.grey200};
 `;
 
 const TextButtonGroup = styled.section`
