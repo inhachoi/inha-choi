@@ -13,7 +13,6 @@ export function Article({ children }: ArticleProps) {
       <ThumbnailWrapper>
         <Thumbnail src={velog} alt="썸네일 사진" />
       </ThumbnailWrapper>
-
       {children}
     </Container>
   );
@@ -22,7 +21,7 @@ export function Article({ children }: ArticleProps) {
 const Container = styled.article`
   display: flex;
   align-items: center;
-  margin: 5px 20px;
+  margin: 5px 0;
   gap: 50px;
   width: 100%;
   height: 100px;
