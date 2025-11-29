@@ -2,11 +2,7 @@ import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 
 export function Footer() {
-  return (
-    <Container>
-      <span>Ⓒ 2025. inhachoi. All right reserved.</span>
-    </Container>
-  );
+  return <Container>Ⓒ 2025. inhachoi. All right reserved.</Container>;
 }
 
 const Container = styled.footer`
