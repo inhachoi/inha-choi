@@ -3,3 +3,4 @@ export { Introduce } from "./Introduce";
 export { PopularPosts } from "./PopularPosts";
 export { RecentStudy } from "./RecentStudy";
 export { Contribution } from "./Contribution";
+export { Footer } from "./Footer";

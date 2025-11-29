@@ -3,6 +3,7 @@ import { Main, Posts, Study, Visitor } from "./pages";
 import { NavigationBar } from "./widgets/NavigationBar";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
+import { Footer } from "./widgets";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/Visitor" element={<Visitor />} />
         </Routes>
       </Container>
+      <Footer />
     </BrowserRouter>
   );
 }
