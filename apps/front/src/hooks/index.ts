@@ -1,15 +1,8 @@
 import { useState, useEffect } from "react";
-
-type Post = {
-  title: string;
-  link: string;
-  thumbnail: string;
-  likes: number;
-  description: string;
-};
+import type { PostType } from "../types";
 
 export const usePosts = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
     fetch("/api/posts")
