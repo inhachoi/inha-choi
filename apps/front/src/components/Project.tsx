@@ -1,0 +1,67 @@
+import styled from "@emotion/styled";
+import { ListItem, Date } from "../components";
+import { colors } from "@toss/tds-colors";
+import type { ReactNode } from "react";
+
+interface ProjectProps {
+  thumbnail: ReactNode;
+  title: string;
+  description: string;
+  period: string;
+  url: string;
+}
+
+export function Project({
+  thumbnail,
+  title,
+  description,
+  period,
+  url,
+}: ProjectProps) {
+  return (
+    <ListItem url={url}>
+      <ThumbnailWrapper>{thumbnail}</ThumbnailWrapper>
+
+      <ContentWrapper>
+        <ProjectTitle>{title}</ProjectTitle>
+        <Description>{description}</Description>
+        <Date>{period}</Date>
+      </ContentWrapper>
+    </ListItem>
+  );
+}
+
+const ThumbnailWrapper = styled.div`
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  width: 192px;
+  height: 100px;
+  object-fit: cover;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  & img {
+    width: 192px;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const ProjectTitle = styled.h2`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: black;
+`;
+
+const Description = styled.h3`
+  color: ${colors.grey500};
+`;
