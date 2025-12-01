@@ -1,16 +1,10 @@
 import styled from "@emotion/styled";
 import { Title, Article } from "../components";
 import { usePopularPosts } from "../hooks";
+import { formatYearMonth } from "../utils";
 
 export function PopularPosts() {
   const popularPosts = usePopularPosts();
-
-  const formatYearMonth = (iso: string) => {
-    const date = new Date(iso);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    return `${year}.${month}`;
-  };
 
   return (
     <Container>
