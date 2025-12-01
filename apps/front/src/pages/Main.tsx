@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
-import { Contribution, Introduce, PopularPosts, RecentStudy } from "../widgets";
+import { Contribution, Introduce, PopularPosts, Projects } from "../widgets";
 
 export function Main() {
   return (
     <Container>
       <Introduce />
-      <Contribution />
+      <Projects />
       <PopularPosts />
-      <RecentStudy />
+      <Contribution />
     </Container>
   );
 }
@@ -20,4 +20,3 @@ const Container = styled.div`
   width: 100%;
   gap: 70px;
 `;
-

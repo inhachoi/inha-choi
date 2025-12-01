@@ -6,3 +6,4 @@ export { ListItem } from "./ListItem";
 export { TextLink } from "./TextLink";
 export { Article } from "./Article";
 export { Date } from "./Date";
+export { Project } from "./Project";

@@ -4,4 +4,5 @@ export interface PostType {
   thumbnail: string;
   likes: number;
   description: string;
+  released_at: string;
 }

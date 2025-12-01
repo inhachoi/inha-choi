@@ -33,6 +33,7 @@ app.get("/api/posts", async (req, res) => {
           url_slug
           thumbnail
           likes
+          released_at
         }
       }
     `;
@@ -71,6 +72,7 @@ app.get("/api/posts", async (req, res) => {
       link: `https://velog.io/@${VELOG_USERNAME}/${post.url_slug}`,
       thumbnail: post.thumbnail,
       likes: post.likes,
+      released_at: post.released_at,
     }));
 
     return res.json({ posts });

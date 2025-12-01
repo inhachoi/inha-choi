@@ -1,22 +1,34 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import heart from "../assets/heart.webp";
+import { Date } from "../components";
 
 interface ArticleProps {
   title: string;
   link: string;
   thumbnail: string;
   likes: number;
+  released_at: string;
 }
 
-export function Article({ title, link, thumbnail, likes }: ArticleProps) {
+export function Article({
+  title,
+  link,
+  thumbnail,
+  likes,
+  released_at,
+}: ArticleProps) {
   return (
     <Container href={link} target="_blank">
       <ThumbnailWrapper>
         <Thumbnail src={thumbnail} alt="썸네일 사진" />
       </ThumbnailWrapper>
 
-      <TitleWrapper>{title}</TitleWrapper>
+      <ContentWrapper>
+        {title}
+
+        <Date>{released_at}</Date>
+      </ContentWrapper>
 
       <LikesWrapper>
         <Img src={heart} alt="좋아요 마크" />
@@ -69,12 +81,14 @@ const Thumbnail = styled.img`
   transition: transform 0.3s ease;
 `;
 
-const TitleWrapper = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   flex: 1;
+  align-items: center;
   min-width: 200px;
   font-size: 1rem;
+  gap: 12px;
 `;
 
 const LikesWrapper = styled.div`

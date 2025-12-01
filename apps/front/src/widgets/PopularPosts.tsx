@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Title, Article } from "../components";
 import { usePopularPosts } from "../hooks";
+import { formatYearMonth } from "../utils";
 
 export function PopularPosts() {
   const popularPosts = usePopularPosts();
@@ -8,6 +9,7 @@ export function PopularPosts() {
   return (
     <Container>
       <Title>Popular Posts</Title>
+
       {popularPosts.map((post) => (
         <Article
           key={post.link}
@@ -15,6 +17,7 @@ export function PopularPosts() {
           link={post.link}
           thumbnail={post.thumbnail}
           likes={post.likes}
+          released_at={formatYearMonth(post.released_at)}
         />
       ))}
     </Container>
