@@ -1,13 +1,22 @@
 import styled from "@emotion/styled";
 import { Title, Article } from "../components";
+import { usePopularPosts } from "../hooks";
 
 export function PopularPosts() {
+  const popularPosts = usePopularPosts();
+
   return (
     <Container>
       <Title>Popular Posts</Title>
-      <Article>Post 1</Article>
-      <Article>Post 2</Article>
-      <Article>Post 3</Article>
+      {popularPosts.map((post) => (
+        <Article
+          key={post.link}
+          title={post.title}
+          link={post.link}
+          thumbnail={post.thumbnail}
+          likes={post.likes}
+        />
+      ))}
     </Container>
   );
 }

@@ -1,28 +1,36 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import type { ReactNode } from "react";
-import velog from "../assets/velog.jpg";
+import heart from "../assets/heart.webp";
 
 interface ArticleProps {
-  children: ReactNode;
+  title: string;
+  link: string;
+  thumbnail: string;
+  likes: number;
 }
 
-export function Article({ children }: ArticleProps) {
+export function Article({ title, link, thumbnail, likes }: ArticleProps) {
   return (
-    <Container>
+    <Container href={link} target="_blank">
       <ThumbnailWrapper>
-        <Thumbnail src={velog} alt="썸네일 사진" />
+        <Thumbnail src={thumbnail} alt="썸네일 사진" />
       </ThumbnailWrapper>
 
-      {children}
+      <TitleWrapper>{title}</TitleWrapper>
+
+      <LikesWrapper>
+        <Img src={heart} alt="좋아요 마크" />
+        {likes}
+      </LikesWrapper>
     </Container>
   );
 }
 
-const Container = styled.article`
+const Container = styled.a`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin: 5px 20px;
+  margin: 5px 0;
   gap: 50px;
   width: 100%;
   height: 100px;
@@ -31,6 +39,8 @@ const Container = styled.article`
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
+  text-decoration: none;
+  color: black;
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
@@ -53,8 +63,29 @@ const ThumbnailWrapper = styled.div`
 `;
 
 const Thumbnail = styled.img`
-  width: 150px;
+  width: 192px;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+`;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 200px;
+  font-size: 1rem;
+`;
+
+const LikesWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100px;
+  flex-shrink: 0;
+`;
+
+const Img = styled.img`
+  cursor: pointer;
+  width: 15px;
 `;
