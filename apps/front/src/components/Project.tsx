@@ -47,12 +47,32 @@ const ThumbnailWrapper = styled.div`
     object-fit: cover;
     transition: transform 0.3s ease;
   }
+
+  @media (max-width: 768px) {
+    width: 130px;
+    height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    width: 90px;
+    height: 60px;
+  }
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
+    gap: 5px;
+  }
 `;
 
 const ProjectTitle = styled.h2`

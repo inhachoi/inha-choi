@@ -30,4 +30,5 @@ const Container = styled.div`
   align-items: center;
   background: ${colors.grey50};
   margin: 60px auto 0 auto;
+  min-width: 370px;
 `;

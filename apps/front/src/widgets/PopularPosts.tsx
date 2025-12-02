@@ -27,6 +27,14 @@ export function PopularPosts() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 100%;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 6px;
+  }
 `;

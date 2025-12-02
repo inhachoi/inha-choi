@@ -50,6 +50,16 @@ const Container = styled.div`
   animation: wiggle 3s infinite;
   text-shadow: 0.3rem 0.1rem ${colors.grey200},
     -0.2rem -0.1rem ${colors.grey100};
-
   overflow: hidden;
+  z-index: 10;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 580px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;

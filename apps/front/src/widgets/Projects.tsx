@@ -48,7 +48,15 @@ export function Projects() {
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 100%;
   gap: 20px;
   margin: 20px 0px;
+
+  @media (max-width: 768px) {
+    gap: 17.5px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 15px;
+  }
 `;
