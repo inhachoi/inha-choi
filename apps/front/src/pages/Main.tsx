@@ -24,10 +24,10 @@ const Container = styled.div`
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    gap: 50px;
+    gap: 45px;
   }
 
   @media (max-width: 480px) {
-    gap: 30px;
+    gap: 20px;
   }
 `;
