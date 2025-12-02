@@ -30,6 +30,16 @@ const Container = styled.div`
   z-index: 1000;
   box-sizing: border-box;
   box-shadow: 0 4px 50px ${colors.grey200};
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    padding: 8px 5%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    padding: 6px 5%;
+  }
 `;
 
 const Wrapper = styled.nav`
