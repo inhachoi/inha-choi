@@ -37,4 +37,12 @@ const Container = styled.a`
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   }
+
+  @media (max-width: 768px) {
+    height: 45px;
+  }
+
+  @media (max-width: 480px) {
+    height: 40px;
+  }
 `;

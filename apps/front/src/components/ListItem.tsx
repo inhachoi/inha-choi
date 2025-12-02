@@ -35,4 +35,12 @@ const Container = styled.a`
     transform: translateY(-3px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   }
+
+  @media (max-width: 768px) {
+    gap: 22.5px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 15px;
+  }
 `;

@@ -16,4 +16,14 @@ const Container = styled.h2`
   font-weight: bold;
   color: ${colors.grey900};
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    padding: 7.5px 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
 `;

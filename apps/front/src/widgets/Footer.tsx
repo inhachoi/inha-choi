@@ -13,4 +13,14 @@ const Container = styled.footer`
   background: white;
   color: ${colors.grey500};
   box-shadow: 0 -4px 50px ${colors.grey200};
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    height: 65px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
+    height: 50px;
+  }
 `;

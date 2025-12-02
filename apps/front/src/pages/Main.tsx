@@ -18,5 +18,16 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 768px;
   gap: 70px;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    gap: 50px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 30px;
+  }
 `;

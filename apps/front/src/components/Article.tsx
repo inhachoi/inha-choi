@@ -26,7 +26,6 @@ export function Article({
 
       <ContentWrapper>
         {title}
-
         <Date>{released_at}</Date>
       </ContentWrapper>
 
@@ -43,7 +42,6 @@ const Container = styled.a`
   justify-content: space-between;
   align-items: center;
   margin: 5px 0;
-  gap: 50px;
   width: 100%;
   height: 100px;
   background: white;
@@ -66,6 +64,22 @@ const Container = styled.a`
   &:hover div > img {
     transform: scale(1.1);
   }
+
+  @media (max-width: 768px) {
+    height: 68px;
+
+    div {
+      font-size: 0.8em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 47px;
+
+    div {
+      font-size: 0.6em;
+    }
+  }
 `;
 
 const ThumbnailWrapper = styled.div`
@@ -79,6 +93,14 @@ const Thumbnail = styled.img`
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+
+  @media (max-width: 768px) {
+    width: 130px;
+  }
+
+  @media (max-width: 480px) {
+    width: 90px;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -86,9 +108,16 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: center;
-  min-width: 200px;
   font-size: 1rem;
   gap: 12px;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
 `;
 
 const LikesWrapper = styled.div`
@@ -97,9 +126,25 @@ const LikesWrapper = styled.div`
   gap: 5px;
   width: 100px;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 75px;
+  }
+
+  @media (max-width: 480px) {
+    width: 50px;
+  }
 `;
 
 const Img = styled.img`
   cursor: pointer;
   width: 15px;
+
+  @media (max-width: 768px) {
+    width: 12.5px;
+  }
+
+  @media (max-width: 480px) {
+    width: 10px;
+  }
 `;

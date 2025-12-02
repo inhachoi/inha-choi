@@ -9,4 +9,12 @@ export function Date({ children }: { children: ReactNode }) {
 const Container = styled.span`
   font-size: 0.8rem;
   color: ${colors.grey400};
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.5rem;
+  }
 `;

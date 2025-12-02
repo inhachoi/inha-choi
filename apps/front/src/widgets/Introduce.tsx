@@ -19,10 +19,21 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 50px;
-  padding: 30px 0 0 0;
+
+  box-sizing: border-box;
+  padding: 30px 50px 0 50px;
+
+  @media (max-width: 768px) {
+    div {
+      font-size: 1.5rem;
+    }
+  }
 `;
 
 const Img = styled.img`
   border-radius: 1000px;
+
+  @media (max-width: 768px) {
+    width: 150px;
+  }
 `;
