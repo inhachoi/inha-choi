@@ -1,6 +1,6 @@
-import type { PostType } from "./types";
+import type { PostType } from "@/shared/types";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPosts } from "./api";
+import { fetchPosts } from "@/shared/api";
 
 export const usePosts = () => {
   const { data } = useQuery<PostType[]>({

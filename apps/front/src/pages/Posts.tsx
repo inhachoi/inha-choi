@@ -1,7 +1,7 @@
 import { usePosts } from "../shared/hooks";
 import styled from "@emotion/styled";
-import { Article } from "../shared/ui";
-import { formatYearMonth } from "../shared/utils";
+import { Article } from "@/shared/ui";
+import { formatYearMonth } from "@/shared/utils";
 import { colors } from "@toss/tds-colors";
 
 export function Posts() {

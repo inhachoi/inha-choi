@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Main, Posts, Study, Visitor } from "./pages";
+import { Main, Posts, Study, Visitor } from "@/pages";
 import { NavigationBar } from "./widgets/NavigationBar";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import { Footer } from "./widgets";
+import { Footer } from "@/widgets";
 
 function App() {
   return (

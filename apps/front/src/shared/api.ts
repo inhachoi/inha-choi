@@ -1,4 +1,4 @@
-import type { PostType } from "./types";
+import type { PostType } from "@/shared/types";
 
 export const fetchPosts = async (): Promise<PostType[]> => {
   const res = await fetch("/api/posts");

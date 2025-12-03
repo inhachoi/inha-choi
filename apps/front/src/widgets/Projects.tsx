@@ -1,11 +1,11 @@
-import { Title, Project } from "../shared/ui";
 import styled from "@emotion/styled";
-import { inhachoi, dongnaebangnae, boolock } from "../assets";
+import { inhachoi, dongnaebangnae, boolock } from "@/assets";
+import { Title, Project } from "@/shared/ui";
 import {
   REPO_DONGNAEBANGNAE_URL,
   REPO_BOOLOCK_URL,
   REPO_INHACHOI_URL,
-} from "../shared/constants";
+} from "@/shared/constants";
 
 export function Projects() {
   return (
