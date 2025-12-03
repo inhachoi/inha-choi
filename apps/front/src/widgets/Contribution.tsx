@@ -1,4 +1,4 @@
-import { Title, TextLink, Date } from "../components";
+import { Title, TextLink, Date } from "../shared/ui";
 import styled from "@emotion/styled";
 import mdn from "../assets/mdn.png";
 import react from "../assets/react.png";

@@ -1,14 +1,18 @@
 import { usePosts } from "../hooks";
 import styled from "@emotion/styled";
-import { Article } from "../components";
+import { Article } from "../shared/ui";
 import { formatYearMonth } from "../utils";
+import { colors } from "@toss/tds-colors";
 
 export function Posts() {
   const posts = usePosts();
 
   return (
     <Container>
-      <PostsHeader>{posts.length} posts</PostsHeader>
+      <Header>
+        <Title>All</Title>
+        <Description>{posts.length} posts</Description>
+      </Header>
       <AllPosts>
         {posts.map((post) => (
           <Article
@@ -25,19 +29,36 @@ export function Posts() {
   );
 }
 
-const Container = styled.div``;
+// const ToggleButton = ({ left, right }) => {
+//   const isTo
+//   return;
+// };
 
-const AllPosts = styled.div`
+const Container = styled.div`
+  width: 100%;
+  max-width: 768px;
+`;
+
+const Header = styled.header`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  gap: 10px;
+`;
+
+const AllPosts = styled.main`
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin: 50px 0;
 `;
 
-const PostsHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const Title = styled.h1`
   font-size: 2rem;
-  margin: 50px 0;
+`;
+
+const Description = styled.h2`
+  color: ${colors.grey500};
 `;

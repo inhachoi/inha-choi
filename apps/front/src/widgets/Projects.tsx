@@ -1,4 +1,4 @@
-import { Title, Project } from "../components";
+import { Title, Project } from "../shared/ui";
 import styled from "@emotion/styled";
 import inhachoi from "../assets/inhachoi.png";
 import dongnaebangnae from "../assets/dongnaebangnae.jpg";

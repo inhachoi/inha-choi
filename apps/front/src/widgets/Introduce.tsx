@@ -1,4 +1,4 @@
-import { GlitchText } from "../components";
+import { GlitchText } from "../shared/ui";
 import choi from "../assets/choi.jpg";
 import styled from "@emotion/styled";
 

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Title, Article } from "../components";
+import { Title, Article } from "../shared/ui";
 import { usePopularPosts } from "../hooks";
 import { formatYearMonth } from "../utils";
 
