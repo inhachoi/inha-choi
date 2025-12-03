@@ -1,4 +1,4 @@
-export { Main } from "./Main";
-export { Posts } from "./Posts";
-export { Study } from "./Study";
-export { Visitor } from "./Visitor";
+export { MainPage } from "./MainPage";
+export { PostsPage } from "./PostsPage";
+export { StudyPage } from "./StudyPage";
+export { VisitorPage } from "./VisitorPage";
