@@ -1,7 +1,6 @@
 import { Title, TextLink, Date } from "../shared/ui";
 import styled from "@emotion/styled";
-import mdn from "../assets/mdn.png";
-import react from "../assets/react.png";
+import { mdn, react } from "../assets";
 import {
   PR_REACT_JS_CUSTOM_HOOK_URL,
   PR_MDN_ASYNC_URL,

@@ -1,5 +1,5 @@
 import { GlitchText } from "../shared/ui";
-import choi from "../assets/choi.jpg";
+import { choi } from "../assets";
 import styled from "@emotion/styled";
 
 export function Introduce() {
