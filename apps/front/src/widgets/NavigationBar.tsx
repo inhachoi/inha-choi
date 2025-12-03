@@ -9,8 +9,8 @@ export function NavigationBar() {
         <LogoButton />
         <TextButtonGroup>
           <TextButton toGo="/posts">Posts</TextButton>
-          <TextButton toGo="/study">Study</TextButton>
-          <TextButton toGo="/visitor">Visitor</TextButton>
+          {/* <TextButton toGo="/study">Study</TextButton>
+          <TextButton toGo="/visitor">Visitor</TextButton> */}
         </TextButtonGroup>
       </Wrapper>
     </Container>
