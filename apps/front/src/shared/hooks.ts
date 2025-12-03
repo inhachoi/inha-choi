@@ -3,16 +3,16 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "@/shared/api";
 
 export const usePosts = () => {
-  const { data } = useQuery<PostType[]>({
+  const { data, isLoading, isError } = useQuery<PostType[]>({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
 
-  return data ?? [];
+  return { posts: data ?? [], isLoading, isError };
 };
 
 export const usePopularPosts = () => {
-  const posts = usePosts();
+  const { posts } = usePosts();
   const popularPosts = [...posts].sort((a, b) => b.likes - a.likes).slice(0, 3);
 
   return popularPosts;
