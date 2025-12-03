@@ -1,17 +1,6 @@
 import type { PostType } from "./types";
 import { useQuery } from "@tanstack/react-query";
-
-const fetchPosts = async (): Promise<PostType[]> => {
-  const res = await fetch("/api/posts");
-
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status}`);
-  }
-
-  const data = await res.json();
-
-  return data.posts;
-};
+import { fetchPosts } from "./api";
 
 export const usePosts = () => {
   const { data } = useQuery<PostType[]>({
