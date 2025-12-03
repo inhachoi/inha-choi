@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import heart from "../assets/heart.webp";
-import { Date } from "../components";
+import { heart } from "@/assets";
+import { Date } from "@/shared/ui/Date";
 
 interface ArticleProps {
   title: string;
@@ -108,6 +108,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: center;
+  padding: 0 10px;
   font-size: 1rem;
   gap: 12px;
 

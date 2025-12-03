@@ -1,23 +1,27 @@
-import { Title, TextLink, Date } from "../components";
+import { Title, TextLink, Date } from "@/shared/ui";
 import styled from "@emotion/styled";
-import mdn from "../assets/mdn.png";
-import react from "../assets/react.png";
+import { mdn, react } from "@/assets";
+import {
+  PR_REACT_JS_CUSTOM_HOOK_URL,
+  PR_MDN_ASYNC_URL,
+  PR_REACT_JS_EFFECT_URL,
+} from "../shared/constants";
 
 export function Contribution() {
   return (
     <Container>
       <Title>Open Source Contribution</Title>
-      <TextLink to="https://github.com/mdn/translated-content/pull/28427">
+      <TextLink to={PR_REACT_JS_EFFECT_URL}>
         <Img src={react} />
         reactjs / ko.react.dev Effect 문서 번역
         <Date>2025.11</Date>
       </TextLink>
-      <TextLink to="https://github.com/reactjs/ko.react.dev/pull/1355">
+      <TextLink to={PR_REACT_JS_CUSTOM_HOOK_URL}>
         <Img src={react} />
         reactjs / ko.react.dev 커스텀 훅 문서 번역
         <Date>2025.11</Date>
       </TextLink>
-      <TextLink to="https://github.com/reactjs/ko.react.dev/pull/1356#issuecomment-3567598733">
+      <TextLink to={PR_MDN_ASYNC_URL}>
         <Img src={mdn} />
         mdn / translated-contenteact.dev 비동기 예시 코드 수정
         <Date>2025.08</Date>

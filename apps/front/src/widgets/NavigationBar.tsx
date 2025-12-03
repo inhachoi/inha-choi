@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { LogoButton, TextButton } from "../components";
+import { LogoButton, TextButton } from "@/shared/ui";
 import { colors } from "@toss/tds-colors";
 
 export function NavigationBar() {
@@ -9,8 +9,8 @@ export function NavigationBar() {
         <LogoButton />
         <TextButtonGroup>
           <TextButton toGo="/posts">Posts</TextButton>
-          <TextButton toGo="/study">Study</TextButton>
-          <TextButton toGo="/visitor">Visitor</TextButton>
+          {/* <TextButton toGo="/study">Study</TextButton>
+          <TextButton toGo="/visitor">Visitor</TextButton> */}
         </TextButtonGroup>
       </Wrapper>
     </Container>

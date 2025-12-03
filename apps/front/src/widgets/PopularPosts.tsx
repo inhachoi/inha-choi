@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { Title, Article } from "../components";
-import { usePopularPosts } from "../hooks";
-import { formatYearMonth } from "../utils";
+import { Title, Article } from "@/shared/ui";
+import { usePopularPosts } from "@/shared/hooks";
+import { formatYearMonth } from "@/shared/utils";
 
 export function PopularPosts() {
   const popularPosts = usePopularPosts();

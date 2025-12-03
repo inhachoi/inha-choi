@@ -1,5 +1,8 @@
+import path from "node:path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+
+const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,5 +15,9 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+  },
+
+  resolve: {
+    alias: { "@": path.resolve(__dirname, "src") },
   },
 });

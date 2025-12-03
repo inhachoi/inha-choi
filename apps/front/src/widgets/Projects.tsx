@@ -1,13 +1,11 @@
-import { Title, Project } from "../components";
 import styled from "@emotion/styled";
-import inhachoi from "../assets/inhachoi.png";
-import dongnaebangnae from "../assets/dongnaebangnae.jpg";
-import boolock from "../assets/boolock.png";
+import { inhachoi, dongnaebangnae, boolock } from "@/assets";
+import { Title, Project } from "@/shared/ui";
 import {
   REPO_DONGNAEBANGNAE_URL,
   REPO_BOOLOCK_URL,
   REPO_INHACHOI_URL,
-} from "../constants";
+} from "@/shared/constants";
 
 export function Projects() {
   return (
