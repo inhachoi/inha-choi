@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { MainPage, PostsPage, StudyPage, VisitorPage } from "@/pages";
+import { MainPage, PostsPage, StudyPage, GuestbookPage } from "@/pages";
 import { NavigationBar } from "./widgets/NavigationBar";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/Study" element={<StudyPage />} />
-          <Route path="/Visitor" element={<VisitorPage />} />
+          <Route path="/Visitor" element={<GuestbookPage />} />
         </Routes>
       </Container>
       <Footer />
