@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import "dotenv/config";
+import { connectDB } from "./db.js";
 
 const app = express();
 const PORT = 3000;
@@ -84,3 +86,18 @@ app.get("/api/posts", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+// 서버 시작 전에 DB 먼저 연결
+async function startServer() {
+  try {
+    await connectDB();
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to start server due to DB error:", error);
+    process.exit(1);
+  }
+}
+
+startServer();
