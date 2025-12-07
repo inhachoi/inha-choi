@@ -1,9 +1,10 @@
 import { useGithubLogin } from "@/shared/hooks";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
+import { formatYearMonthDay } from "@/shared/utils";
 
 export function CommentsList() {
-  const { comments, user } = useGithubLogin();
+  const { comments } = useGithubLogin();
 
   return (
     <>
@@ -17,7 +18,8 @@ export function CommentsList() {
           <Avatar src={comment.user.avatarUrl} alt="프로필 사진" />
           <ItemBody>
             <Meta>
-              {user && `${comment?.user.login}`} commented {comment.createdAt}
+              {comment.user.login} 님의 방명록 -{" "}
+              {formatYearMonthDay(comment.createdAt)}
             </Meta>
             <Content>{comment.content}</Content>
           </ItemBody>
