@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import { defaultUser, github } from "@/assets";
+import { defaultUser } from "@/assets";
 import { useGithubLogin } from "@/shared/hooks";
 
 export function CommentWriter() {
@@ -32,8 +32,7 @@ export function CommentWriter() {
           </SubmitButton>
         ) : (
           <LoginButton onClick={handleLogin}>
-            <img src={github} alt="깃허브 로고 이미지" width={70} />
-            GitHub으로 로그인
+            GitHub 계정으로 로그인
           </LoginButton>
         )}
       </WriterForm>
@@ -46,6 +45,28 @@ const Container = styled.div`
   gap: 20px;
   padding: 0 10px;
   margin: 30px 0;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+    font-size: 0.85rem;
+    margin: 20px 0;
+
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+    font-size: 0.7rem;
+    margin: 10px 0;
+
+    img {
+      width: 45px;
+      height: 45px;
+    }
+  }
 `;
 
 const Avatar = styled.img`
@@ -64,6 +85,16 @@ const WriterForm = styled.div`
   background: ${colors.grey100};
   border: 1px solid ${colors.grey200};
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    padding: 0 10px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
+    padding: 0 5px;
+  }
 `;
 
 const Greeting = styled.div`
@@ -71,11 +102,19 @@ const Greeting = styled.div`
   text-algin: left;
   padding: 15px 10px;
   color: ${colors.grey700};
+
+  @media (max-width: 768px) {
+    padding: 12.5px 8px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 6px;
+  }
 `;
 
 const InputArea = styled.textarea`
   width: 100%;
-  height: 10vh;
+  height: 8vh;
   resize: vertical;
   border: 1px solid ${colors.grey200};
   border-radius: 5px;
@@ -86,12 +125,21 @@ const InputArea = styled.textarea`
   &:focus {
     border: 1px solid ${colors.grey900};
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
+    padding: 6px;
+  }
 `;
 
 const SubmitButton = styled.button`
   display: flex;
   align-items: center;
-  height: 30px;
   margin: 10px 0;
   padding: 5px 15px;
   border: none;
@@ -100,6 +148,18 @@ const SubmitButton = styled.button`
   color: white;
   cursor: pointer;
   font-size: 1rem;
+
+  @media (max-width: 768px) {
+    margin: 7.5px 0;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 5px 0;
+    padding: 3px 9px;
+    font-size: 0.5rem;
+  }
 `;
 
 const LoginButton = SubmitButton;
