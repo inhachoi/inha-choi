@@ -13,8 +13,8 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/posts" element={<PostsPage />} />
-          <Route path="/Study" element={<StudyPage />} />
-          <Route path="/Visitor" element={<GuestbookPage />} />
+          <Route path="/study" element={<StudyPage />} />
+          <Route path="/guestbook" element={<GuestbookPage />} />
         </Routes>
       </Container>
       <Footer />
