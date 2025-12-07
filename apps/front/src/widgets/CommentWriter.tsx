@@ -17,11 +17,13 @@ export function CommentWriter() {
         </Greeting>
 
         <InputArea
-          placeholder="소소한 인사 한 줄도 큰 힘이 돼요!"
+          placeholder={
+            user ? "소소한 인사 한 줄도 큰 힘이 돼요!" : "로그인이 필요해요!"
+          }
           value={content}
           onChange={(e) => setContent(e.target.value)}
           disabled={!user}
-        ></InputArea>
+        />
 
         {user ? (
           <SubmitButton

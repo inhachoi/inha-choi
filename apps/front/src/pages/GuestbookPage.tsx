@@ -42,9 +42,11 @@ const Header = styled.header`
 
   @media (max-width: 768px) {
     font-size: 1.25rem;
+    margin: 0 0 35px 0;
   }
 
   @media (max-width: 480px) {
     font-size: 1rem;
+    margin: 0 0 20px 0;
   }
 `;

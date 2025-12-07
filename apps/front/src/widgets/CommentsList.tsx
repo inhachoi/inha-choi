@@ -13,9 +13,9 @@ export function CommentsList() {
       </ListHeader>
 
       {comments.map((comment) => (
-        <CommentItem>
+        <CommentItem key={comment.id}>
           <Avatar src={comment.user.avatarUrl} alt="프로필 사진" />
-          <ItemBody key={comment.id}>
+          <ItemBody>
             <Meta>
               {user && `${comment?.user.login}`} commented {comment.createdAt}
             </Meta>
@@ -28,7 +28,15 @@ export function CommentsList() {
 }
 
 const ListHeader = styled.div`
-  padding: 10px 10px 0 10px;
+  padding: 15px 10px 0 10px;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const CommentItem = styled.div`
@@ -36,6 +44,18 @@ const CommentItem = styled.div`
   gap: 20px;
   padding: 0 10px;
   margin: 30px 0;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+    font-size: 0.85rem;
+    margin: 22.5px 0;
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+    font-size: 0.7rem;
+    margin: 15px 0;
+  }
 `;
 
 const Avatar = styled.img`
@@ -43,6 +63,33 @@ const Avatar = styled.img`
   height: 75px;
   border-radius: 10px;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+  }
+`;
+
+const Meta = styled.div`
+  align-self: flex-start;
+  text-algin: left;
+  padding: 15px 10px;
+  color: ${colors.grey700};
+
+  @media (max-width: 768px) {
+    padding: 12.5px 8px;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 6px;
+    font-size: 0.6rem;
+  }
 `;
 
 const ItemBody = styled.div`
@@ -54,13 +101,14 @@ const ItemBody = styled.div`
   background: ${colors.grey100};
   border: 1px solid ${colors.grey200};
   border-radius: 10px;
-`;
 
-const Meta = styled.div`
-  align-self: flex-start;
-  text-algin: left;
-  padding: 15px 10px;
-  color: ${colors.grey700};
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 5px;
+  }
 `;
 
 const Content = styled.div`
@@ -73,4 +121,14 @@ const Content = styled.div`
   box-sizing: border-box;
   white-space: pre-wrap;
   word-break: break-word;
+
+  @media (max-width: 768px) {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 6px;
+    font-size: 0.6rem;
+  }
 `;
