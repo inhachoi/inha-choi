@@ -5,3 +5,5 @@ export { Projects } from "./Projects";
 export { Contribution } from "./Contribution";
 export { Footer } from "./Footer";
 export { AllPosts } from "./AllPosts";
+export { CommentWriter } from "./CommentWriter";
+export { CommentsList } from "./CommentsList";

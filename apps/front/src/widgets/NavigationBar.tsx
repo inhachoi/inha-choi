@@ -9,8 +9,8 @@ export function NavigationBar() {
         <LogoButton />
         <TextButtonGroup>
           <TextButton toGo="/posts">Posts</TextButton>
-          {/* <TextButton toGo="/study">Study</TextButton>
-          <TextButton toGo="/visitor">Visitor</TextButton> */}
+          {/* <TextButton toGo="/study">Study</TextButton> */}
+          <TextButton toGo="/guestbook">Guestbook</TextButton>
         </TextButtonGroup>
       </Wrapper>
     </Container>
@@ -22,7 +22,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 10px 5%;
+  padding: 10px;
   background: white;
   position: fixed;
   top: 0;
@@ -33,12 +33,12 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     font-size: 0.85rem;
-    padding: 8px 5%;
+    padding: 8px 10px;
   }
 
   @media (max-width: 480px) {
     font-size: 0.7rem;
-    padding: 6px 5%;
+    padding: 6px 10px;
   }
 `;
 

@@ -8,6 +8,7 @@ import logo from "./logo.png";
 import mdn from "./mdn.png";
 import react from "./react.png";
 import velog from "./velog.jpg";
+import defaultUser from "./defaultUser.png";
 
 export {
   boolock,
@@ -20,4 +21,5 @@ export {
   mdn,
   react,
   velog,
+  defaultUser,
 };
