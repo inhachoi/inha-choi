@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { calcTilt } from "./utils";
 
 export const useMouseMove = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,10 +24,9 @@ export const useMouseMove = () => {
         const rect = container.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const rotateX = (4 / 30) * y - 20;
-        const rotateY = (-1 / 5) * x + 20;
+        const { rotateX, rotateY, backgroundPosition } = calcTilt(x, y);
 
-        overlay.style.backgroundPosition = `${x / 5 + y / 5}%`;
+        overlay.style.backgroundPosition = backgroundPosition;
         container.style.transform = `perspective(400px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
     };
