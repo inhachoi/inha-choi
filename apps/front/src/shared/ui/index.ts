@@ -8,3 +8,4 @@ export { Article } from "./Article";
 export { Date } from "./Date";
 export { Project } from "./Project";
 export { InteractionCard } from "./InteractionCard";
+export { SlotMachine } from "./SlotMachine";

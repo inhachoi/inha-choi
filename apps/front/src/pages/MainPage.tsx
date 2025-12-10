@@ -1,10 +1,17 @@
 import styled from "@emotion/styled";
-import { Contribution, Introduce, PopularPosts, Projects } from "@/widgets";
+import {
+  Contribution,
+  FoodSlotMachine,
+  Introduce,
+  PopularPosts,
+  Projects,
+} from "@/widgets";
 
 export function MainPage() {
   return (
     <Container>
       <Introduce />
+      <FoodSlotMachine />
       <Projects />
       <PopularPosts />
       <Contribution />
