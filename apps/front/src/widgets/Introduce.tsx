@@ -1,5 +1,5 @@
 import { GlitchText, InteractionCard } from "@/shared/ui";
-import { choi } from "@/assets";
+import { choi } from "@/shared/assets";
 import styled from "@emotion/styled";
 
 export function Introduce() {

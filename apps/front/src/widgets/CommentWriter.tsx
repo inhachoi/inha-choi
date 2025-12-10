@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import { defaultUser } from "@/assets";
+import { defaultUser } from "@/shared/assets";
 import { useGithubLogin } from "@/shared/hooks";
 
 export function CommentWriter() {

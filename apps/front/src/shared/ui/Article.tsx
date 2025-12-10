@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import { heart } from "@/assets";
+import { heart } from "@/shared/assets";
 import { Date } from "@/shared/ui/Date";
 
 interface ArticleProps {

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { inhachoi, dongnaebangnae, boolock } from "@/assets";
+import { inhachoi, dongnaebangnae, boolock } from "@/shared/assets";
 import { Title, Project } from "@/shared/ui";
 import {
   REPO_DONGNAEBANGNAE_URL,
