@@ -1,5 +1,5 @@
 // 배열 섞기: Fisher-Yates shuffle 알고리즘 사용
-export const shuffle = (array: string[]) => {
+export const shuffleArray = (array: string[]) => {
   const shuffledArray = [...array];
 
   for (let i = shuffledArray.length - 1; i > 0; i--) {

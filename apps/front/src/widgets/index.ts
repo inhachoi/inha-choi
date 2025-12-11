@@ -7,4 +7,3 @@ export { Footer } from "./Footer";
 export { AllPosts } from "./AllPosts";
 export { CommentWriter } from "./CommentWriter";
 export { CommentsList } from "./CommentsList";
-export { FoodSlotMachine } from "./FoodSlotMachine";

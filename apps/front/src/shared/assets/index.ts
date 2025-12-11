@@ -9,6 +9,7 @@ import mdn from "./mdn.png";
 import react from "./react.png";
 import velog from "./velog.jpg";
 import defaultUser from "./defaultUser.png";
+import shake from "./shake.png";
 
 export {
   boolock,
@@ -22,4 +23,5 @@ export {
   react,
   velog,
   defaultUser,
+  shake,
 };
