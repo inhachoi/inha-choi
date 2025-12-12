@@ -11,16 +11,19 @@ export function Contribution() {
   return (
     <Container>
       <Title>Open Source Contribution</Title>
+
       <TextLink to={PR_REACT_JS_EFFECT_URL}>
         <Img src={react} />
         reactjs / ko.react.dev Effect 문서 번역
         <Date>2025.11</Date>
       </TextLink>
+
       <TextLink to={PR_REACT_JS_CUSTOM_HOOK_URL}>
         <Img src={react} />
         reactjs / ko.react.dev 커스텀 훅 문서 번역
         <Date>2025.11</Date>
       </TextLink>
+
       <TextLink to={PR_MDN_ASYNC_URL}>
         <Img src={mdn} />
         mdn / translated-contenteact.dev 비동기 예시 코드 수정

@@ -20,7 +20,7 @@ export function Projects() {
         description="개인 홈페이지 1인 프로젝트!"
         period="25.11 ~ "
         url={REPO_INHACHOI_URL}
-      ></Project>
+      />
 
       <Project
         thumbnail={<img src={boolock} alt="BooLock 프로젝트 썸네일 사진" />}
@@ -28,7 +28,7 @@ export function Projects() {
         description="HTML과 CSS를 블록으로 쉽게 익히는 블록코딩 플랫폼!"
         period="24.10 ~ 25.01"
         url={REPO_BOOLOCK_URL}
-      ></Project>
+      />
 
       <Project
         thumbnail={
@@ -38,7 +38,7 @@ export function Projects() {
         description="동네와 주민들에 대한 유대감을 증대시키주는 SNS!"
         period="24.03 ~ 24.05"
         url={REPO_DONGNAEBANGNAE_URL}
-      ></Project>
+      />
     </Container>
   );
 }
