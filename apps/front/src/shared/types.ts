@@ -20,3 +20,12 @@ export interface CommentType {
   createdAt: string;
   user: UserType;
 }
+
+export interface CommentWriterType {
+  user: UserType;
+  content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+  submitting: boolean;
+  handleLogin: () => void;
+  handleSubmit: (e: React.FormEvent) => Promise<void>;
+}

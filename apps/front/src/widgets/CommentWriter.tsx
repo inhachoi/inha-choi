@@ -1,12 +1,16 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { defaultUser } from "@/shared/assets";
-import { useGithubLogin } from "@/shared/hooks";
+import type { CommentWriterType } from "@/shared/types";
 
-export function CommentWriter() {
-  const { user, content, setContent, submitting, handleLogin, handleSubmit } =
-    useGithubLogin();
-
+export function CommentWriter({
+  user,
+  content,
+  setContent,
+  submitting,
+  handleLogin,
+  handleSubmit,
+}: CommentWriterType) {
   return (
     <Container>
       <Avatar src={user?.avatarUrl || defaultUser} alt="프로필 사진" />

@@ -1,11 +1,9 @@
-import { useGithubLogin } from "@/shared/hooks";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { formatYearMonthDay } from "@/shared/utils";
+import type { CommentType } from "@/shared/types";
 
-export function CommentsList() {
-  const { comments } = useGithubLogin();
-
+export function CommentsList({ comments }: { comments: CommentType[] }) {
   return (
     <>
       <ListHeader>

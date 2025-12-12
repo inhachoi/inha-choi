@@ -1,7 +1,18 @@
 import styled from "@emotion/styled";
 import { CommentsList, CommentWriter } from "@/widgets";
+import { useGithubLogin } from "@/shared/hooks";
 
 export function GuestbookPage() {
+  const {
+    comments,
+    user,
+    content,
+    setContent,
+    submitting,
+    handleLogin,
+    handleSubmit,
+  } = useGithubLogin();
+
   return (
     <Container>
       <Header>
@@ -10,10 +21,15 @@ export function GuestbookPage() {
         반가워요! <br />
         자유롭게 방명록 남겨주세요 :)
       </Header>
-
-      <CommentWriter />
-
-      <CommentsList />
+      <CommentWriter
+        user={user!}
+        content={content}
+        setContent={setContent}
+        submitting={submitting}
+        handleLogin={handleLogin}
+        handleSubmit={handleSubmit}
+      />
+      <CommentsList comments={comments} />
     </Container>
   );
 }
