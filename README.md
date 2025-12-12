@@ -1,13 +1,13 @@
 <h1>개발자 최경일</h1>
   
-![aaa](https://github.com/user-attachments/assets/479de6c9-2768-4fc5-8795-d51fe6a7dd11)
-
+<img width="1391" height="514" alt="image" src="https://github.com/user-attachments/assets/011a6a52-ce36-4876-89eb-b0388eb39c9b" />
 
 <br/> <br />
 
 <p align="center"> <br/>
-  <strong>개인 홈페이지 1인 프로젝트</strong> <br /><br />
-  놀러오세용..⭐ <br /> <br />
+  <strong>⭐ 개인 홈페이지 1인 프로젝트 </strong> <br /><br />
+  디자인, 아키텍처, 설계, 기능, 최적화까지 풀스택 작업을 혼자 수행하며,  <br/>
+  서비스 개발 흐름을 전체 관점에서 이해하는 것을 목표하였습니다. <br/> <br/>
   <strong>👇 배포 사이트</strong> <br />
   https://www.gyeung-il.com/
 </p>
@@ -21,11 +21,16 @@
 홈페이지의 첫 화면입니다.  <br/>
 크게 네가지 영역으로 나뉩니다.  <br/>
 - `소개`: 간단한 소개글
+
+  - 일정 간격으로 애니메이션되는 소개글
+    
+  - 마우스에 움직임에 따라 반응하는 프로필 카드
+  - 랜덤 점심 메뉴를 추천해주는 슬롯머신
 - `Projects`: 주요 프로젝트 세가지
 - `Popular Posts`: 좋아요순 인기글 top3
 - `Open Source Contribution`: 주요 오픈소스 기여 세가지
 
-![414](https://github.com/user-attachments/assets/e051092e-b6a8-4bf7-98ae-dec7a95972c2)
+![ccc](https://github.com/user-attachments/assets/62ada16e-a16e-4201-afbf-c47e00d3cee6)
 
 <br />
 
@@ -36,6 +41,14 @@
 
 ![posts page](https://github.com/user-attachments/assets/74670e88-c10b-47e5-9e1f-0dcc4e226f3e)
 
+<br />
+
+### Guestbok 페이지
+
+자유롭게 방명록을 남길 수 있는 곳입니다. <br/>
+방명록 작성에은 Github 소셜로그인이 필요합니다.
+
+![posts page](https://github.com/user-attachments/assets/74670e88-c10b-47e5-9e1f-0dcc4e226f3e)
 
 <br/> <br/>
 
