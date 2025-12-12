@@ -51,4 +51,5 @@ const Overlay = styled.div`
   background-size: 150% 150%;
   background-position: 100%;
   transition: background-position 0.15s ease-out;
+  border-radius: 100%;
 `;
