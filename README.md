@@ -48,7 +48,10 @@
 자유롭게 방명록을 남길 수 있는 곳입니다. <br/>
 방명록 작성에은 Github 소셜로그인이 필요합니다.
 
-![posts page](https://github.com/user-attachments/assets/74670e88-c10b-47e5-9e1f-0dcc4e226f3e)
+- Github 소셜로그인 전/중/후
+  
+  <img width="1807" height="661" alt="image" src="https://github.com/user-attachments/assets/d4adb86a-3cc7-4e20-a635-a2a4c3aac47d" />
+
 
 <br/> <br/>
 
