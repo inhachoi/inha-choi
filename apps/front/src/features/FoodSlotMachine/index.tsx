@@ -1,0 +1,6 @@
+import { SlotMachine } from "@/shared/ui";
+import { FOOD_NAMES } from "./constants";
+
+export function FoodSlotMachine() {
+  return <SlotMachine prefix="점심은..🤔" dataArr={FOOD_NAMES} />;
+}

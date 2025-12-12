@@ -5,9 +5,11 @@ export function MainPage() {
   return (
     <Container>
       <Introduce />
-      <Projects />
-      <PopularPosts />
-      <Contribution />
+      <Content>
+        <Projects />
+        <PopularPosts />
+        <Contribution />
+      </Content>
     </Container>
   );
 }
@@ -19,8 +21,26 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   max-width: 768px;
-  gap: 70px;
   padding: 0 15px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    gap: 45px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 20px;
+  }
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 768px;
+  gap: 70px;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
