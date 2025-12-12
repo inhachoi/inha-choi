@@ -1,84 +1,47 @@
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import styled from "@emotion/styled";
 import { shake } from "@/shared/assets";
 import { shuffleArray } from "./utils";
 import { colors } from "@toss/tds-colors";
+import type { SlotMachineType } from "./types";
+import { useSlotMachine } from "./hooks";
 
-interface Props {
-  dataArr: string[];
-}
-
-const SLOT_ITEM_HEIGHT = 40;
-
-export const SlotMachine = ({ dataArr }: Props) => {
-  const [spinCount, setSpinCount] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const lastIndex = dataArr.length - 1;
-
+export const SlotMachine = ({ prefix, dataArr }: SlotMachineType) => {
   const shuffledDataArr = shuffleArray(dataArr);
+  const { isSpinning, handleClick, currentIndex } = useSlotMachine();
 
-  // 초반은 빨리, 뒤로 갈수록 천천히 (ms 단위)
-  const getStepDelay = (index: number) => {
-    const base = 50; // 시작 속도
-    const step = 90; // 점점 느려지는 정도
-    return base + index * step;
-  };
-
-  // 인덱스 하나씩 증가시키며 슬롯 굴리기 (점점 느려지게)
-  useEffect(() => {
-    if (currentIndex >= lastIndex) {
-      return;
-    }
-
-    const delay = getStepDelay(currentIndex); // 현재 단계에 따른 delay(ms)
-
-    const timer = setTimeout(() => {
-      setCurrentIndex((prev) => (prev < lastIndex ? prev + 1 : prev));
-    }, delay);
-
-    return () => clearTimeout(timer);
-  }, [currentIndex, lastIndex, shuffledDataArr.length]);
-
-  const handleClick = () => {
-    setCurrentIndex(0);
-    setSpinCount((prev) => prev + 1);
+  const variants = {
+    initial: { scaleY: 0.3, y: "-50%", opacity: 0 },
+    animate: {
+      scaleY: 1,
+      y: 0,
+      opacity: 1,
+      filter: isSpinning ? "blur(2.5px)" : "none",
+    },
+    exit: { scaleY: 0.3, y: "50%", opacity: 0 },
   };
 
   return (
     <Container>
-      오늘 점심은...
+      {prefix}
       <SlotReelTrack>
         <AnimatePresence mode="popLayout">
           {shuffledDataArr.map((text, i) => {
-            const isLast = i === lastIndex;
-
-            if (i !== currentIndex) {
-              return null;
-            }
-
-            return (
+            return i === currentIndex ? (
               <SlotItem
-                key={`${text}-${spinCount}-${i}`}
-                initial={{ scaleY: 0.3, y: "-50%", opacity: 0 }}
-                animate={{
-                  scaleY: 1,
-                  y: 0,
-                  opacity: 1,
-                  filter: isLast ? "none" : "blur(1.5px)",
-                }}
-                exit={{ scaleY: 0.3, y: "50%", opacity: 0 }}
-                transition={{
-                  duration: isLast ? 0.4 : 0.18,
-                  ease: isLast ? "easeInOut" : "linear",
-                }}
+                key={i}
+                variants={variants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
               >
                 {text}
               </SlotItem>
-            );
+            ) : null;
           })}
         </AnimatePresence>
       </SlotReelTrack>
+
       <SpinButton
         onClick={handleClick}
         whileTap={{ scale: 0.9, scaleY: 1 }}
@@ -96,7 +59,17 @@ export default SlotMachine;
 const Container = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 5px;
+
+  @media (max-width: 768px) {
+    gap: 4px;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 3px;
+    font-size: 0.5rem;
+  }
 `;
 
 const SlotReelTrack = styled.div`
@@ -104,19 +77,37 @@ const SlotReelTrack = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 200px;
-  height: ${SLOT_ITEM_HEIGHT}px;
+  height: 30px;
   border: 1px solid ${colors.grey300};
   border-radius: 5px;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 130px;
+    height: 22.5px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 15px;
+  }
 `;
 
 const SlotItem = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${SLOT_ITEM_HEIGHT}px;
+  height: 30px;
   padding: 0 10px;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    height: 22.5px;
+  }
+
+  @media (max-width: 480px) {
+    height: 15px;
+  }
 `;
 
 const SpinButton = styled(motion.button)`
@@ -124,9 +115,18 @@ const SpinButton = styled(motion.button)`
   align-items: center;
   background: none;
   border: none;
+  padding: 0;
   cursor: pointer;
 `;
 
 const Img = styled.img`
-  height: 30px;
+  height: 25px;
+
+  @media (max-width: 768px) {
+    height: 18.75px;
+  }
+
+  @media (max-width: 480px) {
+    height: 12.5px;
+  }
 `;

@@ -2,5 +2,5 @@ import { SlotMachine } from "@/shared/ui";
 import { FOOD_NAMES } from "./constants";
 
 export function FoodSlotMachine() {
-  return <SlotMachine dataArr={FOOD_NAMES} />;
+  return <SlotMachine prefix="점심은..🤔" dataArr={FOOD_NAMES} />;
 }
