@@ -9,6 +9,7 @@ import { User } from "./models/User.js";
 import { GuestbookComment } from "./models/GuestbookComment.js";
 import { attachUser, requireAuth } from "./middleware/auth.js";
 import dotenv from "dotenv";
+import { isProd, CONFIG } from "./config/auth.config.js";
 
 dotenv.config();
 const app = express();
@@ -17,26 +18,6 @@ const PORT = 3000;
 /* -------------------------------------------------------------
    1) 환경별 GitHub OAuth / Frontend URL 자동 분기 CONFIG
 ---------------------------------------------------------------- */
-const isProd = process.env.NODE_ENV === "production";
-
-export const CONFIG = {
-  CLIENT_ID: isProd
-    ? process.env.GITHUB_CLIENT_ID_PROD
-    : process.env.GITHUB_CLIENT_ID_LOCAL,
-
-  CLIENT_SECRET: isProd
-    ? process.env.GITHUB_CLIENT_SECRET_PROD
-    : process.env.GITHUB_CLIENT_SECRET_LOCAL,
-
-  REDIRECT_URI: isProd
-    ? process.env.GITHUB_REDIRECT_URI_PROD
-    : process.env.GITHUB_REDIRECT_URI_LOCAL,
-
-  FRONTEND_URL: isProd
-    ? process.env.FRONTEND_URL_PROD
-    : process.env.FRONTEND_URL_LOCAL,
-};
-
 if (!CONFIG.CLIENT_ID || !CONFIG.CLIENT_SECRET || !CONFIG.REDIRECT_URI) {
   console.warn("[Auth] OAuth 환경변수가 올바르게 설정되지 않았습니다.");
 }
