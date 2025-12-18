@@ -4,10 +4,10 @@ const guestbookCommentSchema = new Schema(
   {
     user: {
       type: Types.ObjectId,
-      ref: "User", // User 컬렉션을 참조
+      ref: "User",
       required: true,
     },
-    content: { type: String, required: true, maxlength: 500 }, // 댓글 내용
+    content: { type: String, required: true, maxlength: 500 },
   },
   {
     timestamps: true, // createdAt, updatedAt
