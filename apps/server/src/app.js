@@ -1,18 +1,18 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { CONFIG } from "./config/auth.config.js";
-import { attachUser } from "./middleware/auth.js";
-import authRoutes from "./routes/auth.routes.js";
-import guestbookRoutes from "./routes/guestbook.routes.js";
-import postsRoutes from "./routes/posts.routes.js";
+import { CONFIG } from "./shared/config/auth.config.js";
+import { attachUser } from "./shared/middleware/auth.js";
+import authRoutes from "./modules/auth/auth.routes.js";
+import guestbookRoutes from "./modules/guestbook/guestbook.routes.js";
+import postsRoutes from "./modules/posts/posts.routes.js";
 
 const app = express();
 
 app.use(
   cors({
     origin: CONFIG.FRONTEND_URL,
-    credential: true,
+    credentials: true,
   })
 );
 

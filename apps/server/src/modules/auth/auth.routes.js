@@ -1,8 +1,8 @@
 import express from "express";
 import crypto from "node:crypto";
 import jwt from "jsonwebtoken";
-import { CONFIG, isProd } from "../config/auth.config.js";
-import { User } from "../models/User.js";
+import { CONFIG, isProd } from "../../shared/config/auth.config.js";
+import { User } from "./user.model.js";
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 import express from "express";
-import { GuestbookComment } from "../models/GuestbookComment.js";
-import { requireAuth } from "../middleware/auth.js";
+import { GuestbookComment } from "./guestbook.model.js";
+import { requireAuth } from "../../shared/middleware/auth.js";
 
 const router = express.Router();
 

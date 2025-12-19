@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { User } from "../models/User.js";
+import { User } from "../../modules/auth/user.model.js";
 
 const { JWT_SECRET } = process.env;
 
