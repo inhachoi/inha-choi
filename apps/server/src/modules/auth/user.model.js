@@ -1,14 +1,21 @@
 import { Schema, model } from "mongoose";
 
+/**
+ * User schema (GitHub OAuth 사용자)
+ * @property {string} githubId   GitHub 고유 ID
+ * @property {string} login      GitHub username (ex: chlruddlf73)
+ * @property {string=} avatarUrl 프로필 이미지 URL
+ * @property {string=} profileUrl GitHub 프로필 링크
+ */
 const userSchema = new Schema(
   {
-    githubId: { type: String, required: true, unique: true }, // GitHub에서 오는 고유 ID
-    login: { type: String, required: true }, // 깃허브 username (ex: chlruddlf73)
-    avatarUrl: { type: String }, // 프로필 이미지 URL
-    profileUrl: { type: String }, // GitHub 프로필 링크
+    githubId: { type: String, required: true, unique: true },
+    login: { type: String, required: true }, 
+    avatarUrl: { type: String },
+    profileUrl: { type: String },
   },
   {
-    timestamps: true, // createdAt, updatedAt 자동 생성
+    timestamps: true,
   }
 );
 
