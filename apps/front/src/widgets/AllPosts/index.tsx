@@ -1,34 +1,15 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import { useState, useMemo } from "react";
-import { usePosts } from "@/shared/hooks";
 import { Article } from "@/shared/ui";
 import { formatYearMonth } from "@/shared/utils";
+import { useSortPosts } from "./useSortPosts";
 
 export function AllPosts() {
-  const { posts } = usePosts();
-  const [sortType, setSortType] = useState<"latest" | "oldest" | "likes">(
-    "latest"
-  );
-
-  const sortedPosts = useMemo(() => {
-    if (!posts) return [];
-
-    switch (sortType) {
-      case "latest":
-        return posts;
-      case "oldest":
-        return [...posts].reverse();
-      case "likes":
-        return [...posts].sort((a, b) => b.likes - a.likes);
-      default:
-        return posts;
-    }
-  }, [posts, sortType]);
+  const { sortType, setSortType, sortedPosts } = useSortPosts();
 
   return (
     <Container>
-      <Description>{posts.length} posts</Description>
+      <Description>{sortedPosts.length} posts</Description>
 
       <SortButtonGroup>
         <SortButton
