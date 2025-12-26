@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "type": "module",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon --env-file=.env src/index.js",
-    "start": "node src/index.js"
+    "dev": "nodemon --env-file=.env src/server.js",
+    "start": "node src/server.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
