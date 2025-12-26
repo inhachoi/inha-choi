@@ -7,3 +7,4 @@ export { Article } from "./Article";
 export { Date } from "./Date";
 export { Project } from "./Project";
 export { SlotMachine } from "./SlotMachine";
+export { LoadingSpinner } from "./loading-spinner";
