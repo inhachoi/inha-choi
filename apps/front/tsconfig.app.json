@@ -29,5 +29,5 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "src/main.tsx"]
+  "include": ["src", "src/app/main.tsx"]
 }
