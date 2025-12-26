@@ -1,10 +1,23 @@
 import styled from "@emotion/styled";
 import { Contribution, Introduce, PopularPosts, Projects } from "@/widgets";
 
+import { useErrorBoundary } from "react-error-boundary";
+
 export default function MainPage() {
+  const { showBoundary } = useErrorBoundary();
+
   return (
     <Container>
       <Introduce />
+
+      <button
+        onClick={() => {
+          showBoundary(new Error("강제 에러"));
+        }}
+      >
+        에러 발생
+      </button>
+
       <Content>
         <Projects />
         <PopularPosts />
@@ -13,7 +26,6 @@ export default function MainPage() {
     </Container>
   );
 }
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;

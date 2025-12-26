@@ -1,4 +1,4 @@
-export { default as MainPage } from "./MainPage";
-export { default as PostsPage } from "./PostsPage";
-export {default as StudyPage } from "./StudyPage";
-export {default as GuestbookPage } from "./GuestbookPage";
+export { default as MainPage } from "./main-page";
+export { default as PostsPage } from "./posts-page";
+export { default as GuestbookPage } from "./guestbook-page";
+export { default as NotFoundPage } from "./not-found-page";

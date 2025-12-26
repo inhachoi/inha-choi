@@ -6,10 +6,12 @@ import { GlobalStyles } from "./GlobalStyles";
 import { Suspense, lazy } from "react";
 import { LoadingSpinner } from "@/shared/ui/loading-spinner";
 
-const MainPage = lazy(() => import("@/pages/MainPage"));
-const PostsPage = lazy(() => import("@/pages/PostsPage"));
-const StudyPage = lazy(() => import("@/pages/StudyPage"));
-const GuestbookPage = lazy(() => import("@/pages/GuestbookPage"));
+const MainPage = lazy(() => import("@/pages/main-page"));
+const PostsPage = lazy(() => import("@/pages/posts-page"));
+const GuestbookPage = lazy(
+  () => import("@/pages/guestbook-page")
+);
+const NotFoundPage = lazy(() => import("@/pages/not-found-page"));
 
 function App() {
   return (
@@ -23,8 +25,8 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/posts" element={<PostsPage />} />
-            <Route path="/study" element={<StudyPage />} />
             <Route path="/guestbook" element={<GuestbookPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </PageLayout>
       </Suspense>
