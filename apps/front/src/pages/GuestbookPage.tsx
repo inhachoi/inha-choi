@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { CommentsList, CommentWriter } from "@/widgets";
 import { useGithubLogin } from "@/shared/hooks";
 
-export function GuestbookPage() {
+export default function GuestbookPage() {
   const {
     comments,
     user,

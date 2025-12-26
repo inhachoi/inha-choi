@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { AllPosts } from "@/widgets";
 
-export function PostsPage() {
+export default function PostsPage() {
   return (
     <Container>
       <Header>All</Header>

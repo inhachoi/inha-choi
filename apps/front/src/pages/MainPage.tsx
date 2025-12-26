@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Contribution, Introduce, PopularPosts, Projects } from "@/widgets";
 
-export function MainPage() {
+export default function MainPage() {
   return (
     <Container>
       <Introduce />
