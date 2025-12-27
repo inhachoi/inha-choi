@@ -31,6 +31,7 @@ const PageLayout = styled.div`
   background: ${colors.grey50};
   margin: 60px 0 0 0;
   min-width: 370px;
+  min-height: 80vh;
 
   @media (max-width: 768px) {
     margin: 51px 0 0 0;

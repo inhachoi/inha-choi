@@ -2,38 +2,19 @@ import styled from "@emotion/styled";
 
 export default function NotFoundPage() {
   return (
-    <Main>
-      <Center>
-        <Code>404</Code>
+    <Container>
+      <Code>404</Code>
 
-        <Title>페이지를 찾을 수 없습니다.</Title>
+      <Title>페이지를 찾을 수 없습니다.</Title>
 
-        <Actions>
-          <HomeLink href="/">홈으로 돌아가기</HomeLink>
-        </Actions>
-      </Center>
-    </Main>
+      <Actions>
+        <HomeLink href="/">홈으로 돌아가기</HomeLink>
+      </Actions>
+    </Container>
   );
 }
 
-const Main = styled.main`
-  display: grid;
-  min-height: 100%;
-  place-items: center;
-  background: #ffffff;
-  padding: 6rem 1.5rem;
-
-  @media (min-width: 640px) {
-    padding: 8rem 1.5rem;
-  }
-
-  @media (min-width: 1024px) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-`;
-
-const Center = styled.div`
+const Container = styled.div`
   text-align: center;
 `;
 
