@@ -1,23 +1,81 @@
+import styled from "@emotion/styled";
+
 export default function NotFoundPage() {
   return (
-    <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-      <div className="text-center">
-        <p className="text-base font-semibold text-indigo-600">404</p>
-        <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
-          Page not found
-        </h1>
-        <p className="mt-6 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-          Sorry, we couldn’t find the page you’re looking for.
-        </p>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
-          <a
-            href="/"
-            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Go back home
-          </a>
-        </div>
-      </div>
-    </main>
+    <Main>
+      <Center>
+        <Code>404</Code>
+
+        <Title>페이지를 찾을 수 없습니다.</Title>
+
+        <Actions>
+          <HomeLink href="/">홈으로 돌아가기</HomeLink>
+        </Actions>
+      </Center>
+    </Main>
   );
 }
+
+const Main = styled.main`
+  display: grid;
+  min-height: 100%;
+  place-items: center;
+  background: #ffffff;
+  padding: 6rem 1.5rem;
+
+  @media (min-width: 640px) {
+    padding: 8rem 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+`;
+
+const Center = styled.div`
+  text-align: center;
+`;
+
+const Code = styled.p`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4f46e5;
+`;
+
+const Title = styled.h1`
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #111827;
+  text-wrap: balance;
+`;
+
+const Actions = styled.div`
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+`;
+
+const HomeLink = styled.a`
+  border-radius: 0.375rem;
+  background: #4f46e5;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+
+  &:hover {
+    background: #6366f1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+  }
+`;
