@@ -1,0 +1,1 @@
+export { PopularPosts } from "./PopularPosts";
