@@ -5,7 +5,7 @@ export default function NotFoundPage() {
     <Container>
       <Code>404</Code>
 
-      <Title>페이지를 찾을 수 없습니다.</Title>
+      <Title>페이지를 찾을 수 없어요.</Title>
 
       <Actions>
         <HomeLink href="/">홈으로 돌아가기</HomeLink>
