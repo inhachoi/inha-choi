@@ -11,16 +11,16 @@ const NotFoundPage = lazy(() => import("@/pages/not-found-page"));
 
 export function AppRouter() {
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <PageLayout>
+    <PageLayout>
+      <Suspense fallback={<LoadingSpinner />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/guestbook" element={<GuestbookPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </PageLayout>
-    </Suspense>
+      </Suspense>
+    </PageLayout>
   );
 }
 
@@ -31,13 +31,15 @@ const PageLayout = styled.div`
   background: ${colors.grey50};
   margin: 60px 0 0 0;
   min-width: 370px;
-  min-height: 80vh;
+  min-height: calc(100vh - 140px);
 
   @media (max-width: 768px) {
     margin: 51px 0 0 0;
+    min-height: calc(100vh - 114px);
   }
 
   @media (max-width: 480px) {
     margin: 42px 0 0 0;
+    min-height: calc(100vh - 90px);
   }
 `;

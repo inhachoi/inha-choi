@@ -7,9 +7,9 @@ export function NavigationBar() {
     <Container>
       <Wrapper>
         <LogoButton />
+        
         <TextButtonGroup>
           <TextButton toGo="/posts">Posts</TextButton>
-          {/* <TextButton toGo="/study">Study</TextButton> */}
           <TextButton toGo="/guestbook">Guestbook</TextButton>
         </TextButtonGroup>
       </Wrapper>
