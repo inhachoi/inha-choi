@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { CommentsList, CommentWriter } from "@/widgets";
-import { useGithubLogin } from "@/shared/hooks";
+import { useGithubLogin } from "@/shared/lib/hooks";
 
 export default function GuestbookPage() {
   const {

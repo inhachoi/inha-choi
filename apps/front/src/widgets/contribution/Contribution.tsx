@@ -5,7 +5,7 @@ import {
   PR_REACT_JS_CUSTOM_HOOK_URL,
   PR_MDN_ASYNC_URL,
   PR_REACT_JS_EFFECT_URL,
-} from "../../shared/constants";
+} from "../../shared/lib/constants";
 
 export function Contribution() {
   return (

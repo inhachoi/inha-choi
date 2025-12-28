@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { defaultUser } from "@/shared/assets";
-import type { CommentWriterType } from "@/shared/types";
+import type { CommentWriterType } from "@/shared/lib/types";
 
 export function CommentWriter({
   user,

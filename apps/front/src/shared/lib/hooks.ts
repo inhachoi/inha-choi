@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchPosts } from "@/shared/api";
-import type { PostType, UserType, CommentType } from "@/shared/types";
+import {
+  fetchPosts,
+  fetchComments,
+  fetchMe,
+  submitComment,
+} from "@/shared/api";
+import type { PostType, UserType, CommentType } from "@/shared/lib/types";
 import { useEffect, useState, type FormEvent } from "react";
-import { fetchComments, fetchMe, submitComment } from "./api";
-import { sortPostsByLikes } from "./utils";
+import { sortPostsByLikes } from "@/shared/lib/utils";
 
 export const usePosts = () => {
   const { data, isLoading, isError } = useQuery<PostType[]>({

@@ -1,4 +1,4 @@
-import { usePosts } from "@/shared/hooks";
+import { usePosts } from "@/shared/lib/hooks";
 import { useState, useMemo } from "react";
 
 export const useSortPosts = () => {

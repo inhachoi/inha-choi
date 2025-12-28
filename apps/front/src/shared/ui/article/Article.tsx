@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { heart } from "@/shared/assets";
-import { Date } from "@/shared/ui/Date";
+import { Date } from "@/shared/ui";
 
 interface ArticleProps {
   title: string;

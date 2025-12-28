@@ -5,7 +5,7 @@ import {
   REPO_DONGNAEBANGNAE_URL,
   REPO_BOOLOCK_URL,
   REPO_INHACHOI_URL,
-} from "@/shared/constants";
+} from "@/shared/lib/constants";
 
 export function Projects() {
   return (
