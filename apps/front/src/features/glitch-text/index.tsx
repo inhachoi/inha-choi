@@ -1,0 +1,1 @@
+export { GlitchText } from "./GlitchText";

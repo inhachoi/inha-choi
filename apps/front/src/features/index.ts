@@ -1,3 +1,3 @@
-export { InteractionCard } from "./InteractionCard";
-export { FoodSlotMachine } from "./FoodSlotMachine";
-export { GlitchText } from "./GlitchText";
+export { InteractionCard } from "./interaction-card";
+export { FoodSlotMachine } from "./food-slot-machine";
+export { GlitchText } from "./glitch-text";
