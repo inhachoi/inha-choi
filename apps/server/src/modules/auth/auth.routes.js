@@ -1,7 +1,12 @@
 import express from "express";
 import crypto from "node:crypto";
 import jwt from "jsonwebtoken";
-import { CONFIG, isProd } from "#shared/config/auth.config.js";
+import {
+  GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET,
+  GITHUB_REDIRECT_URI,
+  FRONTEND_URL,
+} from "../../shared/config/auth.config.js";
 import { User } from "./user.model.js";
 
 const router = express.Router();
@@ -15,8 +20,8 @@ router.get("/github/login", (req, res) => {
   });
 
   const params = new URLSearchParams({
-    client_id: CONFIG.CLIENT_ID,
-    redirect_uri: CONFIG.REDIRECT_URI,
+    client_id: GITHUB_CLIENT_ID,
+    redirect_uri: GITHUB_REDIRECT_URI,
     scope: "read:user",
     state,
   });
@@ -44,10 +49,10 @@ router.get("/github/callback", async (req, res) => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          client_id: CONFIG.CLIENT_ID,
-          client_secret: CONFIG.CLIENT_SECRET,
+          client_id: GITHUB_CLIENT_ID,
+          client_secret: GITHUB_CLIENT_SECRET,
           code,
-          redirect_uri: CONFIG.REDIRECT_URI,
+          redirect_uri: GITHUB_REDIRECT_URI,
         }),
       }
     );
@@ -85,10 +90,10 @@ router.get("/github/callback", async (req, res) => {
     res.cookie("auth_token", token, {
       httpOnly: true,
       sameSite: "lax",
-      secure: isProd,
+      secure: process.env.NODE_ENV === "production",
     });
 
-    res.redirect(`${CONFIG.FRONTEND_URL}/guestbook`);
+    res.redirect(`${FRONTEND_URL}/guestbook`);
   } catch (e) {
     console.error("OAuth error:", e);
     res.status(500).send("OAuth error");

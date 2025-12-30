@@ -7,6 +7,7 @@ if (!MONGODB_URI) {
 }
 
 export async function connectDB() {
+  console.log("[DB] connecting...");
   try {
     await mongoose.connect(MONGODB_URI);
     console.log("[DB] Connected to MongoDB");
