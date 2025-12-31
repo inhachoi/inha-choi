@@ -14,7 +14,11 @@ export function Projects() {
 
       <Project
         thumbnail={
-          <img src={inhachoi} alt="개발자 최경일 프로젝트 썸네일 사진" />
+          <img
+            src={inhachoi}
+            alt="개발자 최경일 프로젝트 썸네일 사진"
+            loading="lazy"
+          />
         }
         title="개발자 최경일"
         description="개인 홈페이지 1인 프로젝트!"
@@ -23,7 +27,13 @@ export function Projects() {
       />
 
       <Project
-        thumbnail={<img src={boolock} alt="BooLock 프로젝트 썸네일 사진" />}
+        thumbnail={
+          <img
+            src={boolock}
+            alt="BooLock 프로젝트 썸네일 사진"
+            loading="lazy"
+          />
+        }
         title="BooLock"
         description="HTML과 CSS를 블록으로 쉽게 익히는 블록코딩 플랫폼!"
         period="24.10 ~ 25.01"
@@ -32,7 +42,11 @@ export function Projects() {
 
       <Project
         thumbnail={
-          <img src={dongnaebangnae} alt="동네방네 프로젝트 썸네일 사진" />
+          <img
+            src={dongnaebangnae}
+            alt="동네방네 프로젝트 썸네일 사진"
+            loading="lazy"
+          />
         }
         title="동네방네"
         description="동네와 주민들에 대한 유대감을 증대시키주는 SNS!"

@@ -13,7 +13,11 @@ export function CommentWriter({
 }: CommentWriterType) {
   return (
     <Container>
-      <Avatar src={user?.avatarUrl || defaultUser} alt="프로필 사진" />
+      <Avatar
+        src={user?.avatarUrl || defaultUser}
+        alt="프로필 사진"
+        loading="lazy"
+      />
 
       <WriterForm>
         <Greeting>

@@ -9,7 +9,7 @@ export function InteractionCard({ src, alt, width }: InteractionCardType) {
   return (
     <Container ref={containerRef}>
       <Overlay ref={overlayRef} />
-      <Img src={src} alt={alt} width={width} />
+      <Img src={src} alt={alt} width={width} loading="lazy" />
     </Container>
   );
 }

@@ -13,7 +13,11 @@ export function CommentsList({ comments }: { comments: CommentType[] }) {
 
       {comments.map((comment) => (
         <CommentItem key={comment.id}>
-          <Avatar src={comment.user.avatarUrl} alt="프로필 사진" />
+          <Avatar
+            src={comment.user.avatarUrl}
+            alt="프로필 사진"
+            loading="lazy"
+          />
           <ItemBody>
             <Meta>
               {comment.user.login} 님의 방명록 -{" "}

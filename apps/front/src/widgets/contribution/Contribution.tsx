@@ -25,7 +25,7 @@ export function Contribution() {
       </TextLink>
 
       <TextLink to={PR_MDN_ASYNC_URL}>
-        <Img src={mdn} />
+        <Img src={mdn} loading="lazy" />
         mdn / translated-contenteact.dev 비동기 예시 코드 수정
         <Date>2025.08</Date>
       </TextLink>

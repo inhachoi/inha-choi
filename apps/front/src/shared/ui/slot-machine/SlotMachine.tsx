@@ -48,7 +48,7 @@ export const SlotMachine = ({ prefix, dataArr }: SlotMachineType) => {
         whileHover={{ scaleY: -1 }}
         aria-label="셔플"
       >
-        <Img src={shake} alt="셔플 아이콘" />
+        <Img src={shake} alt="셔플 아이콘" loading="lazy" />
       </SpinButton>
     </Container>
   );

@@ -30,7 +30,7 @@ export function Article({
       </ContentWrapper>
 
       <LikesWrapper>
-        <Img src={heart} alt="좋아요 마크" />
+        <Img src={heart} alt="좋아요 마크" loading="lazy" />
         {likes}
       </LikesWrapper>
     </Container>
