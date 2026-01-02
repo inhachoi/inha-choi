@@ -5,6 +5,7 @@ import { attachUser } from "./shared/middleware/auth.js";
 import authRoutes from "./modules/auth/auth.routes.js";
 import guestbookRoutes from "./modules/guestbook/guestbook.routes.js";
 import postsRoutes from "./modules/posts/posts.routes.js";
+import chatRoutes from "./modules/chat/chat.routes.js";
 
 const app = express();
 const allowedOrigins = ["http://localhost:5173", "https://www.gyeung-il.com"];
@@ -31,5 +32,6 @@ app.use(attachUser);
 app.use("/api/auth", authRoutes);
 app.use("/api/guestbook", guestbookRoutes);
 app.use("/api/posts", postsRoutes);
+app.use("/api/chat", chatRoutes);
 
 export default app;
