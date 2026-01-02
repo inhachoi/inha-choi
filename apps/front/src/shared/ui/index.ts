@@ -8,3 +8,4 @@ export { Date } from "./date";
 export { Project } from "./project";
 export { SlotMachine } from "./slot-machine";
 export { LoadingSpinner } from "./loading-spinner";
+export { Header } from "./header";
