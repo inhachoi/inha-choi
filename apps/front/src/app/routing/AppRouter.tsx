@@ -7,6 +7,7 @@ import { colors } from "@toss/tds-colors";
 const MainPage = lazy(() => import("@/pages/main-page"));
 const PostsPage = lazy(() => import("@/pages/posts-page"));
 const GuestbookPage = lazy(() => import("@/pages/guestbook-page"));
+const ChatPage = lazy(() => import("@/pages/chat-page"));
 const NotFoundPage = lazy(() => import("@/pages/not-found-page"));
 
 export function AppRouter() {
@@ -17,6 +18,7 @@ export function AppRouter() {
           <Route path="/" element={<MainPage />} />
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/guestbook" element={<GuestbookPage />} />
+          <Route path="/chat" element={<ChatPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
@@ -27,7 +29,6 @@ export function AppRouter() {
 const PageLayout = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   background: ${colors.grey50};
   margin: 60px 0 0 0;
   min-width: 370px;

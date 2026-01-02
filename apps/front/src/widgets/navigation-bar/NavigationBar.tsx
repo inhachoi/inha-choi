@@ -11,6 +11,7 @@ export function NavigationBar() {
         <TextButtonGroup>
           <TextButton toGo="/posts">Posts</TextButton>
           <TextButton toGo="/guestbook">Guestbook</TextButton>
+          <TextButton toGo="/chat">Chat</TextButton>
         </TextButtonGroup>
       </Wrapper>
     </Container>

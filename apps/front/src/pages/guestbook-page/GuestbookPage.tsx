@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { CommentsList, CommentWriter } from "@/widgets";
 import { useGithubLogin } from "@/shared/lib/hooks";
+import { Header } from "@/shared/ui";
 
 export default function GuestbookPage() {
   const {
@@ -45,24 +46,5 @@ const Container = styled.div`
 
   @media (max-width: 480px) {
     margin: 20px 0;
-  }
-`;
-
-const Header = styled.header`
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  margin: 0 0 50px 0;
-
-  @media (max-width: 768px) {
-    font-size: 1.25rem;
-    margin: 0 0 35px 0;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    margin: 0 0 20px 0;
   }
 `;
