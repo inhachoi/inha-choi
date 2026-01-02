@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface MessageType {
-  role: "user" | "chatbot";
+  role: "user" | "assistant";
   content: string;
 };
 
@@ -30,7 +30,7 @@ export const useChat = () => {
 
       setMessages((prev) => [
         ...prev,
-        { role: "chatbot", content: data.message },
+        { role: "assistant", content: data.message },
       ]);
     } finally {
       setLoading(false);

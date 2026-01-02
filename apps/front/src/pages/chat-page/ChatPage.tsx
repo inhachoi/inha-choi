@@ -13,8 +13,7 @@ import styled from "@emotion/styled";
 import { Header } from "@/shared/ui";
 
 export default function ChatPage() {
-  const { sendMessage, messages, loading, input, setInput } =
-    useChat();
+  const { sendMessage, messages, loading, input, setInput } = useChat();
 
   return (
     <Container>
@@ -39,7 +38,7 @@ export default function ChatPage() {
             model={{
               direction: "incoming",
               message:
-                "난 AI 최경일 챗봇이야. <br/>개발, 취미, 시덥잖은 이야기 뭐든 좋으니 편하게 말해봐ㅎㅎ",
+                "난 AI 최경일 챗봇이야. <br/>개발, 취미, 시덥잖은 이야기 뭐든 좋으니 편하게 말해줘ㅎㅎ",
               position: "single",
             }}
           />
