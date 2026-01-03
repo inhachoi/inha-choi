@@ -28,6 +28,9 @@ export default function ChatPage() {
         <ConversationHeader>
           <Avatar name="최경일" src={choi} />
           <ConversationHeader.Content userName="최경일" info="ENTJ" />
+          <ConversationHeader.Actions>
+            <button>reset</button>
+          </ConversationHeader.Actions>
         </ConversationHeader>
 
         <MessageList

@@ -1,9 +1,6 @@
 import { useState } from "react";
-
-interface MessageType {
-  role: "user" | "assistant";
-  content: string;
-}
+import { chatApi } from "../api/chatApi";
+import { type MessageType } from "./types";
 
 export function useChat() {
   const [messages, setMessages] = useState<MessageType[]>([]);
@@ -24,12 +21,7 @@ export function useChat() {
     setLoading(true);
     setStreamingMessage("");
 
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: nextMessages }),
-    });
-
+    const response = await chatApi(nextMessages);
     const reader = response.body!.getReader();
     const decoder = new TextDecoder("utf-8");
 
