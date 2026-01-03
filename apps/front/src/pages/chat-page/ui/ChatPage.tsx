@@ -7,13 +7,14 @@ import {
   TypingIndicator,
   ConversationHeader,
 } from "@chatscope/chat-ui-kit-react";
-import { useChat } from "./hooks";
+import { useChat } from "../model/useChat";
 import { choi } from "@/shared/assets";
 import styled from "@emotion/styled";
 import { Header } from "@/shared/ui";
 
 export default function ChatPage() {
-  const { sendMessage, messages, loading, input, setInput } = useChat();
+  const { sendMessage, messages, loading, input, setInput, streamingMessage } =
+    useChat();
 
   return (
     <Container>
@@ -26,7 +27,7 @@ export default function ChatPage() {
       <ChatContainer>
         <ConversationHeader>
           <Avatar name="최경일" src={choi} />
-          <ConversationHeader.Content info="ENTJ" userName="최경일" />
+          <ConversationHeader.Content userName="최경일" info="ENTJ" />
         </ConversationHeader>
 
         <MessageList
@@ -42,25 +43,39 @@ export default function ChatPage() {
               position: "single",
             }}
           />
-          {messages.map((msg, index) => (
+
+          {messages.map((msg, i) => (
             <Message
-              key={index}
+              key={i}
               model={{
                 direction: msg.role === "user" ? "outgoing" : "incoming",
                 message: msg.content,
                 position: "single",
-                sender: msg.role,
               }}
             />
           ))}
+
+          {streamingMessage && (
+            <Message
+              model={{
+                direction: "incoming",
+                message: streamingMessage,
+                position: "single",
+              }}
+            />
+          )}
         </MessageList>
 
         <MessageInput
           placeholder="메시지를 입력하세요"
           value={input}
           onChange={setInput}
-          onSend={(text) => sendMessage(text)}
-          disabled={loading}
+          onSend={sendMessage}
+          sendDisabled={loading}
+          attachButton={false}
+          fancyScroll
+          autoFocus
+          activateAfterChange
         />
       </ChatContainer>
     </Container>
