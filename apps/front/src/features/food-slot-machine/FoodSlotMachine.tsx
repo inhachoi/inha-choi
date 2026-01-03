@@ -1,4 +1,4 @@
-import { SlotMachine } from "@/shared/ui";
+import { SlotMachine } from "@/entities";
 import { FOOD_NAMES } from "./constants";
 
 export function FoodSlotMachine() {
