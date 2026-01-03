@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { chatApi } from "../api/chatApi";
 import { type MessageType } from "./types";
 
+const CHAT_STORAGE_KEY = "chat_messages";
+
 export function useChat() {
-  const [messages, setMessages] = useState<MessageType[]>([]);
+  const [messages, setMessages] = useState<MessageType[]>(() => {
+    const stored = localStorage.getItem(CHAT_STORAGE_KEY);
+    if (!stored) return [];
+
+    try {
+      return JSON.parse(stored);
+    } catch {
+      return [];
+    }
+  });
+
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [streamingMessage, setStreamingMessage] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+  }, [messages]);
 
   async function sendMessage(text: string) {
     if (loading) return;
