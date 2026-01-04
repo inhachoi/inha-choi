@@ -71,6 +71,11 @@ export function useChat() {
     }
   }
 
+  const resetChat = () => {
+    setMessages([]);
+    setStreamingMessage("");
+  };
+
   return {
     messages,
     input,
@@ -78,5 +83,6 @@ export function useChat() {
     loading,
     streamingMessage,
     sendMessage,
+    resetChat,
   };
 }
