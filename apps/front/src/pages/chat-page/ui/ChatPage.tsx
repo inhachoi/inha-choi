@@ -6,6 +6,7 @@ import {
   MessageInput,
   TypingIndicator,
   ConversationHeader,
+  Button,
 } from "@chatscope/chat-ui-kit-react";
 import { useChat } from "../model/useChat";
 import { choi } from "@/shared/assets";
@@ -37,9 +38,9 @@ export default function ChatPage() {
             <Avatar name="최경일" src={choi} />
             <ConversationHeader.Content userName="최경일" info="ENTJ" />
             <ConversationHeader.Actions>
-              <ResetChatButton onClick={resetChat} disabled={loading}>
+              <Button onClick={resetChat} disabled={loading}>
                 reset
-              </ResetChatButton>
+              </Button>
             </ConversationHeader.Actions>
           </ConversationHeader>
 
@@ -102,35 +103,23 @@ const Container = styled.div`
   min-width: 370px;
   max-width: 768px;
   width: 100%;
-  min-height: calc(90vh - 140px);
+  height: calc(90vh - 140px);
   margin: 50px 0;
 
   @media (max-width: 768px) {
     margin: 35px 0;
-    min-height: calc(90vh - 114px);
+    height: calc(90vh - 114px);
   }
 
   @media (max-width: 480px) {
     margin: 20px 0;
-    min-height: calc(95vh - 90px);
+    height: calc(95vh - 90px);
   }
 `;
 
 const ChatContainerWrapper = styled.div`
   height: 100%;
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid rgb(218, 218, 218);
   border-radius: 10px;
   overflow: hidden;
-`;
-
-const ResetChatButton = styled.button`
-  margin: 0 10px 0 0;
-  font-size: 1rem;
-  border: none;
-  background: none;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;
