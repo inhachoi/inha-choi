@@ -1,4 +1,4 @@
-import type { PostType } from "@/shared/lib/types";
+import type { PostType } from "@/shared/model/types";
 
 export const formatYearMonth = (iso: string) => {
   const date = new Date(iso);

@@ -1,1 +1,1 @@
-export { FoodSlotMachine } from "./FoodSlotMachine";
+export { FoodSlotMachine } from "./ui/FoodSlotMachine";

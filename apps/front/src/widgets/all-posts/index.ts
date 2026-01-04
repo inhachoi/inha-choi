@@ -1,1 +1,1 @@
-export { AllPosts } from "./AllPosts";
+export { AllPosts } from "./ui/AllPosts";

@@ -1,1 +1,1 @@
-export { SlotMachine } from "./SlotMachine";
+export { SlotMachine } from "./ui/SlotMachine";

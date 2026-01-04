@@ -1,1 +1,1 @@
-export { Contribution } from "./Contribution";
+export { Contribution } from "./ui/Contribution";

@@ -4,6 +4,6 @@ export { PopularPosts } from "./popular-posts";
 export { Projects } from "./projects";
 export { Contribution } from "./contribution";
 export { Footer } from "./footer";
-export { AllPosts } from "./all-posts/AllPosts";
+export { AllPosts } from "./all-posts/ui/AllPosts";
 export { CommentWriter } from "./comment-writer";
 export { CommentsList } from "./comments-list";

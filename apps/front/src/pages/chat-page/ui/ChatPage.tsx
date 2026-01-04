@@ -8,7 +8,7 @@ import {
   ConversationHeader,
   Button,
 } from "@chatscope/chat-ui-kit-react";
-import { useChat } from "../model/useChat";
+import { useChat } from "../model/hooks";
 import { choi } from "@/shared/assets";
 import styled from "@emotion/styled";
 import { Header } from "@/shared/ui";
