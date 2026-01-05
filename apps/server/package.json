@@ -14,7 +14,8 @@
     "dotenv-flow": "^4.1.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^9.0.0"
+    "mongoose": "^9.0.0",
+    "openai": "^6.15.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"

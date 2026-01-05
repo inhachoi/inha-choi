@@ -1,1 +1,1 @@
-export { CommentWriter } from "./CommentWriter";
+export { CommentWriter } from "./ui/CommentWriter";
