@@ -34,7 +34,7 @@
 기술블로그 Velog에 연동된 모든 포스팅들을 볼 수 있습니다. <br/>
 세가지 기준으로 정렬해서 볼 수 있습니다 (최신순/오래된순/좋아요순) 
 
-<img width="1697" height="1123" alt="image" src="https://github.com/user-attachments/assets/e533bf1a-13e0-4ded-ba77-c104ea26dea1" />
+<img width="2843" height="1554" alt="image" src="https://github.com/user-attachments/assets/659ffdca-6d21-4dda-ac42-d15768b1ce46" />
 
 <br/>
 
@@ -44,13 +44,19 @@
 방명록 작성에은 Github 소셜로그인이 필요합니다.
 
   
-<img width="1650" height="1195" alt="image" src="https://github.com/user-attachments/assets/83530e0b-42e4-4870-bbf4-4e018e56ace8" />
-
-
-
+<img width="2843" height="1543" alt="image" src="https://github.com/user-attachments/assets/a322bb19-3f92-4cac-8d19-8cfd6ae10d82" />
 
 <br/> <br/>
 
+### 📝 Chat 페이지
+
+AI 챗봇과 대화할 수 있는 페이지입니다. <br/>
+개발자 최경일과 성격은 똑같습니다.
+
+<img width="2849" height="1555" alt="image" src="https://github.com/user-attachments/assets/3c6507f8-c87b-4e6a-bbfa-f93abe27d01c" />
+
+
+<br/> <br/>
 
 # 🌐 시스템 아키텍처 <a id="system_architecture"></a>
 
