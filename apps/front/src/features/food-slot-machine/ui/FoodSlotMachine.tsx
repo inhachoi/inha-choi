@@ -1,4 +1,4 @@
-import { SlotMachine } from "@/entities";
+import { SlotMachine } from "./SlotMachine";
 import { FOOD_NAMES } from "../config/constants";
 
 export function FoodSlotMachine() {

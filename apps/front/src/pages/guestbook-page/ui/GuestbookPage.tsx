@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { CommentsList, CommentWriter } from "@/widgets";
+import { CommentWriter } from "./CommentWriter";
+import { CommentsList } from "./CommentsList";
 import { useGithubLogin } from "../model/hooks";
 import { Header } from "@/shared/ui";
 

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { AllPosts } from "@/widgets";
+import { AllPosts } from "./AllPosts";
 
 export default function PostsPage() {
   return (
