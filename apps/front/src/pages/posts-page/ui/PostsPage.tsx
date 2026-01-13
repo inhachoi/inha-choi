@@ -1,19 +1,39 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import { PostsSort } from "./PostsSort";
+import { useEffect, useRef } from "react";
 import { PostsList } from "./PostsList";
-import { useSortPosts } from "../model/hooks";
+import { useInfinitePosts } from "../model/hooks";
 
 export default function PostsPage() {
-  const { sortType, setSortType, sortedPosts } = useSortPosts();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfinitePosts();
+
+  const observerRef = useRef<HTMLDivElement | null>(null);
+  const posts = data?.pages.flatMap((page) => page.posts) ?? [];
+
+  useEffect(() => {
+    if (!observerRef.current || !hasNextPage) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        fetchNextPage();
+      }
+    });
+
+    observer.observe(observerRef.current);
+    return () => observer.disconnect();
+  }, [fetchNextPage, hasNextPage]);
 
   return (
     <Container>
       <Header>All</Header>
       <PostsLayout>
-        <PostsCount>{sortedPosts.length} posts</PostsCount>
-        <PostsSort sortType={sortType} setSortType={setSortType} />
-        <PostsList posts={sortedPosts} />
+        <PostsCount>26 posts</PostsCount>
+        <PostsList posts={posts} />
+
+        {hasNextPage && (
+          <div ref={observerRef}>{isFetchingNextPage && "loading..."}</div>
+        )}
       </PostsLayout>
     </Container>
   );

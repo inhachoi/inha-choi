@@ -1,25 +1,24 @@
-import { usePosts } from "@/shared/model/hooks";
-import { useState, useMemo } from "react";
-import type { SortType } from "./types";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
-export const useSortPosts = () => {
-  const { posts } = usePosts();
-  const [sortType, setSortType] = useState<SortType>("latest");
+// model/api.ts
+export async function fetchInfinitePosts({
+  pageParam = null,
+}: {
+  pageParam?: string | null;
+}) {
+  const url = pageParam ? `/api/posts?cursor=${pageParam}` : `/api/posts`;
 
-  const sortedPosts = useMemo(() => {
-    if (!posts) return [];
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("failed to fetch posts");
 
-    switch (sortType) {
-      case "latest":
-        return posts;
-      case "oldest":
-        return [...posts].reverse();
-      case "likes":
-        return [...posts].sort((a, b) => b.likes - a.likes);
-      default:
-        return posts;
-    }
-  }, [posts, sortType]);
+  return res.json();
+}
 
-  return { sortType, setSortType, sortedPosts };
+export const useInfinitePosts = () => {
+  return useInfiniteQuery({
+    queryKey: ["infinite-posts"],
+    queryFn: ({ pageParam }) => fetchInfinitePosts({ pageParam }),
+    initialPageParam: null,
+    getNextPageParam: (lastPage) => lastPage.nextCursor,
+  });
 };
