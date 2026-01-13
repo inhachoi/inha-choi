@@ -1,39 +1,14 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import { useEffect, useRef } from "react";
 import { PostsList } from "./PostsList";
-import { useInfinitePosts } from "../model/hooks";
 
 export default function PostsPage() {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useInfinitePosts();
-
-  const observerRef = useRef<HTMLDivElement | null>(null);
-  const posts = data?.pages.flatMap((page) => page.posts) ?? [];
-
-  useEffect(() => {
-    if (!observerRef.current || !hasNextPage) return;
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        fetchNextPage();
-      }
-    });
-
-    observer.observe(observerRef.current);
-    return () => observer.disconnect();
-  }, [fetchNextPage, hasNextPage]);
-
   return (
     <Container>
       <Header>All</Header>
       <PostsLayout>
         <PostsCount>26 posts</PostsCount>
-        <PostsList posts={posts} />
-
-        {hasNextPage && (
-          <div ref={observerRef}>{isFetchingNextPage && "loading..."}</div>
-        )}
+        <PostsList />
       </PostsLayout>
     </Container>
   );
@@ -74,8 +49,8 @@ const PostsLayout = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin: 20px 0;
+  gap: 30px;
+  margin: 20px 0 0 0;
 
   @media (max-width: 768px) {
     gap: 15px;
