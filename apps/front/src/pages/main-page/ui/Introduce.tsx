@@ -1,6 +1,7 @@
-import { GlitchText, InteractionCard, FoodSlotMachine } from "@/features";
+import { GlitchText, InteractionCard, SlotMachine } from "@/features";
 import { choi } from "@/shared/assets";
 import styled from "@emotion/styled";
+import { FOOD_NAMES } from "../config/constants";
 
 export function Introduce() {
   return (
@@ -12,7 +13,7 @@ export function Introduce() {
           개발자 최경일입니다.
         </GlitchText>
 
-        <FoodSlotMachine />
+        <SlotMachine prefix="점심은..🤔" dataArr={FOOD_NAMES} />
       </Content>
 
       <InteractionCard src={choi} alt="개발자 경일 사진" width={250} />
