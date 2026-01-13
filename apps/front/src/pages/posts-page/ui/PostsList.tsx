@@ -4,6 +4,7 @@ import { useInfinitePosts } from "../model/hooks";
 import { useRef, useEffect } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import styled from "@emotion/styled";
+import { getArticleHeight } from "../lib/utils";
 
 export const PostsList = () => {
   const parentRef = useRef<HTMLDivElement | null>(null);
@@ -15,11 +16,20 @@ export const PostsList = () => {
   const rowVirtualizer = useVirtualizer({
     count: posts.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => 130,
+    estimateSize: getArticleHeight,
     overscan: 2,
   });
 
   const virtualItems = rowVirtualizer.getVirtualItems();
+
+  useEffect(() => {
+    const handleResize = () => {
+      rowVirtualizer.measure();
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [rowVirtualizer]);
 
   useEffect(() => {
     const lastItem = virtualItems[virtualItems.length - 1];
