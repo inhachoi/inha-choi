@@ -1,26 +1,59 @@
-import { usePosts } from "@/shared/model/hooks";
-import { useState, useMemo } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { fetchInfinitePosts } from "../api/api";
+import { useRef, useEffect } from "react";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import { getArticleHeight } from "../lib/utils";
 
-export const useSortPosts = () => {
-  const { posts } = usePosts();
-  const [sortType, setSortType] = useState<"latest" | "oldest" | "likes">(
-    "latest"
-  );
+const useInfinitePosts = () => {
+  return useInfiniteQuery({
+    queryKey: ["infinite-posts"],
+    queryFn: ({ pageParam }) => fetchInfinitePosts({ pageParam }),
+    initialPageParam: null,
+    getNextPageParam: (lastPage) => lastPage.nextCursor,
+  });
+};
 
-  const sortedPosts = useMemo(() => {
-    if (!posts) return [];
+export const usePostsVirtualizer = () => {
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfinitePosts();
 
-    switch (sortType) {
-      case "latest":
-        return posts;
-      case "oldest":
-        return [...posts].reverse();
-      case "likes":
-        return [...posts].sort((a, b) => b.likes - a.likes);
-      default:
-        return posts;
+  const posts = data?.pages.flatMap((page) => page.posts) ?? [];
+  const parentRef = useRef<HTMLDivElement | null>(null);
+
+  const rowVirtualizer = useVirtualizer({
+    count: posts.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: getArticleHeight,
+    overscan: 3,
+  });
+
+  const virtualItems = rowVirtualizer.getVirtualItems();
+
+  useEffect(() => {
+    const handleResize = () => rowVirtualizer.measure();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [rowVirtualizer]);
+
+  useEffect(() => {
+    const lastItem = virtualItems[virtualItems.length - 1];
+    const isLastItem = lastItem?.index >= posts.length - 1;
+
+    if (isLastItem && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
     }
-  }, [posts, sortType]);
+  }, [
+    virtualItems,
+    posts.length,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+  ]);
 
-  return { sortType, setSortType, sortedPosts };
+  return {
+    parentRef,
+    rowVirtualizer,
+    virtualItems,
+    posts,
+  };
 };
