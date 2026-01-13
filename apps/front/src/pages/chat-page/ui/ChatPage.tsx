@@ -122,4 +122,9 @@ const ChatContainerWrapper = styled.div`
   border: 1px solid rgb(218, 218, 218);
   border-radius: 10px;
   overflow: hidden;
+
+  .cs-message__html-content {
+    line-height: 1.5;
+    white-space: pre-line !important;
+  }
 `;
