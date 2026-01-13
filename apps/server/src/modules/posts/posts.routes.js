@@ -5,8 +5,8 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const query = `
-        query Posts($cursor: ID, $username: String, $temp_only: Boolean, $tag: String) {
-          posts(cursor: $cursor, username: $username, temp_only: $temp_only, tag: $tag) {
+        query Posts($username: String) {
+          posts( username: $username) {
             id
             title
             url_slug
@@ -18,10 +18,7 @@ router.get("/", async (req, res) => {
       `;
 
     const variables = {
-      cursor: null,
       username: "chlruddlf73",
-      temp_only: false,
-      tag: null,
     };
 
     const response = await fetch("https://v2.velog.io/graphql", {
