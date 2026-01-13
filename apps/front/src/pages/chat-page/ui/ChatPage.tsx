@@ -125,6 +125,5 @@ const ChatContainerWrapper = styled.div`
 
   .cs-message__html-content {
     line-height: 1.5;
-    white-space: pre-line !important;
   }
 `;
