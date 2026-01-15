@@ -10,6 +10,7 @@ import react from "./react.png";
 import velog from "./velog.jpg";
 import defaultUser from "./defaultUser.png";
 import shake from "./shake.png";
+import refreigerator from "./refrigerator.jpg";
 
 export {
   boolock,
@@ -24,4 +25,5 @@ export {
   velog,
   defaultUser,
   shake,
+  refreigerator,
 };

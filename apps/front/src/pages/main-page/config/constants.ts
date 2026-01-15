@@ -1,14 +1,68 @@
-export const PR_REACT_JS_CUSTOM_HOOK_URL =
-  "https://github.com/reactjs/ko.react.dev/pull/1355";
-export const PR_REACT_JS_EFFECT_URL =
-  "https://github.com/reactjs/ko.react.dev/pull/1356#issuecomment-3567598733";
-export const PR_MDN_ASYNC_URL =
-  "https://github.com/mdn/translated-content/pull/28427";
+import {
+  react,
+  mdn,
+  inhachoi,
+  boolock,
+  dongnaebangnae,
+  refreigerator,
+} from "@/shared/assets";
 
-export const REPO_INHACHOI_URL = "https://github.com/inhachoi/inha-choi";
-export const REPO_BOOLOCK_URL =
-  "https://github.com/boostcampwm-2024/refactor-web31-BooLock";
-export const REPO_DONGNAEBANGNAE_URL = "https://github.com/Dongnaebangnae/FE";
+export const PROJECTS = [
+  {
+    src: inhachoi,
+    alt: "개발자 최경일 프로젝트 썸네일 사진",
+    title: "개발자 최경일",
+    description: "개인 홈페이지 1인 프로젝트!",
+    period: "25.11 ~ ",
+    url: "https://github.com/inhachoi/inha-choi",
+  },
+  {
+    src: boolock,
+    alt: "BooLock 프로젝트 썸네일 사진",
+    title: "BooLock",
+    description: "HTML과 CSS를 블록으로 쉽게 익히는 블록코딩 플랫폼!",
+    period: "24.10 ~ 25.01",
+    url: "https://github.com/boostcampwm-2024/refactor-web31-BooLock",
+  },
+  {
+    src: dongnaebangnae,
+    alt: "동네방네 프로젝트 썸네일 사진",
+    title: "동네방네",
+    description: "동네와 주민들에 대한 유대감을 증대시키주는 SNS!",
+    period: "24.03 ~ 24.05",
+    url: "https://github.com/Dongnaebangnae/FE",
+  },
+  {
+    src: refreigerator,
+    alt: "냉장고를 부탁해 프로젝트 썸네일 사진",
+    title: "냉장고를 부탁해",
+    description:
+      "탄소 배출량 및 전력 사용량 감소를 유도하는 친환경 스마트 냉장고!",
+    period: "24.03 ~ 24.05",
+    url: "https://velog.io/@chlruddlf73/Project-Advantech-AloT-Innoworks-Project-2024",
+  },
+];
+
+export const OPEN_SOURCE_CONTRIBUTION = [
+  {
+    url: "https://github.com/reactjs/ko.react.dev/pull/1356#issuecomment-3567598733",
+    src: react,
+    content: "reactjs / ko.react.dev Effect 문서 번역",
+    date: "2025.11",
+  },
+  {
+    url: "https://github.com/reactjs/ko.react.dev/pull/1355",
+    src: react,
+    content: "reactjs / ko.react.dev 커스텀 훅 문서 번역",
+    date: "2025.11",
+  },
+  {
+    url: "ttps://github.com/mdn/translated-content/pull/28427",
+    src: mdn,
+    content: "mdn / translated-contenteact.dev 비동기 예시 코드 수정",
+    date: "2025.08",
+  },
+];
 
 export const FOOD_NAMES = [
   "대창 듬뿍 곱도리탕",

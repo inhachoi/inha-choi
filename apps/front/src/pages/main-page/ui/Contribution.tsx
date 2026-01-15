@@ -1,34 +1,20 @@
 import { Title, TextLink, Date } from "@/shared/ui";
 import styled from "@emotion/styled";
-import { mdn, react } from "@/shared/assets";
-import {
-  PR_REACT_JS_CUSTOM_HOOK_URL,
-  PR_MDN_ASYNC_URL,
-  PR_REACT_JS_EFFECT_URL,
-} from "../config/constants";
+
+import { OPEN_SOURCE_CONTRIBUTION } from "../config/constants";
 
 export function Contribution() {
   return (
     <Container>
       <Title>Open Source Contribution</Title>
 
-      <TextLink to={PR_REACT_JS_EFFECT_URL}>
-        <Img src={react} />
-        reactjs / ko.react.dev Effect 문서 번역
-        <Date>2025.11</Date>
-      </TextLink>
-
-      <TextLink to={PR_REACT_JS_CUSTOM_HOOK_URL}>
-        <Img src={react} />
-        reactjs / ko.react.dev 커스텀 훅 문서 번역
-        <Date>2025.11</Date>
-      </TextLink>
-
-      <TextLink to={PR_MDN_ASYNC_URL}>
-        <Img src={mdn} loading="lazy" />
-        mdn / translated-contenteact.dev 비동기 예시 코드 수정
-        <Date>2025.08</Date>
-      </TextLink>
+      {OPEN_SOURCE_CONTRIBUTION.map((data) => (
+        <TextLink to={data.url}>
+          <Img src={data.src} />
+          {data.content}
+          <Date>{data.date}</Date>
+        </TextLink>
+      ))}
     </Container>
   );
 }
