@@ -23,7 +23,16 @@ export async function createChatStream(messages, res) {
 
   for await (const event of stream) {
     if (event.type === "response.output_text.delta") {
-      res.write(`data: ${event.delta}\n\n`);
+      const delta = event.delta || "";
+      if (delta.includes("\n")) {
+        const lines = delta.split("\n");
+        lines.forEach((line) => {
+          res.write(`data: ${line}\n`);
+        });
+        res.write("\n");
+      } else {
+        res.write(`data: ${delta}\n\n`);
+      }
     }
 
     if (event.type === "response.completed") {

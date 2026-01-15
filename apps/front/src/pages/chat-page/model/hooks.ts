@@ -42,31 +42,41 @@ export function useChat() {
     const decoder = new TextDecoder("utf-8");
 
     let accumulated = "";
+    let buffer = "";
+    let currentEventData = [];
 
     while (true) {
       const { value, done } = await reader.read();
       if (done) break;
 
-      const chunk = decoder.decode(value);
-      const lines = chunk.split("\n");
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() || "";
 
       for (const line of lines) {
-        if (!line.startsWith("data: ")) continue;
-
-        const data = line.replace("data: ", "");
-
-        if (data === "[DONE]") {
-          setMessages((prev) => [
-            ...prev,
-            { role: "assistant", content: accumulated },
-          ]);
-          setStreamingMessage("");
-          setLoading(false);
-          return;
+        if (line === "") {
+          if (currentEventData.length > 0) {
+            const data = currentEventData.join("\n");
+            if (data === "[DONE]") {
+              setMessages((prev) => [
+                ...prev,
+                { role: "assistant", content: accumulated },
+              ]);
+              setStreamingMessage("");
+              setLoading(false);
+              return;
+            }
+            accumulated += data;
+            setStreamingMessage(accumulated);
+            currentEventData = [];
+          }
+          continue;
         }
 
-        accumulated += data;
-        setStreamingMessage(accumulated);
+        if (line.startsWith("data: ")) {
+          const data = line.replace("data: ", "");
+          currentEventData.push(data);
+        }
       }
     }
   }
