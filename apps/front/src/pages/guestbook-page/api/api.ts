@@ -1,4 +1,4 @@
-import type { CommentDTO, UserDTO} from "@/shared/model/types";
+import type { CommentDTO, UserDTO } from "../model/types.ts";
 
 export const fetchComments = async (): Promise<CommentDTO[]> => {
   const res = await fetch("/api/guestbook", {

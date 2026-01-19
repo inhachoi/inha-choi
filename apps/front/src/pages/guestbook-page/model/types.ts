@@ -1,4 +1,9 @@
-import type { UserDTO } from "@/shared/model/types";
+export interface UserDTO {
+  id: string;
+  login: string;
+  avatarUrl?: string;
+  profileUrl?: string;
+}
 
 export interface CommentWriterDTO {
   user: UserDTO;

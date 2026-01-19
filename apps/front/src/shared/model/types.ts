@@ -6,10 +6,3 @@ export interface PostDTO {
   description: string;
   released_at: string;
 }
-
-export interface UserDTO {
-  id: string;
-  login: string;
-  avatarUrl?: string;
-  profileUrl?: string;
-}

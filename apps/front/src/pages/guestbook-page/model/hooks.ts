@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { UserDTO, CommentDTO } from "@/shared/model/types";
+import type { UserDTO, CommentDTO } from "./types.ts";
 import { fetchMe, fetchComments, submitComment } from "../api/api.ts";
 import { type FormEvent } from "react";
 
