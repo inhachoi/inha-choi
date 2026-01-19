@@ -1,7 +1,16 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { defaultUser } from "@/shared/assets";
-import type { CommentWriterType } from "@/shared/model/types";
+import type { UserDTO } from "../model/types";
+
+interface Props {
+  user: UserDTO;
+  content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+  submitting: boolean;
+  handleLogin: () => void;
+  handleSubmit: (e: React.FormEvent) => Promise<void>;
+}
 
 export function CommentWriter({
   user,
@@ -10,7 +19,7 @@ export function CommentWriter({
   submitting,
   handleLogin,
   handleSubmit,
-}: CommentWriterType) {
+}: Props) {
   return (
     <Container>
       <Avatar

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import type { UserType, CommentType } from "@/shared/model/types";
+import type { UserDTO, CommentDTO } from "./types.ts";
 import { fetchMe, fetchComments, submitComment } from "../api/api.ts";
 import { type FormEvent } from "react";
 
 export const useGithubLogin = () => {
-  const [user, setUser] = useState<UserType | null>(null);
-  const [comments, setComments] = useState<CommentType[]>([]);
+  const [user, setUser] = useState<UserDTO | null>(null);
+  const [comments, setComments] = useState<CommentDTO[]>([]);
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
 

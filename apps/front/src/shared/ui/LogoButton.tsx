@@ -4,6 +4,7 @@ import { logo } from "@/shared/assets";
 
 export function LogoButton() {
   const navigate = useNavigate();
+  
   return (
     <Img
       src={logo}

@@ -1,4 +1,4 @@
-import type { PostType } from "@/shared/model/types";
+import type { PostDTO } from "@/shared/model/types";
 
 export const formatYearMonth = (iso: string) => {
   const date = new Date(iso);
@@ -15,6 +15,6 @@ export const formatYearMonthDay = (iso: string) => {
   return `${year}.${month}.${day}`;
 };
 
-export const sortPostsByLikes = (posts: PostType[]): PostType[] => {
+export const sortPostsByLikes = (posts: PostDTO[]): PostDTO[] => {
   return [...posts].sort((a, b) => b.likes - a.likes);
 };

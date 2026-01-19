@@ -1,9 +1,14 @@
 import { colors } from "@toss/tds-colors";
 import styled from "@emotion/styled";
-import type { InteractionCardType } from "../model/types";
 import { useMouseMove } from "../model/hooks";
 
-export function InteractionCard({ src, alt, width }: InteractionCardType) {
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+}
+
+export function InteractionCard({ src, alt, width }: Props) {
   const { containerRef, overlayRef } = useMouseMove();
 
   return (
