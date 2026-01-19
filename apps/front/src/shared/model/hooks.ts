@@ -3,7 +3,7 @@ import { fetchPosts } from "@/shared/api";
 import type { PostDTO } from "@/shared/model/types";
 
 export const usePosts = () => {
-  const { data, isLoading, isError } = useQuery<PostType[]>({
+  const { data, isLoading, isError } = useQuery<PostDTO[]>({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
