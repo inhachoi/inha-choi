@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { chatApi } from "../api/api";
-import { type MessageType } from "./types";
+import type { MessageDTO } from "./types";
 
 const CHAT_STORAGE_KEY = "chat_messages";
 
 export function useChat() {
-  const [messages, setMessages] = useState<MessageType[]>(() => {
+  const [messages, setMessages] = useState<MessageDTO[]>(() => {
     const stored = localStorage.getItem(CHAT_STORAGE_KEY);
     if (!stored) return [];
 
@@ -27,7 +27,7 @@ export function useChat() {
   async function sendMessage(text: string) {
     if (loading) return;
 
-    const nextMessages: MessageType[] = [
+    const nextMessages: MessageDTO[] = [
       ...messages,
       { role: "user", content: text },
     ];

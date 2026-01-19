@@ -1,6 +1,6 @@
-import type { CommentType, UserType } from "@/shared/model/types";
+import type { CommentDTO, UserDTO} from "@/shared/model/types";
 
-export const fetchComments = async (): Promise<CommentType[]> => {
+export const fetchComments = async (): Promise<CommentDTO[]> => {
   const res = await fetch("/api/guestbook", {
     credentials: "include",
   });
@@ -9,7 +9,7 @@ export const fetchComments = async (): Promise<CommentType[]> => {
   return data.comments ?? [];
 };
 
-export const fetchMe = async (): Promise<UserType | null> => {
+export const fetchMe = async (): Promise<UserDTO | null> => {
   const res = await fetch("/api/auth/me", {
     credentials: "include",
   });
@@ -18,7 +18,7 @@ export const fetchMe = async (): Promise<UserType | null> => {
   return data.user;
 };
 
-export const submitComment = async (content: string): Promise<CommentType> => {
+export const submitComment = async (content: string): Promise<CommentDTO> => {
   const res = await fetch("/api/guestbook", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

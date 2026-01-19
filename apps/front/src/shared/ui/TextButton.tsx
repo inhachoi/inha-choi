@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 import type { ReactNode } from "react";
 import { NavLink } from "react-router-dom"; // Link 대신 NavLink 사용
 
-interface TextButtonProps {
+interface Props {
   children: ReactNode;
   toGo: string;
 }
 
-export function TextButton({ children, toGo }: TextButtonProps) {
+export function TextButton({ children, toGo }: Props) {
   return <Container to={toGo}>{children}</Container>;
 }
 

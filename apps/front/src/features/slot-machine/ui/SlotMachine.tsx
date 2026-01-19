@@ -3,10 +3,15 @@ import styled from "@emotion/styled";
 import { shake } from "@/shared/assets";
 import { shuffleArray } from "../lib/utils";
 import { colors } from "@toss/tds-colors";
-import type { SlotMachineType } from "../model/types";
+import type { ReactNode } from "react";
 import { useSlotMachine } from "../model/hooks";
 
-export const SlotMachine = ({ prefix, dataArr }: SlotMachineType) => {
+interface Props {
+  prefix: ReactNode;
+  dataArr: string[];
+}
+
+export const SlotMachine = ({ prefix, dataArr }: Props) => {
   const shuffledDataArr = shuffleArray(dataArr);
   const { isSpinning, handleClick, currentIndex } = useSlotMachine();
 

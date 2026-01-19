@@ -3,7 +3,7 @@ import { ListItem, Date } from "@/shared/ui";
 import { colors } from "@toss/tds-colors";
 import type { ReactNode } from "react";
 
-interface ProjectProps {
+interface Props {
   thumbnail: ReactNode;
   title: string;
   description: string;
@@ -11,13 +11,7 @@ interface ProjectProps {
   url: string;
 }
 
-export function Project({
-  thumbnail,
-  title,
-  description,
-  period,
-  url,
-}: ProjectProps) {
+export function Project({ thumbnail, title, description, period, url }: Props) {
   return (
     <ListItem url={url}>
       <ThumbnailWrapper>{thumbnail}</ThumbnailWrapper>

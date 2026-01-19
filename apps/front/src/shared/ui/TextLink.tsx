@@ -2,12 +2,12 @@ import type { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 
-interface TextLinkProps {
+interface Props {
   children: ReactNode;
   to: string;
 }
 
-export function TextLink({ children, to }: TextLinkProps) {
+export function TextLink({ children, to }: Props) {
   return (
     <Container href={to} target="_blank">
       {children}
@@ -30,7 +30,9 @@ const Container = styled.a`
   text-decoration: none;
 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
     background: ${colors.grey100};

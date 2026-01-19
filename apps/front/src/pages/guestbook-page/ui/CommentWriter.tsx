@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { defaultUser } from "@/shared/assets";
-import type { CommentWriterType } from "@/shared/model/types";
+import type { CommentWriterDTO } from "@/shared/model/types";
 
 export function CommentWriter({
   user,
@@ -10,7 +10,7 @@ export function CommentWriter({
   submitting,
   handleLogin,
   handleSubmit,
-}: CommentWriterType) {
+}: CommentWriterDTO) {
   return (
     <Container>
       <Avatar

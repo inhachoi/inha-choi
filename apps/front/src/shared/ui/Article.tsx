@@ -3,7 +3,7 @@ import { colors } from "@toss/tds-colors";
 import { heart } from "@/shared/assets";
 import { Date } from "@/shared/ui";
 
-interface ArticleProps {
+interface Props {
   title: string;
   link: string;
   thumbnail: string;
@@ -11,13 +11,7 @@ interface ArticleProps {
   released_at: string;
 }
 
-export function Article({
-  title,
-  link,
-  thumbnail,
-  likes,
-  released_at,
-}: ArticleProps) {
+export function Article({ title, link, thumbnail, likes, released_at }: Props) {
   return (
     <Container href={link} target="_blank">
       <ThumbnailWrapper>
@@ -52,7 +46,9 @@ const Container = styled.a`
   text-decoration: none;
   color: black;
 
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 
   &:hover {

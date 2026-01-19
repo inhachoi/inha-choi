@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { formatYearMonthDay } from "@/shared/lib/utils";
-import type { CommentType } from "@/shared/model/types";
+import type { CommentDTO } from "@/shared/model/types";
 
-export function CommentsList({ comments }: { comments: CommentType[] }) {
+export function CommentsList({ comments }: { comments: CommentDTO[] }) {
   return (
     <>
       <ListHeader>

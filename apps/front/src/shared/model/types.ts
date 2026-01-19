@@ -1,4 +1,4 @@
-export interface PostType {
+export interface PostDTO {
   title: string;
   link: string;
   thumbnail: string;
@@ -7,15 +7,15 @@ export interface PostType {
   released_at: string;
 }
 
-export interface UserType {
+export interface UserDTO {
   id: string;
   login: string;
   avatarUrl?: string;
   profileUrl?: string;
 }
 
-export interface CommentWriterType {
-  user: UserType;
+export interface CommentWriterDTO {
+  user: UserDTO;
   content: string;
   setContent: React.Dispatch<React.SetStateAction<string>>;
   submitting: boolean;
@@ -23,9 +23,9 @@ export interface CommentWriterType {
   handleSubmit: (e: React.FormEvent) => Promise<void>;
 }
 
-export interface CommentType {
+export interface CommentDTO {
   id: string;
   content: string;
   createdAt: string;
-  user: UserType;
+  user: UserDTO;
 }

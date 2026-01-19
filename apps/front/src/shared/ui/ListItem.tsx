@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import type { ReactNode } from "react";
 
-interface ListItemProps {
+interface Props {
   children: ReactNode;
   url: string;
 }
 
-export function ListItem({ children, url }: ListItemProps) {
+export function ListItem({ children, url }: Props) {
   return (
     <Container href={url} target="_blank">
       {children}
@@ -28,7 +28,9 @@ const Container = styled.a`
   text-decoration: none;
 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
     background: ${colors.grey100};
