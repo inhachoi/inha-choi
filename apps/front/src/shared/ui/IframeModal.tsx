@@ -1,17 +1,18 @@
 import styled from "@emotion/styled";
-import { createPortal } from "react-dom";
 
 interface Props {
   url: string;
+  isOpen: boolean;
   onClose: () => void;
 }
 
-export function IframeModal({ url, onClose }: Props) {
-  return createPortal(
-    <Overlay onClick={onClose}>
-      <Iframe src={url} onClick={(e) => e.stopPropagation()} />
-    </Overlay>,
-    document.body,
+export function IframeModal({ url, isOpen, onClose }: Props) {
+  return (
+    isOpen && (
+      <Overlay onClick={onClose}>
+        <Iframe src={url} onClick={(e) => e.stopPropagation()} />
+      </Overlay>
+    )
   );
 }
 

@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { heart } from "@/shared/assets";
 import { Date } from "@/shared/ui";
-import { useState } from "react";
 import { IframeModal } from "./IframeModal";
+import { overlay } from "overlay-kit";
 
 interface Props {
   title: string;
@@ -14,28 +14,28 @@ interface Props {
 }
 
 export function Article({ title, link, thumbnail, likes, released_at }: Props) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <>
-      <Container onClick={() => setIsOpen(true)}>
-        <ThumbnailWrapper>
-          <Thumbnail src={thumbnail} alt="썸네일 사진" />
-        </ThumbnailWrapper>
+    <Container
+      onClick={() => {
+        overlay.open(({ isOpen, close }) => (
+          <IframeModal url={link} isOpen={isOpen} onClose={close} />
+        ));
+      }}
+    >
+      <ThumbnailWrapper>
+        <Thumbnail src={thumbnail} alt="썸네일 사진" />
+      </ThumbnailWrapper>
 
-        <ContentWrapper>
-          {title}
-          <Date>{released_at}</Date>
-        </ContentWrapper>
+      <ContentWrapper>
+        {title}
+        <Date>{released_at}</Date>
+      </ContentWrapper>
 
-        <LikesWrapper>
-          <Img src={heart} alt="좋아요 마크" loading="lazy" />
-          {likes}
-        </LikesWrapper>
-      </Container>
-
-      {isOpen && <IframeModal url={link} onClose={() => setIsOpen(false)} />}
-    </>
+      <LikesWrapper>
+        <Img src={heart} alt="좋아요 마크" loading="lazy" />
+        {likes}
+      </LikesWrapper>
+    </Container>
   );
 }
 

@@ -19,6 +19,7 @@
     "@tanstack/react-virtual": "^3.13.18",
     "@toss/tds-colors": "^0.1.0",
     "motion": "^12.23.25",
+    "overlay-kit": "^1.8.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.6"
