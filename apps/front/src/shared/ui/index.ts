@@ -8,3 +8,4 @@ export { Date } from "./Date";
 export { Project } from "./Project";
 export { LoadingSpinner } from "./LoadingSpinner";
 export { Header } from "./Header";
+export { IframeModal } from "./IframeModal";
