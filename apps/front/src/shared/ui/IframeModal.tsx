@@ -9,7 +9,7 @@ interface Props {
 export function IframeModal({ url, isOpen, onClose }: Props) {
   return (
     isOpen && (
-      <Overlay onClick={onClose}>
+      <Overlay aria-modal="true" onClick={onClose}>
         <Content onClick={(e) => e.stopPropagation()}>
           <Iframe
             title="포스트 미리보기"
