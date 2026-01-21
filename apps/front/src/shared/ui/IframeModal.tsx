@@ -12,10 +12,13 @@ export function IframeModal({ url, isOpen, onClose }: Props) {
       <Overlay onClick={onClose}>
         <Content onClick={(e) => e.stopPropagation()}>
           <Iframe
+            title="포스트 미리보기"
             src={url}
             sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
           />
-          <CloseButton onClick={onClose}>×</CloseButton>
+          <CloseButton onClick={onClose} aria-label="모달 닫기">
+            ×
+          </CloseButton>
         </Content>
       </Overlay>
     )
