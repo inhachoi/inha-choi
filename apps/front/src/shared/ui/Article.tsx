@@ -39,7 +39,7 @@ export function Article({ title, link, thumbnail, likes, released_at }: Props) {
   );
 }
 
-const Container = styled.a`
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +51,6 @@ const Container = styled.a`
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
-  text-decoration: none;
   color: black;
 
   transition:
