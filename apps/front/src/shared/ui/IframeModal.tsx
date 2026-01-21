@@ -11,7 +11,10 @@ export function IframeModal({ url, isOpen, onClose }: Props) {
     isOpen && (
       <Overlay onClick={onClose}>
         <Content onClick={(e) => e.stopPropagation()}>
-          <Iframe src={url} />
+          <Iframe
+            src={url}
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+          />
           <CloseButton onClick={onClose}>×</CloseButton>
         </Content>
       </Overlay>
