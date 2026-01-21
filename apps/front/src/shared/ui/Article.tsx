@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { heart } from "@/shared/assets";
 import { Date } from "@/shared/ui";
+import { IframeModal } from "./IframeModal";
+import { overlay } from "overlay-kit";
 
 interface Props {
   title: string;
@@ -13,7 +15,13 @@ interface Props {
 
 export function Article({ title, link, thumbnail, likes, released_at }: Props) {
   return (
-    <Container href={link} target="_blank">
+    <Container
+      onClick={() => {
+        overlay.open(({ isOpen, close }) => (
+          <IframeModal url={link} isOpen={isOpen} onClose={close} />
+        ));
+      }}
+    >
       <ThumbnailWrapper>
         <Thumbnail src={thumbnail} alt="썸네일 사진" />
       </ThumbnailWrapper>
@@ -31,7 +39,7 @@ export function Article({ title, link, thumbnail, likes, released_at }: Props) {
   );
 }
 
-const Container = styled.a`
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +51,6 @@ const Container = styled.a`
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
-  text-decoration: none;
   color: black;
 
   transition:
