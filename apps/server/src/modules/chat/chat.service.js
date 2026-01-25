@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { SYSTEM_PROMPT } from "./chat.propmt.js";
+import { SYSTEM_PROMPT, FEW_SHOTS } from "./chat.propmt.js";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -13,6 +13,7 @@ export async function createChatStream(messages, res) {
         role: "system",
         content: SYSTEM_PROMPT,
       },
+      ...FEW_SHOTS,
       ...messages.map((m) => ({
         role: m.role,
         content: m.content,
