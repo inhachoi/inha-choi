@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { chatApi } from "../api/api";
+import { sendChat } from "../api";
 import type { MessageDTO } from "./types";
-
-const CHAT_STORAGE_KEY = "chat_messages";
+import { CHAT_STORAGE_KEY } from "../config";
 
 export function useChat() {
   const [messages, setMessages] = useState<MessageDTO[]>(() => {
@@ -37,7 +36,7 @@ export function useChat() {
     setLoading(true);
     setStreamingMessage("");
 
-    const response = await chatApi(nextMessages);
+    const response = await sendChat(nextMessages);
     const reader = response.body!.getReader();
     const decoder = new TextDecoder("utf-8");
 

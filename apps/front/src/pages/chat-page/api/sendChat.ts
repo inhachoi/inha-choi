@@ -1,6 +1,6 @@
-import type { MessageDTO } from "../model/types";
+import type { MessageDTO } from "../model";
 
-export const chatApi = (nextMessages: MessageDTO[]) => {
+export const sendChat = (nextMessages: MessageDTO[]) => {
   return fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

@@ -8,9 +8,9 @@ import {
   ConversationHeader,
   Button,
 } from "@chatscope/chat-ui-kit-react";
-import { useChat } from "../model/hooks";
-import { choi } from "@/shared/assets";
 import styled from "@emotion/styled";
+import { useChat } from "../model";
+import { choi } from "@/shared/assets";
 import { Header } from "@/shared/ui";
 
 export default function ChatPage() {
