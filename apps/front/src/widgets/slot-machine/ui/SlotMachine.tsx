@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "motion/react";
 import styled from "@emotion/styled";
 import { shake } from "@/shared/assets";
-import { shuffleArray } from "../lib/utils";
+import { shuffleArray } from "../lib";
 import { colors } from "@toss/tds-colors";
 import type { ReactNode } from "react";
-import { useSlotMachine } from "../model/hooks";
+import { useSlotMachine } from "../model";
 
 interface Props {
   prefix: ReactNode;
@@ -58,8 +58,6 @@ export const SlotMachine = ({ prefix, dataArr }: Props) => {
     </Container>
   );
 };
-
-export default SlotMachine;
 
 const Container = styled.div`
   display: flex;

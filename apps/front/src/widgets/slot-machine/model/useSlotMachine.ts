@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getRollInterval } from "../lib/utils";
+import { calculateRollInterval } from "../lib";
 
 export const useSlotMachine = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,7 +16,7 @@ export const useSlotMachine = () => {
 
   // 슬롯 굴리기
   useEffect(() => {
-    const delay = getRollInterval(currentIndex);
+    const delay = calculateRollInterval(currentIndex);
 
     const timer = setTimeout(() => {
       if (delay >= 600) {

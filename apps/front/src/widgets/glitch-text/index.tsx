@@ -1,1 +1,1 @@
-export { GlitchText } from "./ui/GlitchText";
+export { GlitchText } from "./ui";

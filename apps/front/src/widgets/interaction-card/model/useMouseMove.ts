@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { calcTilt } from "../lib/utils";
+import { calcTilt } from "../lib/calcTilt";
 
 export const useMouseMove = () => {
   const containerRef = useRef<HTMLDivElement>(null);

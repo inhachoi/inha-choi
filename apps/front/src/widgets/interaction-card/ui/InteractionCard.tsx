@@ -1,6 +1,6 @@
 import { colors } from "@toss/tds-colors";
 import styled from "@emotion/styled";
-import { useMouseMove } from "../model/hooks";
+import { useMouseMove } from "../model/useMouseMove";
 
 interface Props {
   src: string;
