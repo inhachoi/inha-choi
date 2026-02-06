@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import type { UserDTO, CommentDTO } from "./types";
-import { fetchMe, fetchComments, submitComment } from "../api/api.ts";
+import type { UserDTO, CommentDTO } from "./types.ts";
+import { getMe, getComments, submitComment } from "../api";
 import { type FormEvent } from "react";
 
 export const useGithubLogin = () => {
@@ -11,7 +11,7 @@ export const useGithubLogin = () => {
 
   // 현재 로그인 유저 정보 가져오기
   useEffect(() => {
-    Promise.all([fetchMe().then(setUser), fetchComments().then(setComments)]);
+    Promise.all([getMe().then(setUser), getComments().then(setComments)]);
   }, []);
 
   // 깃허브 로그인 시작

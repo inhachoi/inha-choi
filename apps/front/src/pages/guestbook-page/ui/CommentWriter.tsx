@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
 import { defaultUser } from "@/shared/assets";
-import type { UserDTO } from "../model/types";
+import type { UserDTO } from "../model";
 
 interface Props {
   user: UserDTO;
