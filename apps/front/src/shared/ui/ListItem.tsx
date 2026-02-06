@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import type { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;

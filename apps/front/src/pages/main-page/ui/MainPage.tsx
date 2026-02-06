@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+
 import { Contribution, Introduce, PopularPosts, Projects } from "../ui";
 
 export default function MainPage() {

@@ -1,9 +1,9 @@
 import {
-  react,
-  mdn,
-  inhachoi,
   boolock,
   dongnaebangnae,
+  inhachoi,
+  mdn,
+  react,
   refreigerator,
 } from "@/shared/assets";
 

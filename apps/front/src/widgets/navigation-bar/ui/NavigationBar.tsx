@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import { LogoButton, TextButton } from "@/shared/ui";
 import { colors } from "@toss/tds-colors";
+
+import { LogoButton, TextButton } from "@/shared/ui";
 
 export function NavigationBar() {
   return (

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
+
 import { PostsList } from "./PostsList";
 
 export default function PostsPage() {

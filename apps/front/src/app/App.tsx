@@ -1,7 +1,9 @@
 import { BrowserRouter } from "react-router-dom";
-import { NavigationBar, Footer } from "@/widgets";
-import { GlobalStyles } from "./styles/GlobalStyles";
+
+import { Footer,NavigationBar } from "@/widgets";
+
 import { AppRouter } from "./routes/AppRouter";
+import { GlobalStyles } from "./styles/GlobalStyles";
 
 function App() {
   return (

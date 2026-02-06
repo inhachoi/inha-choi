@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
-import type { UserDTO, CommentDTO } from "./types.ts";
-import { getMe, getComments, submitComment } from "../api";
+import { useEffect,useState } from "react";
 import { type FormEvent } from "react";
+
+import { getComments, getMe, submitComment } from "../api";
+
+import type { CommentDTO,UserDTO } from "./types.ts";
 
 export const useGithubLogin = () => {
   const [user, setUser] = useState<UserDTO | null>(null);

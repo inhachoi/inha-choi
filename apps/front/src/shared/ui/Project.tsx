@@ -1,7 +1,8 @@
-import styled from "@emotion/styled";
-import { ListItem, Date } from "../ui";
-import { colors } from "@toss/tds-colors";
 import type { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { colors } from "@toss/tds-colors";
+
+import { Date,ListItem } from "../ui";
 
 interface Props {
   thumbnail: ReactNode;

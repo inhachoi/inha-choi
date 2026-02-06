@@ -1,3 +1,2 @@
-export type { UserDTO, CommentDTO } from "./types";
-
+export type { CommentDTO,UserDTO } from "./types";
 export { useGithubLogin } from "./useGithubLogin";

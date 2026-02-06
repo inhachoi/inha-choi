@@ -1,6 +1,8 @@
-import { GlitchText, InteractionCard, SlotMachine } from "@/widgets";
-import { choi } from "@/shared/assets";
 import styled from "@emotion/styled";
+
+import { choi } from "@/shared/assets";
+import { GlitchText, InteractionCard, SlotMachine } from "@/widgets";
+
 import { FOOD_NAMES } from "../config";
 
 export function Introduce() {

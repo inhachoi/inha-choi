@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
+
 import { sendChat } from "../api";
-import type { MessageDTO } from "./types";
 import { CHAT_STORAGE_KEY } from "../config";
+
+import type { MessageDTO } from "./types";
 
 export function useChat() {
   const [messages, setMessages] = useState<MessageDTO[]>(() => {

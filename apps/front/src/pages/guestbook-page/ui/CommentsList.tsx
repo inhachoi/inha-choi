@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
+
 import { formatYearMonthDay } from "@/shared/lib";
+
 import type { CommentDTO } from "../model";
 
 export function CommentsList({ comments }: { comments: CommentDTO[] }) {

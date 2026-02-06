@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { getPosts } from "../api";
 import type { PostDTO } from "../model";
 

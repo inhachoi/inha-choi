@@ -1,2 +1,2 @@
-export { shuffleArray } from "./shuffleArray";
 export { calculateRollInterval } from "./calculateRollInterval";
+export { shuffleArray } from "./shuffleArray";

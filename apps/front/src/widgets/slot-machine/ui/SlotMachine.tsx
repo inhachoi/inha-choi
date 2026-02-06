@@ -1,9 +1,11 @@
-import { AnimatePresence, motion } from "motion/react";
-import styled from "@emotion/styled";
-import { shake } from "@/shared/assets";
-import { shuffleArray } from "../lib";
-import { colors } from "@toss/tds-colors";
 import type { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { colors } from "@toss/tds-colors";
+import { AnimatePresence, motion } from "motion/react";
+
+import { shake } from "@/shared/assets";
+
+import { shuffleArray } from "../lib";
 import { useSlotMachine } from "../model";
 
 interface Props {

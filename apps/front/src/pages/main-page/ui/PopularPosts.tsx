@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
-import { usePopularPosts } from "../model";
-import { Title, Article } from "@/shared/ui";
+
 import { formatYearMonth } from "@/shared/lib";
+import { Article,Title } from "@/shared/ui";
+
+import { usePopularPosts } from "../model";
 
 export function PopularPosts() {
   const popularPosts = usePopularPosts();

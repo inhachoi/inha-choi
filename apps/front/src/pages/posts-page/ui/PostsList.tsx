@@ -1,7 +1,9 @@
+import styled from "@emotion/styled";
+
 import { formatYearMonth } from "@/shared/lib";
 import { Article } from "@/shared/ui";
+
 import { usePostsVirtualizer } from "../model";
-import styled from "@emotion/styled";
 
 export const PostsList = () => {
   const { parentRef, rowVirtualizer, virtualItems, posts } =

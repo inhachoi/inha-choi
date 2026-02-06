@@ -1,8 +1,9 @@
-import { Suspense, lazy } from "react";
-import { LoadingSpinner } from "@/shared/ui";
-import { Routes, Route } from "react-router-dom";
+import { lazy,Suspense } from "react";
+import { Route,Routes } from "react-router-dom";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
+
+import { LoadingSpinner } from "@/shared/ui";
 
 const MainPage = lazy(() => import("@/pages/main-page"));
 const PostsPage = lazy(() => import("@/pages/posts-page"));

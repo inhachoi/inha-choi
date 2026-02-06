@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+
 import { getPostsInfinite } from "../api";
 
 export const useInfinitePosts = () => {

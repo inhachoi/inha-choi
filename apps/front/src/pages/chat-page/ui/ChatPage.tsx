@@ -1,17 +1,19 @@
 import {
-  ChatContainer,
   Avatar,
-  MessageList,
+  Button,
+  ChatContainer,
+  ConversationHeader,
   Message,
   MessageInput,
+  MessageList,
   TypingIndicator,
-  ConversationHeader,
-  Button,
 } from "@chatscope/chat-ui-kit-react";
 import styled from "@emotion/styled";
-import { useChat } from "../model";
+
 import { choi } from "@/shared/assets";
 import { Header } from "@/shared/ui";
+
+import { useChat } from "../model";
 
 export default function ChatPage() {
   const {

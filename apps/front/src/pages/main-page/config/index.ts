@@ -1,1 +1,1 @@
-export { PROJECTS, OPEN_SOURCE_CONTRIBUTION, FOOD_NAMES } from "./constants";
+export { FOOD_NAMES,OPEN_SOURCE_CONTRIBUTION, PROJECTS } from "./constants";

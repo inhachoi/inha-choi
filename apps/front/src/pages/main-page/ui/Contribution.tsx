@@ -1,5 +1,6 @@
-import { Title, TextLink, Date } from "@/shared/ui";
 import styled from "@emotion/styled";
+
+import { Date,TextLink, Title } from "@/shared/ui";
 
 import { OPEN_SOURCE_CONTRIBUTION } from "../config/constants";
 

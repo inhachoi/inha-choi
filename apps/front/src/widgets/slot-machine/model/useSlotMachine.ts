@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
+
 import { calculateRollInterval } from "../lib";
 
 export const useSlotMachine = () => {

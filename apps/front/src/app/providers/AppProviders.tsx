@@ -1,8 +1,9 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorBoundaryFallback from "../error/ErrorBoundaryFallback";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { OverlayProvider } from "overlay-kit";
+
+import ErrorBoundaryFallback from "../error/ErrorBoundaryFallback";
 
 const queryClient = new QueryClient();
 
