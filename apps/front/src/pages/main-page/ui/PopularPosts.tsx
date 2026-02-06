@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { usePopularPosts } from "../model/hooks";
+import { usePopularPosts } from "../model";
 import { Title, Article } from "@/shared/ui";
 import { formatYearMonth } from "@/shared/lib/utils";
 

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Title, Project } from "@/shared/ui";
-import { PROJECTS } from "../config/constants";
+import { PROJECTS } from "../config";
 
 export function Projects() {
   return (

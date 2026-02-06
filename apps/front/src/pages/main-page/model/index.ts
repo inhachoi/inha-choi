@@ -1,0 +1,1 @@
+export { usePopularPosts } from "./usePopularPosts";

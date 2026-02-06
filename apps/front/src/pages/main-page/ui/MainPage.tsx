@@ -1,8 +1,5 @@
 import styled from "@emotion/styled";
-import { Contribution } from "./Contribution";
-import { Introduce } from "./Introduce";
-import { PopularPosts } from "./PopularPosts";
-import { Projects } from "./Projects";
+import { Contribution, Introduce, PopularPosts, Projects } from "../ui";
 
 export default function MainPage() {
   return (
@@ -16,6 +13,7 @@ export default function MainPage() {
     </Container>
   );
 }
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
