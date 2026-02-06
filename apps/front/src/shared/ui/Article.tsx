@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
-import { heart } from "@/shared/assets";
-import { Date } from "@/shared/ui";
-import { IframeModal } from "./IframeModal";
 import { overlay } from "overlay-kit";
+import { heart } from "../assets";
+import { Date, IframeModal } from "../ui";
 
 interface Props {
   title: string;

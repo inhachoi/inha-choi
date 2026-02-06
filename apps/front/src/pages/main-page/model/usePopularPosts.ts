@@ -1,5 +1,5 @@
-import { usePosts } from "@/shared/model/hooks";
-import { sortPostsByLikes } from "@/shared/lib/utils";
+import { usePosts } from "@/shared/model/usePosts";
+import { sortPostsByLikes } from "@/shared/lib/sortPostsByLikes";
 
 export const usePopularPosts = () => {
   const { posts } = usePosts();

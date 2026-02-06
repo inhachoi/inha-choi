@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ListItem, Date } from "@/shared/ui";
+import { ListItem, Date } from "../ui";
 import { colors } from "@toss/tds-colors";
 import type { ReactNode } from "react";
 

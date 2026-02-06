@@ -1,1 +1,1 @@
-export { fetchPosts } from "./api";
+export { getPosts } from "./getPosts";

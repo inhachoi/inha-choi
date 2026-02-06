@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchPosts } from "@/shared/api";
-import type { PostDTO } from "@/shared/model/types";
+import { getPosts } from "../api";
+import type { PostDTO } from "../model";
 
 export const usePosts = () => {
   const { data, isLoading, isError } = useQuery<PostDTO[]>({
     queryKey: ["posts"],
-    queryFn: fetchPosts,
+    queryFn: getPosts,
   });
 
   return { posts: data ?? [], isLoading, isError };

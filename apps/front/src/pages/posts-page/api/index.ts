@@ -1,1 +1,1 @@
-export { getPosts } from "./getPosts";
+export { getPostsInfinite } from "./getPostsInfinite";

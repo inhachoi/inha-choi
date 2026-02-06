@@ -1,6 +1,6 @@
-import type { PostDTO } from "@/shared/model/types";
+import type { PostDTO } from "../model";
 
-export const fetchPosts = async (): Promise<PostDTO[]> => {
+export const getPosts = async (): Promise<PostDTO[]> => {
   const res = await fetch("/api/posts");
 
   if (!res.ok) {

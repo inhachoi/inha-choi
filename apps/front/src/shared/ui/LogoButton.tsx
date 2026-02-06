@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
-import { logo } from "@/shared/assets";
+import { logo } from "../assets";
 
 export function LogoButton() {
   const navigate = useNavigate();
