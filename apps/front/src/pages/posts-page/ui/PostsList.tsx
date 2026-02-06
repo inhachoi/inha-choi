@@ -1,6 +1,6 @@
 import { formatYearMonth } from "@/shared/lib/utils";
 import { Article } from "@/shared/ui";
-import { usePostsVirtualizer } from "../model/hooks";
+import { usePostsVirtualizer } from "../model";
 import styled from "@emotion/styled";
 
 export const PostsList = () => {

@@ -1,4 +1,4 @@
-export const getArticleHeight = () => {
+export const calculateArticleHeight = () => {
   const width = typeof window !== "undefined" ? window.innerWidth : 1024;
 
   if (width <= 480) {

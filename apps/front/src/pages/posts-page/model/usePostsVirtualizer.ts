@@ -1,17 +1,7 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { fetchInfinitePosts } from "../api/api";
 import { useRef, useEffect } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { getArticleHeight } from "../lib/utils";
-
-const useInfinitePosts = () => {
-  return useInfiniteQuery({
-    queryKey: ["infinite-posts"],
-    queryFn: ({ pageParam }) => fetchInfinitePosts({ pageParam }),
-    initialPageParam: null,
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-  });
-};
+import { calculateArticleHeight } from "../lib";
+import { useInfinitePosts } from "../model";
 
 export const usePostsVirtualizer = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -23,7 +13,7 @@ export const usePostsVirtualizer = () => {
   const rowVirtualizer = useVirtualizer({
     count: posts.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: getArticleHeight,
+    estimateSize: calculateArticleHeight,
     overscan: 3,
   });
 

@@ -1,4 +1,4 @@
-export async function fetchInfinitePosts({
+export async function getPosts({
   pageParam = null,
 }: {
   pageParam?: string | null;
