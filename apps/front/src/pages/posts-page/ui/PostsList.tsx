@@ -1,4 +1,4 @@
-import { formatYearMonth } from "@/shared/lib/sortPostsByLikes";
+import { formatYearMonth } from "@/shared/lib";
 import { Article } from "@/shared/ui";
 import { usePostsVirtualizer } from "../model";
 import styled from "@emotion/styled";
