@@ -1,1 +1,1 @@
-export { default as GuestbookPage } from "./ui";
+export { default } from "./ui";
