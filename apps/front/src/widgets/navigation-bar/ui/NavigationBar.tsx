@@ -1,19 +1,20 @@
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
-import { LogoButton, TextButton } from "@/shared/ui";
+import { LogoButton, TextButton, ThemeToggleButton } from "@/shared/ui";
 
 export function NavigationBar() {
   return (
     <Container>
       <Wrapper>
         <LogoButton />
-        
+
         <TextButtonGroup>
           <TextButton toGo="/posts">Posts</TextButton>
           <TextButton toGo="/guestbook">Guestbook</TextButton>
           <TextButton toGo="/chat">Chat</TextButton>
         </TextButtonGroup>
+
+        <ThemeToggleButton />
       </Wrapper>
     </Container>
   );
@@ -25,13 +26,13 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 10px;
-  background: white;
+  background: var(--color-bg-primary);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
   box-sizing: border-box;
-  box-shadow: 0 4px 50px ${colors.grey200};
+  box-shadow: 0 4px 50px var(--color-shadow);
 
   @media (max-width: 768px) {
     font-size: 0.85rem;
