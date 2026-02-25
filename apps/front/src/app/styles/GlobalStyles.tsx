@@ -71,6 +71,15 @@ export function GlobalStyles() {
           .cs-conversation-header__content .cs-conversation-header__info {
             color: var(--color-text-secondary);
           }
+
+          .cs-conversation-header,
+          .cs-conversation-header__content {
+            background-color: var(--color-bg-primary) !important;
+          }
+
+          .cs-message-input__content-editor[data-placeholder]:empty::before {
+            color: var(--color-text-secondary);
+          }
         }
 
         html,

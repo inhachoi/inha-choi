@@ -125,6 +125,10 @@ const ChatContainerWrapper = styled.div`
   border-radius: 10px;
   overflow: hidden;
 
+  [data-theme="dark"] & {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
   .cs-message__html-content {
     line-height: 1.5;
     white-space: pre-wrap;
