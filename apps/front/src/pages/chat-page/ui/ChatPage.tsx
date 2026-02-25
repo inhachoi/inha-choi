@@ -121,13 +121,9 @@ const Container = styled.div`
 
 const ChatContainerWrapper = styled.div`
   height: 100%;
-  border: 1px solid var(--color-bg-hover);
+  border: 2px solid var(--color-border);
   border-radius: 10px;
   overflow: hidden;
-
-  [data-theme="dark"] & {
-    border: 2px solid rgba(255, 255, 255, 0.2);
-  }
 
   .cs-message__html-content {
     line-height: 1.5;

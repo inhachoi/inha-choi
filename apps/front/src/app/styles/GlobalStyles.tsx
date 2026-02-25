@@ -16,6 +16,7 @@ export function GlobalStyles() {
           --color-card-shadow-hover: rgba(0, 0, 0, 0.12);
           --color-glitch-shadow-1: #e5e7eb;
           --color-glitch-shadow-2: #f3f4f6;
+          --color-border: #d1d5db;
         }
 
         [data-theme="dark"] {
@@ -30,6 +31,7 @@ export function GlobalStyles() {
           --color-card-shadow-hover: rgba(0, 0, 0, 0.5);
           --color-glitch-shadow-1: #2d2d42;
           --color-glitch-shadow-2: #1e1e2e;
+          --color-border: rgba(255, 255, 255, 0.2);
         }
 
         /* chatscope chat UI 다크모드 오버라이드 */
