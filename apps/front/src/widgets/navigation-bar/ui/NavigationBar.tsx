@@ -8,13 +8,15 @@ export function NavigationBar() {
       <Wrapper>
         <LogoButton />
 
-        <TextButtonGroup>
-          <TextButton toGo="/posts">Posts</TextButton>
-          <TextButton toGo="/guestbook">Guestbook</TextButton>
-          <TextButton toGo="/chat">Chat</TextButton>
-        </TextButtonGroup>
+        <RightGroup>
+          <TextButtonGroup>
+            <TextButton toGo="/posts">Posts</TextButton>
+            <TextButton toGo="/guestbook">Guestbook</TextButton>
+            <TextButton toGo="/chat">Chat</TextButton>
+          </TextButtonGroup>
 
-        <ThemeToggleButton />
+          <ThemeToggleButton />
+        </RightGroup>
       </Wrapper>
     </Container>
   );
@@ -27,6 +29,7 @@ const Container = styled.div`
   width: 100%;
   padding: 10px;
   background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   position: fixed;
   top: 0;
   left: 0;
@@ -51,6 +54,12 @@ const Wrapper = styled.nav`
   align-items: center;
   width: 100%;
   max-width: 768px;
+`;
+
+const RightGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 
 const TextButtonGroup = styled.section`
