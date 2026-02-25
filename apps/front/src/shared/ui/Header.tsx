@@ -12,6 +12,7 @@ const Container = styled.header`
   font-size: 1.5rem;
   line-height: 1.5;
   margin: 0 0 50px 0;
+  color: var(--color-text-primary);
 
   @media (max-width: 768px) {
     font-size: 1.25rem;
