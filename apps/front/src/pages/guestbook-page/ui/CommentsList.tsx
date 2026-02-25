@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
 import { formatYearMonthDay } from "@/shared/lib";
 
@@ -35,6 +34,7 @@ export function CommentsList({ comments }: { comments: CommentDTO[] }) {
 
 const ListHeader = styled.div`
   padding: 15px 10px 0 10px;
+  color: var(--color-text-primary);
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -85,7 +85,7 @@ const Meta = styled.div`
   align-self: flex-start;
   text-algin: left;
   padding: 15px 10px;
-  color: ${colors.grey700};
+  color: var(--color-text-secondary);
 
   @media (max-width: 768px) {
     padding: 12.5px 8px;
@@ -104,8 +104,8 @@ const ItemBody = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 0 15px;
-  background: ${colors.grey100};
-  border: 1px solid ${colors.grey200};
+  background: var(--color-bg-hover);
+  border: 1px solid var(--color-bg-hover);
   border-radius: 10px;
 
   @media (max-width: 768px) {
@@ -119,14 +119,15 @@ const ItemBody = styled.div`
 
 const Content = styled.div`
   width: 100%;
-  background: ${colors.grey50};
-  border: 1px solid ${colors.grey200};
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-bg-hover);
   border-radius: 5px;
   padding: 10px;
   margin: 0 0 10px 0;
   box-sizing: border-box;
   white-space: pre-wrap;
   word-break: break-word;
+  color: var(--color-text-primary);
 
   @media (max-width: 768px) {
     padding: 8px;
