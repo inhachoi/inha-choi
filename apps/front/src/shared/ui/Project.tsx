@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
 import { Date,ListItem } from "../ui";
 
@@ -74,9 +73,9 @@ const ProjectTitle = styled.h2`
   display: flex;
   align-items: center;
   gap: 20px;
-  color: black;
+  color: var(--color-text-primary);
 `;
 
 const Description = styled.h3`
-  color: ${colors.grey500};
+  color: var(--color-text-secondary);
 `;
