@@ -19,7 +19,11 @@ export const useTheme = create<ThemeStore>((set) => ({
     set((state) => {
       const next = !state.isDark;
       localStorage.setItem("theme", next ? "dark" : "light");
-      document.documentElement.setAttribute("data-theme", next ? "dark" : "");
+      if (next) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
       return { isDark: next };
     }),
 }));
