@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
 export function Footer() {
   return <Container>Ⓒ 2025. inhachoi. All right reserved.</Container>;
@@ -10,9 +9,9 @@ const Container = styled.footer`
   justify-content: center;
   align-items: center;
   height: 80px;
-  background: white;
-  color: ${colors.grey500};
-  box-shadow: 0 -4px 50px ${colors.grey200};
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  box-shadow: 0 -4px 50px var(--color-shadow);
 
   @media (max-width: 768px) {
     font-size: 0.8rem;
