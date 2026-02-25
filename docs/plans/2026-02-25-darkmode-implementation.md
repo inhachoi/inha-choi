@@ -27,7 +27,7 @@ git checkout -b feat-12
 **단계 2: Zustand 설치**
 
 ```bash
-cd apps/front && npm install zustand
+cd apps/front && pnpm add zustand
 ```
 
 예상 결과: `package.json` dependencies에 `"zustand"` 항목 추가됨
@@ -876,7 +876,7 @@ git commit -m "feat: GlitchText 다크모드 CSS 변수 적용"
 **단계 1: 타입 체크**
 
 ```bash
-cd apps/front && npx tsc --noEmit
+cd apps/front && pnpm exec tsc --noEmit
 ```
 
 예상 결과: 오류 없음
@@ -884,7 +884,7 @@ cd apps/front && npx tsc --noEmit
 **단계 2: 빌드 실행**
 
 ```bash
-cd apps/front && npm run build
+cd apps/front && pnpm build
 ```
 
 예상 결과: 오류 없이 빌드 성공
@@ -892,7 +892,7 @@ cd apps/front && npm run build
 **단계 3: 개발 서버 실행 후 수동 확인**
 
 ```bash
-cd apps/front && npm run dev
+cd apps/front && pnpm dev
 ```
 
 확인 항목:
