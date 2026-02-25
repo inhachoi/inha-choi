@@ -20,6 +20,10 @@ const Img = styled.img`
   cursor: pointer;
   width: 40px;
 
+  [data-theme="dark"] & {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
   @media (max-width: 768px) {
     width: 35px;
   }
