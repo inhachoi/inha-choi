@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 import { defaultUser } from "@/shared/assets";
+import { useTheme } from "@/shared/model";
 
 import type { UserDTO } from "../model";
 
@@ -21,12 +22,15 @@ export function CommentWriter({
   handleLogin,
   handleSubmit,
 }: Props) {
+  const { isDark } = useTheme();
+
   return (
     <Container>
       <Avatar
         src={user?.avatarUrl || defaultUser}
         alt="프로필 사진"
         loading="lazy"
+        style={!user && isDark ? { filter: "invert(1)" } : undefined}
       />
 
       <WriterForm>
