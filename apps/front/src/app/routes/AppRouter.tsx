@@ -1,7 +1,6 @@
 import { lazy,Suspense } from "react";
 import { Route,Routes } from "react-router-dom";
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
 import { LoadingSpinner } from "@/shared/ui";
 
@@ -30,7 +29,7 @@ export function AppRouter() {
 const PageLayout = styled.div`
   display: flex;
   justify-content: center;
-  background: ${colors.grey50};
+  background: var(--color-bg-page);
   margin: 60px 0 0 0;
   min-width: 370px;
   min-height: calc(100vh - 140px);
