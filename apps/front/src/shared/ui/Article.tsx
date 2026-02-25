@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 import { overlay } from "overlay-kit";
 
 import { heart } from "../assets";
-import { Date, IframeModal } from "../ui";
+
+import { Date } from "./Date";
+import { IframeModal } from "./IframeModal";
 
 interface Props {
   title: string;

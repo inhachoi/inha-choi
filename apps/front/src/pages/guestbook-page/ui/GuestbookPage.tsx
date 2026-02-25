@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 import { Header } from "@/shared/ui";
 
 import { useGithubLogin } from "../model";
-import { CommentsList,CommentWriter } from "../ui";
+
+import { CommentsList } from "./CommentsList";
+import { CommentWriter } from "./CommentWriter";
 
 export default function GuestbookPage() {
   const {

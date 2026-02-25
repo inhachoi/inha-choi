@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 
-import { Contribution, Introduce, PopularPosts, Projects } from "../ui";
+import { Contribution } from "./Contribution";
+import { Introduce } from "./Introduce";
+import { PopularPosts } from "./PopularPosts";
+import { Projects } from "./Projects";
 
 export default function MainPage() {
   return (

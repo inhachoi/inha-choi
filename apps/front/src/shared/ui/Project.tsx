@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import styled from "@emotion/styled";
 
-import { Date,ListItem } from "../ui";
+import { Date } from "./Date";
+import { ListItem } from "./ListItem";
 
 interface Props {
   thumbnail: ReactNode;

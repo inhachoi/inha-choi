@@ -1,10 +1,5 @@
 import { create } from "zustand";
 
-interface ThemeStore {
-  isDark: boolean;
-  toggle: () => void;
-}
-
 const getInitialDark = (): boolean => {
   try {
     return localStorage.getItem("theme") === "dark";
@@ -13,7 +8,7 @@ const getInitialDark = (): boolean => {
   }
 };
 
-export const useTheme = create<ThemeStore>((set) => ({
+export const useTheme = create<{ isDark: boolean; toggle: () => void }>((set) => ({
   isDark: getInitialDark(),
   toggle: () =>
     set((state) => {
