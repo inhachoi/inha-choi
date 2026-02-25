@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
 import { defaultUser } from "@/shared/assets";
+import { useTheme } from "@/shared/model";
 
 import type { UserDTO } from "../model";
 
@@ -22,12 +22,15 @@ export function CommentWriter({
   handleLogin,
   handleSubmit,
 }: Props) {
+  const { isDark } = useTheme();
+
   return (
     <Container>
       <Avatar
         src={user?.avatarUrl || defaultUser}
         alt="프로필 사진"
         loading="lazy"
+        style={!user && isDark ? { filter: "invert(1)" } : undefined}
       />
 
       <WriterForm>
@@ -103,8 +106,8 @@ const WriterForm = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 0 15px;
-  background: ${colors.grey100};
-  border: 1px solid ${colors.grey200};
+  background: var(--color-bg-hover);
+  border: 1px solid var(--color-bg-hover);
   border-radius: 10px;
 
   @media (max-width: 768px) {
@@ -122,7 +125,7 @@ const Greeting = styled.div`
   align-self: flex-start;
   text-algin: left;
   padding: 15px 10px;
-  color: ${colors.grey700};
+  color: var(--color-text-secondary);
 
   @media (max-width: 768px) {
     padding: 12.5px 8px;
@@ -137,14 +140,16 @@ const InputArea = styled.textarea`
   width: 100%;
   height: 8vh;
   resize: vertical;
-  border: 1px solid ${colors.grey200};
+  border: 1px solid var(--color-bg-hover);
   border-radius: 5px;
   outline: none;
   padding: 10px;
   box-sizing: border-box;
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
 
   &:focus {
-    border: 1px solid ${colors.grey900};
+    border: 1px solid var(--color-text-title);
   }
 
   @media (max-width: 768px) {
@@ -165,7 +170,7 @@ const SubmitButton = styled.button`
   padding: 5px 15px;
   border: none;
   border-radius: 10px;
-  background: ${colors.black};
+  background: #000000;
   color: white;
   cursor: pointer;
   font-size: 1rem;

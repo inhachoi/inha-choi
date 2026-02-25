@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 import { overlay } from "overlay-kit";
 
 import { heart } from "../assets";
@@ -46,22 +45,22 @@ const Container = styled.div`
   margin: 5px 0;
   width: 100%;
   height: 100px;
-  background: white;
+  background: var(--color-bg-primary);
   border-radius: 10px;
   cursor: pointer;
   box-sizing: border-box;
   overflow: hidden;
-  color: black;
+  color: var(--color-text-primary);
 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 10px var(--color-card-shadow);
 
   &:hover {
-    background: ${colors.grey100};
+    background: var(--color-bg-hover);
     transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 16px var(--color-card-shadow-hover);
   }
 
   &:hover div > img {

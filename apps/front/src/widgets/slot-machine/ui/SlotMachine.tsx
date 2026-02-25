@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 import { AnimatePresence, motion } from "motion/react";
 
 import { shake } from "@/shared/assets";
@@ -65,6 +64,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  color: var(--color-text-primary);
 
   @media (max-width: 768px) {
     gap: 4px;
@@ -83,9 +83,14 @@ const SlotReelTrack = styled.div`
   justify-content: center;
   width: 200px;
   height: 30px;
-  border: 1px solid ${colors.grey300};
+  border: 1px solid var(--color-bg-hover);
   border-radius: 5px;
   overflow: hidden;
+
+  [data-theme="dark"] & {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: var(--color-bg-primary);
+  }
 
   @media (max-width: 768px) {
     width: 130px;
@@ -105,6 +110,7 @@ const SlotItem = styled(motion.div)`
   height: 30px;
   padding: 0 10px;
   white-space: nowrap;
+  color: var(--color-text-primary);
 
   @media (max-width: 768px) {
     height: 22.5px;
@@ -126,6 +132,10 @@ const SpinButton = styled(motion.button)`
 
 const Img = styled.img`
   height: 25px;
+
+  [data-theme="dark"] & {
+    filter: invert(1);
+  }
 
   @media (max-width: 768px) {
     height: 18.75px;

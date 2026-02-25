@@ -8,4 +8,5 @@ export { LogoButton } from "./LogoButton";
 export { Project } from "./Project";
 export { TextButton } from "./TextButton";
 export { TextLink } from "./TextLink";
+export { ThemeToggleButton } from "./ThemeToggleButton";
 export { Title } from "./Title";
