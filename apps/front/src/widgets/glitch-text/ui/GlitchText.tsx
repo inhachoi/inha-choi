@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
 export function GlitchText({ children }: { children: ReactNode }) {
   return <Container>{children}</Container>;
@@ -46,10 +45,10 @@ const Container = styled.div`
   }
 
   font-size: 2rem;
-  color: ${colors.grey900};
+  color: var(--color-text-title);
   animation: wiggle 3s infinite;
-  text-shadow: 0.3rem 0.1rem ${colors.grey200},
-    -0.2rem -0.1rem ${colors.grey100};
+  text-shadow: 0.3rem 0.1rem var(--color-glitch-shadow-1),
+    -0.2rem -0.1rem var(--color-glitch-shadow-2);
   overflow: hidden;
   z-index: 10;
 
