@@ -66,15 +66,16 @@ export function GlobalStyles() {
             color: var(--color-text-secondary);
           }
 
-          .cs-button,
-          .cs-conversation-header__content .cs-conversation-header__user-name,
-          .cs-conversation-header__content .cs-conversation-header__info {
+          .cs-button {
             color: var(--color-text-secondary);
           }
 
           .cs-conversation-header,
-          .cs-conversation-header__content {
+          .cs-conversation-header__content,
+          .cs-conversation-header__user-name,
+          .cs-conversation-header__info {
             background-color: var(--color-bg-primary) !important;
+            color: var(--color-text-secondary) !important;
           }
 
           .cs-message-input__content-editor[data-placeholder]:empty::before {
