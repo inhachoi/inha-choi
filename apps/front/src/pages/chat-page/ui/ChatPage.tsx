@@ -121,7 +121,7 @@ const Container = styled.div`
 
 const ChatContainerWrapper = styled.div`
   height: 100%;
-  border: 1px solid rgb(218, 218, 218);
+  border: 1px solid var(--color-bg-hover);
   border-radius: 10px;
   overflow: hidden;
 

@@ -32,6 +32,47 @@ export function GlobalStyles() {
           --color-glitch-shadow-2: #1e1e2e;
         }
 
+        /* chatscope chat UI 다크모드 오버라이드 */
+        [data-theme="dark"] {
+          .cs-chat-container,
+          .cs-conversation-header,
+          .cs-message-input {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            border-color: var(--color-bg-hover);
+          }
+
+          .cs-message-list {
+            background-color: var(--color-bg-page);
+          }
+
+          .cs-message-input__content-editor-wrapper,
+          .cs-message-input__content-editor {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+          }
+
+          .cs-message--incoming .cs-message__content {
+            background-color: var(--color-bg-hover);
+            color: var(--color-text-primary);
+          }
+
+          .cs-message--outgoing .cs-message__content {
+            color: #ffffff;
+          }
+
+          .cs-typing-indicator {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-secondary);
+          }
+
+          .cs-button,
+          .cs-conversation-header__content .cs-conversation-header__user-name,
+          .cs-conversation-header__content .cs-conversation-header__info {
+            color: var(--color-text-secondary);
+          }
+        }
+
         html,
         body {
           -ms-overflow-style: none;
