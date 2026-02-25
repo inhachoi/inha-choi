@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
 import { PostsList } from "./PostsList";
 
@@ -36,6 +35,7 @@ const Header = styled.header`
   align-items: center;
   gap: 10px;
   font-size: 2rem;
+  color: var(--color-text-primary);
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -63,7 +63,7 @@ const PostsLayout = styled.main`
 `;
 
 const PostsCount = styled.h2`
-  color: ${colors.grey500};
+  color: var(--color-text-secondary);
   font-size: 1rem;
 
   @media (max-width: 768px) {
