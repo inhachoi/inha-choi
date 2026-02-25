@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 import { AnimatePresence, motion } from "motion/react";
 
 import { shake } from "@/shared/assets";
@@ -83,7 +82,7 @@ const SlotReelTrack = styled.div`
   justify-content: center;
   width: 200px;
   height: 30px;
-  border: 1px solid ${colors.grey300};
+  border: 1px solid var(--color-bg-hover);
   border-radius: 5px;
   overflow: hidden;
 
@@ -105,6 +104,7 @@ const SlotItem = styled(motion.div)`
   height: 30px;
   padding: 0 10px;
   white-space: nowrap;
+  color: var(--color-text-primary);
 
   @media (max-width: 768px) {
     height: 22.5px;
