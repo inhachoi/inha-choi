@@ -16,7 +16,7 @@ export function GlobalStyles() {
           --color-card-shadow-hover: rgba(0, 0, 0, 0.12);
           --color-glitch-shadow-1: #e5e7eb;
           --color-glitch-shadow-2: #f3f4f6;
-          --color-border: #d1d5db;
+          --color-border: #e9ebee;
         }
 
         [data-theme="dark"] {
