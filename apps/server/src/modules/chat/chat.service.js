@@ -5,7 +5,7 @@ import { SYSTEM_PROMPT, FEW_SHOTS } from "./chat.propmt.js";
 const dispatcher = new Agent({
   keepAliveTimeout: 60_000,
   keepAliveMaxTimeout: 600_000,
-  connections: 10,
+  connections: 2,
 });
 
 const client = new OpenAI({
