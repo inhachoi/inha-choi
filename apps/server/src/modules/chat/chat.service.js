@@ -1,12 +1,16 @@
-import https from "https";
+import { Agent } from "undici";
 import OpenAI from "openai";
 import { SYSTEM_PROMPT, FEW_SHOTS } from "./chat.propmt.js";
 
-const agent = new https.Agent({ keepAlive: true });
+const dispatcher = new Agent({
+  keepAliveTimeout: 60_000,
+  keepAliveMaxTimeout: 600_000,
+  connections: 10,
+});
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  httpAgent: agent,
+  fetchOptions: { dispatcher },
 });
 
 export async function createChatStream(messages, res) {
