@@ -1,8 +1,12 @@
+import https from "https";
 import OpenAI from "openai";
 import { SYSTEM_PROMPT, FEW_SHOTS } from "./chat.propmt.js";
 
+const agent = new https.Agent({ keepAlive: true });
+
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
+  httpAgent: agent,
 });
 
 export async function createChatStream(messages, res) {
@@ -34,6 +38,7 @@ export async function createChatStream(messages, res) {
       } else {
         res.write(`data: ${delta}\n\n`);
       }
+      if (res.flush) res.flush();
     }
 
     if (event.type === "response.completed") {
