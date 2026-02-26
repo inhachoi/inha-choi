@@ -1,8 +1,16 @@
+import { Agent } from "undici";
 import OpenAI from "openai";
 import { SYSTEM_PROMPT, FEW_SHOTS } from "./chat.propmt.js";
 
+const dispatcher = new Agent({
+  keepAliveTimeout: 60_000,
+  keepAliveMaxTimeout: 600_000,
+  connections: 2,
+});
+
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
+  fetchOptions: { dispatcher },
 });
 
 export async function createChatStream(messages, res) {
@@ -34,6 +42,7 @@ export async function createChatStream(messages, res) {
       } else {
         res.write(`data: ${delta}\n\n`);
       }
+      if (res.flush) res.flush();
     }
 
     if (event.type === "response.completed") {
