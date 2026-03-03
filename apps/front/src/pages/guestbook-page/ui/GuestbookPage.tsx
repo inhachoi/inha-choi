@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { Header } from "@/shared/ui";
+import { Header, Skeleton } from "@/shared/ui";
 
 import { useGithubLogin } from "../model";
 
@@ -14,6 +14,7 @@ export default function GuestbookPage() {
     content,
     setContent,
     submitting,
+    isLoading,
     handleLogin,
     handleSubmit,
   } = useGithubLogin();
@@ -34,7 +35,18 @@ export default function GuestbookPage() {
         handleLogin={handleLogin}
         handleSubmit={handleSubmit}
       />
-      <CommentsList comments={comments} />
+      {isLoading ? (
+        <SkeletonList>
+          {Array.from({ length: 3 }).map((_, i) => (
+            <CommentSkeleton key={i}>
+              <Skeleton width="75px" height="75px" borderRadius="10px" />
+              <Skeleton width="100%" height="80px" borderRadius="10px" />
+            </CommentSkeleton>
+          ))}
+        </SkeletonList>
+      ) : (
+        <CommentsList comments={comments} />
+      )}
     </Container>
   );
 }
@@ -51,4 +63,18 @@ const Container = styled.div`
   @media (max-width: 480px) {
     margin: 20px 0;
   }
+`;
+
+const SkeletonList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 10px;
+  margin-top: 20px;
+`;
+
+const CommentSkeleton = styled.div`
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 `;

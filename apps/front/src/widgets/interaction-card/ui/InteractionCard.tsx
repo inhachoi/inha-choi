@@ -1,5 +1,8 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
+
+import { Skeleton } from "@/shared/ui";
 
 import { useMouseMove } from "../model/useMouseMove";
 
@@ -11,11 +14,28 @@ interface Props {
 
 export function InteractionCard({ src, alt, width }: Props) {
   const { containerRef, overlayRef } = useMouseMove();
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <Container ref={containerRef}>
-      <Overlay ref={overlayRef} />
-      <Img src={src} alt={alt} width={width} height={width} loading="lazy" />
+      {!loaded && (
+        <Skeleton
+          width={`${width}px`}
+          height={`${width}px`}
+          borderRadius="100%"
+        />
+      )}
+      <Overlay ref={overlayRef} style={{ display: loaded ? "block" : "none" }} />
+      <Img
+        src={src}
+        alt={alt}
+        width={width}
+        height={width}
+        loading="lazy"
+        loaded={loaded}
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
+      />
     </Container>
   );
 }
@@ -27,7 +47,10 @@ const Container = styled.div`
   will-change: transform;
 `;
 
-const Img = styled.img`
+const Img = styled.img<{ loaded: boolean }>`
+  opacity: ${({ loaded }) => (loaded ? 1 : 0)};
+  position: ${({ loaded }) => (loaded ? "static" : "absolute")};
+  transition: opacity 0.3s ease;
   border-radius: 100%;
   box-shadow: 2px 10px 20px ${colors.grey400};
 
