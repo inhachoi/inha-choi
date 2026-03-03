@@ -37,7 +37,11 @@ function AvatarImage({ src }: { src: string }) {
 
   return (
     <>
-      {!loaded && <Skeleton width="75px" height="75px" borderRadius="10px" />}
+      {!loaded && (
+        <AvatarSkeletonWrapper>
+          <Skeleton width="100%" height="100%" borderRadius="10px" />
+        </AvatarSkeletonWrapper>
+      )}
       <Avatar
         src={src}
         alt="프로필 사진"
@@ -101,6 +105,22 @@ const AvatarWrapper = styled.div`
   }
 `;
 
+const AvatarSkeletonWrapper = styled.div`
+  width: 75px;
+  height: 75px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+  }
+`;
+
 const Avatar = styled.img<{ loaded: boolean }>`
   opacity: ${({ loaded }) => (loaded ? 1 : 0)};
   position: ${({ loaded }) => (loaded ? "static" : "absolute")};
@@ -142,7 +162,7 @@ const ItemBody = styled.div`
 
 const Meta = styled.div`
   align-self: flex-start;
-  text-algin: left;
+  text-align: left;
   padding: 15px 10px;
   color: var(--color-text-secondary);
 

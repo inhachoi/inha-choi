@@ -1,5 +1,4 @@
 // SVG 아이콘 — React 컴포넌트로 export
-export { default as GithubIcon } from "./icons/github.svg?react";
 export { default as ReactIcon } from "./icons/react.svg?react";
 export { default as MdnIcon } from "./icons/mdn.svg?react";
 export { default as HeartIcon } from "./icons/heart.svg?react";

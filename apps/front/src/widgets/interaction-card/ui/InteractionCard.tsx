@@ -18,14 +18,8 @@ export function InteractionCard({ src, alt, width }: Props) {
 
   return (
     <Container ref={containerRef}>
-      {!loaded && (
-        <Skeleton
-          width={`${width}px`}
-          height={`${width}px`}
-          borderRadius="100%"
-        />
-      )}
-      <Overlay ref={overlayRef} style={{ display: loaded ? "block" : "none" }} />
+      {!loaded && <SkeletonCircle width={width} />}
+      <Overlay ref={overlayRef} loaded={loaded} />
       <Img
         src={src}
         alt={alt}
@@ -40,11 +34,38 @@ export function InteractionCard({ src, alt, width }: Props) {
   );
 }
 
+function SkeletonCircle({ width }: { width: number }) {
+  return (
+    <SkeletonWrapper width={width}>
+      <Skeleton width="100%" height="100%" borderRadius="100%" />
+    </SkeletonWrapper>
+  );
+}
+
 const Container = styled.div`
   display: inline-block;
   position: relative;
   transition: transform 0.25s ease-out;
   will-change: transform;
+`;
+
+const SkeletonWrapper = styled.div<{ width: number }>`
+  width: ${({ width }) => width}px;
+  height: ${({ width }) => width}px;
+  border-radius: 100%;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
+  @media (max-width: 580px) {
+    width: 175px;
+    height: 175px;
+  }
+  @media (max-width: 480px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 const Img = styled.img<{ loaded: boolean }>`
@@ -65,7 +86,8 @@ const Img = styled.img<{ loaded: boolean }>`
   }
 `;
 
-const Overlay = styled.div`
+const Overlay = styled.div<{ loaded: boolean }>`
+  display: ${({ loaded }) => (loaded ? "block" : "none")};
   position: absolute;
   inset: 0;
   background: linear-gradient(
