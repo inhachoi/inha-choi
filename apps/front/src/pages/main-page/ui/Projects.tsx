@@ -11,7 +11,7 @@ export function Projects() {
 
       {PROJECTS.map((data) => (
         <Project
-          thumbnail={<img src={data.src} alt={data.alt} loading="lazy" />}
+          thumbnail={<img src={data.src} alt={data.alt} width={192} height={100} loading="lazy" />}
           title={data.title}
           description={data.description}
           period={data.period}

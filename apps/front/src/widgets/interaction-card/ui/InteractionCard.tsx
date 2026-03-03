@@ -15,7 +15,7 @@ export function InteractionCard({ src, alt, width }: Props) {
   return (
     <Container ref={containerRef}>
       <Overlay ref={overlayRef} />
-      <Img src={src} alt={alt} width={width} loading="lazy" />
+      <Img src={src} alt={alt} width={width} height={width} loading="lazy" />
     </Container>
   );
 }
