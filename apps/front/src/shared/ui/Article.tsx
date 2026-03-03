@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { overlay } from "overlay-kit";
 
-import { heart } from "../assets";
+import { HeartIcon } from "../assets";
 
 import { Date } from "./Date";
 import { IframeModal } from "./IframeModal";
@@ -33,7 +33,7 @@ export function Article({ title, link, thumbnail, likes, released_at }: Props) {
       </ContentWrapper>
 
       <LikesWrapper>
-        <Img src={heart} alt="좋아요 마크" loading="lazy" />
+        <HeartIcon width={15} height={15} aria-label="좋아요 마크" />
         {likes}
       </LikesWrapper>
     </Container>
@@ -141,15 +141,3 @@ const LikesWrapper = styled.div`
   }
 `;
 
-const Img = styled.img`
-  cursor: pointer;
-  width: 15px;
-
-  @media (max-width: 768px) {
-    width: 12.5px;
-  }
-
-  @media (max-width: 480px) {
-    width: 10px;
-  }
-`;

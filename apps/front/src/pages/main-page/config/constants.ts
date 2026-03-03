@@ -1,10 +1,12 @@
+import type { FC, SVGProps } from "react";
+
 import {
   boolock,
   dongnaebangnae,
   inhachoi,
-  mdn,
-  react,
   refreigerator,
+  MdnIcon,
+  ReactIcon,
 } from "@/shared/assets";
 
 export const PROJECTS = [
@@ -43,23 +45,30 @@ export const PROJECTS = [
   },
 ];
 
-export const OPEN_SOURCE_CONTRIBUTION = [
+type IconComponent = FC<SVGProps<SVGSVGElement>>;
+
+export const OPEN_SOURCE_CONTRIBUTION: {
+  url: string;
+  icon: IconComponent;
+  content: string;
+  date: string;
+}[] = [
   {
     url: "https://github.com/reactjs/ko.react.dev/pull/1356#issuecomment-3567598733",
-    src: react,
+    icon: ReactIcon,
     content: "reactjs / ko.react.dev Effect 문서 번역",
     date: "2025.11",
   },
   {
     url: "https://github.com/reactjs/ko.react.dev/pull/1355",
-    src: react,
+    icon: ReactIcon,
     content: "reactjs / ko.react.dev 커스텀 훅 문서 번역",
     date: "2025.11",
   },
   {
     url: "ttps://github.com/mdn/translated-content/pull/28427",
-    src: mdn,
-    content: "mdn / translated-contenteact.dev 비동기 예시 코드 수정",
+    icon: MdnIcon,
+    content: "mdn / translated-content 비동기 예시 코드 수정",
     date: "2025.08",
   },
 ];

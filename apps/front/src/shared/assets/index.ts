@@ -1,30 +1,16 @@
-import heart from "./heart.webp";
+// SVG 아이콘 — React 컴포넌트로 export
+export { default as GithubIcon } from "./icons/github.svg?react";
+export { default as ReactIcon } from "./icons/react.svg?react";
+export { default as MdnIcon } from "./icons/mdn.svg?react";
+export { default as HeartIcon } from "./icons/heart.svg?react";
 
-import boolock from "./boolock.png";
-import choi from "./choi.jpg";
-import defaultUser from "./defaultUser.png";
-import dongnaebangnae from "./dongnaebangnae.jpg";
-import github from "./github.png";
-import inhachoi from "./inhachoi.png";
-import logo from "./logo.png";
-import mdn from "./mdn.png";
-import react from "./react.png";
-import refreigerator from "./refrigerator.jpg";
-import shake from "./shake.png";
-import velog from "./velog.jpg";
-
-export {
-  boolock,
-  choi,
-  defaultUser,
-  dongnaebangnae,
-  github,
-  heart,
-  inhachoi,
-  logo,
-  mdn,
-  react,
-  refreigerator,
-  shake,
-  velog,
-};
+// 래스터 이미지 — URL string으로 export (기존 방식 유지)
+export { default as logo } from "./images/logo.png";
+export { default as choi } from "./images/choi.jpg";
+export { default as inhachoi } from "./images/inhachoi.png";
+export { default as boolock } from "./images/boolock.png";
+export { default as dongnaebangnae } from "./images/dongnaebangnae.jpg";
+export { default as refreigerator } from "./images/refrigerator.jpg";
+export { default as defaultUser } from "./images/defaultUser.png";
+export { default as shake } from "./images/shake.png";
+export { default as velog } from "./images/velog.jpg";
