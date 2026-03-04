@@ -15,7 +15,9 @@ export function PopularPosts() {
       {isLoading
         ? Array.from({ length: 3 }).map((_, i) => (
             <ArticleSkeleton key={i}>
-              <Skeleton width="192px" height="100%" borderRadius="0" />
+              <ThumbnailSkeleton>
+                <Skeleton width="100%" height="100%" borderRadius="0" />
+              </ThumbnailSkeleton>
               <ContentSkeleton>
                 <Skeleton width="70%" height="16px" />
                 <Skeleton width="40%" height="12px" />
@@ -68,6 +70,20 @@ const ArticleSkeleton = styled.div`
 
   @media (max-width: 480px) {
     height: 47px;
+  }
+`;
+
+const ThumbnailSkeleton = styled.div`
+  width: 192px;
+  height: 100%;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 130px;
+  }
+
+  @media (max-width: 480px) {
+    width: 90px;
   }
 `;
 

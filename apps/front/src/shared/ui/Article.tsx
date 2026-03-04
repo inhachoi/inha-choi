@@ -46,7 +46,7 @@ export function Article({ title, link, thumbnail, likes, released_at }: Props) {
       </ContentWrapper>
 
       <LikesWrapper>
-        <HeartIcon width={15} height={15} aria-label="좋아요 마크" />
+        <StyledHeartIcon aria-label="좋아요 마크" />
         {likes}
       </LikesWrapper>
     </Container>
@@ -139,6 +139,22 @@ const ContentWrapper = styled.div`
 
   @media (max-width: 480px) {
     gap: 8px;
+  }
+`;
+
+const StyledHeartIcon = styled(HeartIcon)`
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 12.5px;
+    height: 12.5px;
+  }
+
+  @media (max-width: 480px) {
+    width: 10px;
+    height: 10px;
   }
 `;
 
