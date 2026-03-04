@@ -6,7 +6,7 @@ import { useTheme } from "@/shared/model";
 import type { UserDTO } from "../model";
 
 interface Props {
-  user: UserDTO;
+  user: UserDTO | null;
   content: string;
   setContent: React.Dispatch<React.SetStateAction<string>>;
   submitting: boolean;
@@ -29,6 +29,8 @@ export function CommentWriter({
       <Avatar
         src={user?.avatarUrl || defaultUser}
         alt="프로필 사진"
+        width={75}
+        height={75}
         loading="lazy"
         style={!user && isDark ? { filter: "invert(1)" } : undefined}
       />

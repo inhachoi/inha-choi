@@ -1,22 +1,24 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { type FormEvent } from "react";
 
 import { getComments, getMe, submitComment } from "../api";
 
-import type { CommentDTO,UserDTO } from "./types.ts";
+import type { CommentDTO, UserDTO } from "./types.ts";
 
 export const useGithubLogin = () => {
   const [user, setUser] = useState<UserDTO | null>(null);
   const [comments, setComments] = useState<CommentDTO[]>([]);
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // 현재 로그인 유저 정보 가져오기
   useEffect(() => {
-    Promise.all([getMe().then(setUser), getComments().then(setComments)]);
+    Promise.all([
+      getMe().then(setUser).catch(() => setUser(null)),
+      getComments().then(setComments).catch(() => setComments([])),
+    ]).finally(() => setIsLoading(false));
   }, []);
 
-  // 깃허브 로그인 시작
   const handleLogin = () => {
     window.location.href = "/api/auth/github/login";
   };
@@ -41,6 +43,7 @@ export const useGithubLogin = () => {
     setContent,
     comments,
     submitting,
+    isLoading,
     handleLogin,
     handleSubmit,
   };

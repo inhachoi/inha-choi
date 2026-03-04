@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { Date,TextLink, Title } from "@/shared/ui";
+import { Date, TextLink, Title } from "@/shared/ui";
 
 import { OPEN_SOURCE_CONTRIBUTION } from "../config/constants";
 
@@ -10,8 +10,10 @@ export function Contribution() {
       <Title>Open Source Contribution</Title>
 
       {OPEN_SOURCE_CONTRIBUTION.map((data) => (
-        <TextLink to={data.url}>
-          <Img src={data.src} />
+        <TextLink key={data.url} to={data.url}>
+          <IconWrapper>
+            <data.icon aria-hidden="true" />
+          </IconWrapper>
           {data.content}
           <Date>{data.date}</Date>
         </TextLink>
@@ -19,6 +21,30 @@ export function Contribution() {
     </Container>
   );
 }
+
+const IconWrapper = styled.div`
+  display: flex;
+  flex-shrink: 0;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: 768px) {
+    svg {
+      width: 32.5px;
+      height: 32.5px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+`;
 
 const Container = styled.div`
   display: flex;
@@ -35,17 +61,5 @@ const Container = styled.div`
   @media (max-width: 480px) {
     font-size: 0.6rem;
     margin: 20px 0 60px 0;
-  }
-`;
-
-const Img = styled.img`
-  width: 40px;
-
-  @media (max-width: 768px) {
-    width: 32.5px;
-  }
-
-  @media (max-width: 480px) {
-    width: 25px;
   }
 `;

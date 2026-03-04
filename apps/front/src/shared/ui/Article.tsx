@@ -1,10 +1,12 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 import { overlay } from "overlay-kit";
 
-import { heart } from "../assets";
+import { HeartIcon } from "../assets";
 
 import { Date } from "./Date";
 import { IframeModal } from "./IframeModal";
+import { Skeleton } from "./Skeleton";
 
 interface Props {
   title: string;
@@ -15,6 +17,8 @@ interface Props {
 }
 
 export function Article({ title, link, thumbnail, likes, released_at }: Props) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <Container
       onClick={() => {
@@ -24,7 +28,16 @@ export function Article({ title, link, thumbnail, likes, released_at }: Props) {
       }}
     >
       <ThumbnailWrapper>
-        <Thumbnail src={thumbnail} alt="썸네일 사진" />
+        {!loaded && <Skeleton width="100%" height="100%" borderRadius="0" />}
+        <Thumbnail
+          src={thumbnail}
+          alt="썸네일 사진"
+          width={192}
+          height={100}
+          loaded={loaded}
+          onLoad={() => setLoaded(true)}
+          onError={() => setLoaded(true)}
+        />
       </ThumbnailWrapper>
 
       <ContentWrapper>
@@ -33,7 +46,7 @@ export function Article({ title, link, thumbnail, likes, released_at }: Props) {
       </ContentWrapper>
 
       <LikesWrapper>
-        <Img src={heart} alt="좋아요 마크" loading="lazy" />
+        <StyledHeartIcon aria-label="좋아요 마크" />
         {likes}
       </LikesWrapper>
     </Container>
@@ -87,16 +100,11 @@ const Container = styled.div`
 `;
 
 const ThumbnailWrapper = styled.div`
-  object-fit: cover;
-  overflow: hidden;
+  position: relative;
   flex-shrink: 0;
-`;
-
-const Thumbnail = styled.img`
+  overflow: hidden;
   width: 192px;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
 
   @media (max-width: 768px) {
     width: 130px;
@@ -105,6 +113,15 @@ const Thumbnail = styled.img`
   @media (max-width: 480px) {
     width: 90px;
   }
+`;
+
+const Thumbnail = styled.img<{ loaded: boolean }>`
+  position: ${({ loaded }) => (loaded ? "static" : "absolute")};
+  opacity: ${({ loaded }) => (loaded ? 1 : 0)};
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 `;
 
 const ContentWrapper = styled.div`
@@ -125,6 +142,22 @@ const ContentWrapper = styled.div`
   }
 `;
 
+const StyledHeartIcon = styled(HeartIcon)`
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 12.5px;
+    height: 12.5px;
+  }
+
+  @media (max-width: 480px) {
+    width: 10px;
+    height: 10px;
+  }
+`;
+
 const LikesWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -138,18 +171,5 @@ const LikesWrapper = styled.div`
 
   @media (max-width: 480px) {
     width: 50px;
-  }
-`;
-
-const Img = styled.img`
-  cursor: pointer;
-  width: 15px;
-
-  @media (max-width: 768px) {
-    width: 12.5px;
-  }
-
-  @media (max-width: 480px) {
-    width: 10px;
   }
 `;

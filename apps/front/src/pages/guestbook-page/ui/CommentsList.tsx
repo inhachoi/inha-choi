@@ -1,6 +1,8 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 
 import { formatYearMonthDay } from "@/shared/lib";
+import { Skeleton } from "@/shared/ui";
 
 import type { CommentDTO } from "../model";
 
@@ -14,11 +16,9 @@ export function CommentsList({ comments }: { comments: CommentDTO[] }) {
 
       {comments.map((comment) => (
         <CommentItem key={comment.id}>
-          <Avatar
-            src={comment.user.avatarUrl}
-            alt="프로필 사진"
-            loading="lazy"
-          />
+          <AvatarWrapper>
+            <AvatarImage src={comment.user.avatarUrl ?? ""} />
+          </AvatarWrapper>
           <ItemBody>
             <Meta>
               {comment.user.login} 님의 방명록 -{" "}
@@ -28,6 +28,30 @@ export function CommentsList({ comments }: { comments: CommentDTO[] }) {
           </ItemBody>
         </CommentItem>
       ))}
+    </>
+  );
+}
+
+function AvatarImage({ src }: { src: string }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <>
+      {!loaded && (
+        <AvatarSkeletonWrapper>
+          <Skeleton width="100%" height="100%" borderRadius="10px" />
+        </AvatarSkeletonWrapper>
+      )}
+      <Avatar
+        src={src}
+        alt="프로필 사진"
+        width={75}
+        height={75}
+        loading="lazy"
+        loaded={loaded}
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
+      />
     </>
   );
 }
@@ -64,7 +88,43 @@ const CommentItem = styled.div`
   }
 `;
 
-const Avatar = styled.img`
+const AvatarWrapper = styled.div`
+  position: relative;
+  width: 75px;
+  height: 75px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+  }
+`;
+
+const AvatarSkeletonWrapper = styled.div`
+  width: 75px;
+  height: 75px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+  }
+`;
+
+const Avatar = styled.img<{ loaded: boolean }>`
+  opacity: ${({ loaded }) => (loaded ? 1 : 0)};
+  position: ${({ loaded }) => (loaded ? "static" : "absolute")};
+  transition: opacity 0.3s ease;
   width: 75px;
   height: 75px;
   border-radius: 10px;
@@ -78,23 +138,6 @@ const Avatar = styled.img`
   @media (max-width: 480px) {
     width: 45px;
     height: 45px;
-  }
-`;
-
-const Meta = styled.div`
-  align-self: flex-start;
-  text-algin: left;
-  padding: 15px 10px;
-  color: var(--color-text-secondary);
-
-  @media (max-width: 768px) {
-    padding: 12.5px 8px;
-    font-size: 0.8rem;
-  }
-
-  @media (max-width: 480px) {
-    padding: 10px 6px;
-    font-size: 0.6rem;
   }
 `;
 
@@ -114,6 +157,23 @@ const ItemBody = styled.div`
 
   @media (max-width: 480px) {
     padding: 0 5px;
+  }
+`;
+
+const Meta = styled.div`
+  align-self: flex-start;
+  text-align: left;
+  padding: 15px 10px;
+  color: var(--color-text-secondary);
+
+  @media (max-width: 768px) {
+    padding: 12.5px 8px;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 6px;
+    font-size: 0.6rem;
   }
 `;
 

@@ -1,5 +1,8 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 import { colors } from "@toss/tds-colors";
+
+import { Skeleton } from "@/shared/ui";
 
 import { useMouseMove } from "../model/useMouseMove";
 
@@ -11,12 +14,31 @@ interface Props {
 
 export function InteractionCard({ src, alt, width }: Props) {
   const { containerRef, overlayRef } = useMouseMove();
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <Container ref={containerRef}>
-      <Overlay ref={overlayRef} />
-      <Img src={src} alt={alt} width={width} loading="lazy" />
+      {!loaded && <SkeletonCircle width={width} />}
+      <Overlay ref={overlayRef} loaded={loaded} />
+      <Img
+        src={src}
+        alt={alt}
+        width={width}
+        height={width}
+        loading="lazy"
+        loaded={loaded}
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
+      />
     </Container>
+  );
+}
+
+function SkeletonCircle({ width }: { width: number }) {
+  return (
+    <SkeletonWrapper width={width}>
+      <Skeleton width="100%" height="100%" borderRadius="100%" />
+    </SkeletonWrapper>
   );
 }
 
@@ -27,22 +49,48 @@ const Container = styled.div`
   will-change: transform;
 `;
 
-const Img = styled.img`
+const SkeletonWrapper = styled.div<{ width: number }>`
+  width: ${({ width }) => width}px;
+  height: ${({ width }) => width}px;
+  border-radius: 100%;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
+  @media (max-width: 580px) {
+    width: 175px;
+    height: 175px;
+  }
+  @media (max-width: 480px) {
+    width: 150px;
+    height: 150px;
+  }
+`;
+
+const Img = styled.img<{ loaded: boolean }>`
+  opacity: ${({ loaded }) => (loaded ? 1 : 0)};
+  position: ${({ loaded }) => (loaded ? "static" : "absolute")};
+  transition: opacity 0.3s ease;
   border-radius: 100%;
   box-shadow: 2px 10px 20px ${colors.grey400};
 
   @media (max-width: 768px) {
     width: 200px;
+    height: 200px;
   }
   @media (max-width: 580px) {
     width: 175px;
+    height: 175px;
   }
   @media (max-width: 480px) {
     width: 150px;
+    height: 150px;
   }
 `;
 
-const Overlay = styled.div`
+const Overlay = styled.div<{ loaded: boolean }>`
+  display: ${({ loaded }) => (loaded ? "block" : "none")};
   position: absolute;
   inset: 0;
   background: linear-gradient(
