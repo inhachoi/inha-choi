@@ -66,7 +66,7 @@ export const OPEN_SOURCE_CONTRIBUTION: {
     date: "2025.11",
   },
   {
-    url: "ttps://github.com/mdn/translated-content/pull/28427",
+    url: "https://github.com/mdn/translated-content/pull/28427",
     icon: MdnIcon,
     content: "mdn / translated-content 비동기 예시 코드 수정",
     date: "2025.08",
