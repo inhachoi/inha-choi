@@ -6,7 +6,7 @@ import { useTheme } from "@/shared/model";
 import type { UserDTO } from "../model";
 
 interface Props {
-  user: UserDTO;
+  user: UserDTO | null;
   content: string;
   setContent: React.Dispatch<React.SetStateAction<string>>;
   submitting: boolean;

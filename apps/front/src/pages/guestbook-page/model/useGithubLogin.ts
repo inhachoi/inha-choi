@@ -14,8 +14,8 @@ export const useGithubLogin = () => {
 
   useEffect(() => {
     Promise.all([
-      getMe().then(setUser),
-      getComments().then(setComments),
+      getMe().then(setUser).catch(() => setUser(null)),
+      getComments().then(setComments).catch(() => setComments([])),
     ]).finally(() => setIsLoading(false));
   }, []);
 

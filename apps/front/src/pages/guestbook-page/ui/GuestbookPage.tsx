@@ -28,7 +28,7 @@ export default function GuestbookPage() {
         자유롭게 방명록 남겨주세요 :)
       </Header>
       <CommentWriter
-        user={user!}
+        user={user}
         content={content}
         setContent={setContent}
         submitting={submitting}
