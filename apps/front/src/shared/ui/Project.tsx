@@ -37,7 +37,7 @@ const ThumbnailWrapper = styled.div`
   transition: transform 0.3s ease;
 
   & img {
-    width: 192px;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;

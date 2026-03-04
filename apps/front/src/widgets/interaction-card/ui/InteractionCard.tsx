@@ -77,12 +77,15 @@ const Img = styled.img<{ loaded: boolean }>`
 
   @media (max-width: 768px) {
     width: 200px;
+    height: 200px;
   }
   @media (max-width: 580px) {
     width: 175px;
+    height: 175px;
   }
   @media (max-width: 480px) {
     width: 150px;
+    height: 150px;
   }
 `;
 
