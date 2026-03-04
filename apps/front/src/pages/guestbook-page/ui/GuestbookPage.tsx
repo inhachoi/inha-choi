@@ -37,12 +37,16 @@ export default function GuestbookPage() {
       />
       {isLoading ? (
         <SkeletonList>
+          <ListHeaderSkeleton>
+            <Skeleton width="100px" height="16px" />
+          </ListHeaderSkeleton>
           {Array.from({ length: 3 }).map((_, i) => (
             <CommentSkeleton key={i}>
-              <AvatarSkeletonWrapper>
-                <Skeleton width="100%" height="100%" borderRadius="10px" />
-              </AvatarSkeletonWrapper>
-              <Skeleton width="100%" height="80px" borderRadius="10px" />
+              <Skeleton width="75px" height="75px" borderRadius="10px" />
+              <ItemBodySkeleton>
+                <Skeleton width="50%" height="14px" />
+                <Skeleton width="100%" height="48px" borderRadius="5px" />
+              </ItemBodySkeleton>
             </CommentSkeleton>
           ))}
         </SkeletonList>
@@ -70,29 +74,43 @@ const Container = styled.div`
 const SkeletonList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 0 10px;
+  gap: 30px;
   margin-top: 20px;
+`;
+
+const ListHeaderSkeleton = styled.div`
+  padding: 15px 10px 0 10px;
 `;
 
 const CommentSkeleton = styled.div`
   display: flex;
   gap: 20px;
+  padding: 0 10px;
   align-items: flex-start;
-`;
-
-const AvatarSkeletonWrapper = styled.div`
-  width: 75px;
-  height: 75px;
-  flex-shrink: 0;
 
   @media (max-width: 768px) {
-    width: 60px;
-    height: 60px;
+    gap: 15px;
   }
 
   @media (max-width: 480px) {
-    width: 45px;
-    height: 45px;
+    gap: 10px;
+  }
+`;
+
+const ItemBodySkeleton = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 15px;
+  background: var(--color-bg-hover);
+  border-radius: 10px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 5px;
   }
 `;

@@ -29,6 +29,8 @@ export function CommentWriter({
       <Avatar
         src={user?.avatarUrl || defaultUser}
         alt="프로필 사진"
+        width={75}
+        height={75}
         loading="lazy"
         style={!user && isDark ? { filter: "invert(1)" } : undefined}
       />
