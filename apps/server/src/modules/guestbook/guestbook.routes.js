@@ -46,4 +46,33 @@ router.post("/", requireAuth, async (req, res) => {
   });
 });
 
+router.get("/daily", async (req, res) => {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setHours(0, 0, 0, 0);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const comments = await GuestbookComment.find({
+    createdAt: { $gte: yesterday, $lt: today },
+  })
+    .sort({ createdAt: -1 })
+    .populate("user");
+
+  const result = comments.map((c) => ({
+    id: c._id.toString(),
+    content: c.content,
+    createdAt: c.createdAt,
+    user: {
+      id: c.user._id.toString(),
+      login: c.user.login,
+      avatarUrl: c.user.avatarUrl,
+      profileUrl: c.user.profileUrl,
+    },
+  }));
+
+  res.json({ count: result.length, comments: result });
+});
+
 export default router;
