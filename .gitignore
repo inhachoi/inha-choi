@@ -6,3 +6,5 @@ build
 .vscode
 .DS_Store
 .claude
+*-service-account.json
+inha-choi-blog-*.json

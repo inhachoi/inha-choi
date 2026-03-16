@@ -6,6 +6,7 @@ import authRoutes from "./modules/auth/auth.routes.js";
 import guestbookRoutes from "./modules/guestbook/guestbook.routes.js";
 import postsRoutes from "./modules/posts/posts.routes.js";
 import chatRoutes from "./modules/chat/chat.routes.js";
+import analyticsRoutes from "./modules/analytics/analytics.routes.js";
 
 const app = express();
 const allowedOrigins = ["http://localhost:5173", "https://www.gyeung-il.com"];
@@ -22,7 +23,7 @@ app.use(
       return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -33,5 +34,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/guestbook", guestbookRoutes);
 app.use("/api/posts", postsRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/analytics", analyticsRoutes);
 
 export default app;
