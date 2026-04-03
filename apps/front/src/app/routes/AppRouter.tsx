@@ -8,6 +8,7 @@ const MainPage = lazy(() => import("@/pages/main-page"));
 const PostsPage = lazy(() => import("@/pages/posts-page"));
 const GuestbookPage = lazy(() => import("@/pages/guestbook-page"));
 const ChatPage = lazy(() => import("@/pages/chat-page"));
+const GamesPage = lazy(() => import("@/pages/games-page"));
 const NotFoundPage = lazy(() => import("@/pages/not-found-page"));
 
 export function AppRouter() {
@@ -19,6 +20,7 @@ export function AppRouter() {
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/guestbook" element={<GuestbookPage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/games" element={<GamesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

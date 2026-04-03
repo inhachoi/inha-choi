@@ -13,6 +13,7 @@ export function NavigationBar() {
             <TextButton toGo="/posts">Posts</TextButton>
             <TextButton toGo="/guestbook">Guestbook</TextButton>
             <TextButton toGo="/chat">Chat</TextButton>
+            <TextButton toGo="/games">Games</TextButton>
           </TextButtonGroup>
 
           <ThemeToggleButton />
