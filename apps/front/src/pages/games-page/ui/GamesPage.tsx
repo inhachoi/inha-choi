@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 
 import MemoryCardGame from "./MemoryCardGame";
+import ReactionGame from "./ReactionGame";
 
-const GAMES = [{ id: "memory", label: "🃏 기억력 카드" }] as const;
+const GAMES = [
+  { id: "memory", label: "🃏 기억력 카드" },
+  { id: "reaction", label: "⚡ 반응속도" },
+] as const;
 
 type GameId = (typeof GAMES)[number]["id"];
 
+function isValidGameId(id: string): id is GameId {
+  return GAMES.some((g) => g.id === id);
+}
+
 export default function GamesPage() {
-  const [activeGame, setActiveGame] = useState<GameId>("memory");
+  const { gameId } = useParams<{ gameId: string }>();
+  const navigate = useNavigate();
+  const activeGame: GameId =
+    gameId && isValidGameId(gameId) ? gameId : "memory";
 
   return (
     <Container>
@@ -17,7 +28,7 @@ export default function GamesPage() {
           <Tab
             key={game.id}
             isActive={activeGame === game.id}
-            onClick={() => setActiveGame(game.id)}
+            onClick={() => navigate(`/games/${game.id}`)}
           >
             {game.label}
           </Tab>
@@ -26,6 +37,7 @@ export default function GamesPage() {
 
       <GameArea>
         {activeGame === "memory" && <MemoryCardGame />}
+        {activeGame === "reaction" && <ReactionGame />}
       </GameArea>
     </Container>
   );

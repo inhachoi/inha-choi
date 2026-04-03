@@ -3,7 +3,7 @@ import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const EMOJIS = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼"];
-const PREVIEW_SECONDS = 3;
+const PREVIEW_SECONDS = 5;
 
 interface CardDTO {
   id: number;
@@ -152,7 +152,9 @@ export default function MemoryCardGame() {
             isPreviewing={previewing}
             isWrong={wrongCards.includes(card.id)}
           >
-            <CardInner isRevealed={card.isFlipped || card.isMatched || previewing}>
+            <CardInner
+              isRevealed={card.isFlipped || card.isMatched || previewing}
+            >
               <CardBack>?</CardBack>
               <CardFront
                 isMatched={card.isMatched}
@@ -294,11 +296,11 @@ const CardFront = styled.div<{
   ${cardFaceBase}
   border: 2px solid
     ${({ isMatched, isJustMatched, isWrong }) => {
-      if (isWrong) return "#ef4444";
-      if (isJustMatched) return "#22c55e";
-      if (isMatched) return "var(--color-text-secondary)";
-      return "var(--color-border)";
-    }};
+    if (isWrong) return "#ef4444";
+    if (isJustMatched) return "#22c55e";
+    if (isMatched) return "var(--color-text-secondary)";
+    return "var(--color-border)";
+  }};
   background: ${({ isMatched, isJustMatched, isWrong }) => {
     if (isWrong) return "rgba(239, 68, 68, 0.15)";
     if (isJustMatched) return "rgba(34, 197, 94, 0.15)";
@@ -308,7 +310,9 @@ const CardFront = styled.div<{
   font-size: 2rem;
   transform: rotateY(180deg);
   user-select: none;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 
   @media (max-width: 480px) {
     font-size: 1.5rem;

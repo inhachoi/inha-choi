@@ -1,5 +1,5 @@
-import { lazy,Suspense } from "react";
-import { Route,Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import styled from "@emotion/styled";
 
 import { LoadingSpinner } from "@/shared/ui";
@@ -20,7 +20,8 @@ export function AppRouter() {
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/guestbook" element={<GuestbookPage />} />
           <Route path="/chat" element={<ChatPage />} />
-          <Route path="/games" element={<GamesPage />} />
+          <Route path="/games" element={<Navigate to="/games/memory" replace />} />
+          <Route path="/games/:gameId" element={<GamesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
