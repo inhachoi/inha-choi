@@ -43,7 +43,7 @@ jobs:
           sudo systemctl reload nginx
 
           # 5. PM2 재시작
-          pm2 restart all || pm2 start src/index.js --name server
+          pm2 restart server || pm2 start apps/server/src/server.js --name server
 
           echo "🚀 배포 완료"
           EOF
