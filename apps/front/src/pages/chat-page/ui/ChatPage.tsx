@@ -1,30 +1,27 @@
-import {
-  Avatar,
-  Button,
-  ChatContainer,
-  ConversationHeader,
-  Message,
-  MessageInput,
-  MessageList,
-  TypingIndicator,
-} from "@chatscope/chat-ui-kit-react";
+import { useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 
-import { choi } from "@/shared/assets";
 import { Header } from "@/shared/ui";
 
 import { useChat } from "../model";
 
+import { ChatHeader } from "./ChatHeader";
+import { ChatInput } from "./ChatInput";
+import { MessageBubble } from "./MessageBubble";
+import { TypingIndicator } from "./TypingIndicator";
+
+const INITIAL_MESSAGE =
+  "난 AI 최경일 챗봇이야.\n개발, 취미, 시덥잖은 이야기 뭐든 좋으니 편하게 말해줘ㅎㅎ";
+
 export default function ChatPage() {
-  const {
-    sendMessage,
-    messages,
-    loading,
-    input,
-    setInput,
-    streamingMessage,
-    resetChat,
-  } = useChat();
+  const { sendMessage, messages, loading, input, setInput, streamingMessage, resetChat } =
+    useChat();
+
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, streamingMessage, loading]);
 
   return (
     <Container>
@@ -35,65 +32,32 @@ export default function ChatPage() {
       </Header>
 
       <ChatContainerWrapper>
-        <ChatContainer>
-          <ConversationHeader>
-            <Avatar name="최경일" src={choi} />
-            <ConversationHeader.Content userName="최경일" info="ENTJ" />
-            <ConversationHeader.Actions>
-              <Button onClick={resetChat} disabled={loading}>
-                reset
-              </Button>
-            </ConversationHeader.Actions>
-          </ConversationHeader>
+        <ChatHeader onReset={resetChat} disabled={loading} />
 
-          <MessageList
-            typingIndicator={
-              loading ? <TypingIndicator content="답변 중..." /> : null
-            }
-          >
-            <Message
-              model={{
-                direction: "incoming",
-                message:
-                  "난 AI 최경일 챗봇이야. <br/>개발, 취미, 시덥잖은 이야기 뭐든 좋으니 편하게 말해줘ㅎㅎ",
-                position: "single",
-              }}
-            />
+        <MessageScrollArea>
+          <MessageList>
+            <MessageBubble role="assistant" content={INITIAL_MESSAGE} />
 
             {messages.map((msg, i) => (
-              <Message
-                key={i}
-                model={{
-                  direction: msg.role === "user" ? "outgoing" : "incoming",
-                  message: msg.content,
-                  position: "single",
-                }}
-              />
+              <MessageBubble key={i} role={msg.role} content={msg.content} />
             ))}
 
             {streamingMessage && (
-              <Message
-                model={{
-                  direction: "incoming",
-                  message: streamingMessage,
-                  position: "single",
-                }}
-              />
+              <MessageBubble role="assistant" content={streamingMessage} />
             )}
-          </MessageList>
 
-          <MessageInput
-            placeholder="메시지를 입력하세요"
-            value={input}
-            onChange={setInput}
-            onSend={sendMessage}
-            sendDisabled={loading}
-            attachButton={false}
-            fancyScroll
-            autoFocus
-            activateAfterChange
-          />
-        </ChatContainer>
+            {loading && !streamingMessage && <TypingIndicator />}
+
+            <div ref={bottomRef} />
+          </MessageList>
+        </MessageScrollArea>
+
+        <ChatInput
+          value={input}
+          onChange={setInput}
+          onSend={sendMessage}
+          disabled={loading}
+        />
       </ChatContainerWrapper>
     </Container>
   );
@@ -120,13 +84,36 @@ const Container = styled.div`
 `;
 
 const ChatContainerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  border: 2px solid var(--color-border);
-  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
   overflow: hidden;
+  background: var(--color-bg-primary);
+  box-shadow: 0 4px 24px var(--color-shadow);
+`;
 
-  .cs-message__html-content {
-    line-height: 1.5;
-    white-space: pre-wrap;
+const MessageScrollArea = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  background: var(--color-bg-primary);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const MessageList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 0;
+
+  @media (max-width: 480px) {
+    gap: 8px;
+    padding: 12px 0;
   }
 `;
