@@ -1,3 +1,9 @@
+## 프로젝트 규칙
+
+- Prettier, ESLint 설정 규칙을 준수할 것
+- 작업 후 파일 저장 시 코드 포맷 적용할 것
+- FE 아키텍처는 FSD, BE는 DDD-lite 구조를 따를 것
+
 <!-- intent-skills:start -->
 ## Skill Loading
 
@@ -7,3 +13,4 @@ Before substantial work:
 - Monorepos: when working across packages, run the skill check from the workspace root and prefer the local skill for the package being changed.
 - Multiple matches: prefer the most specific local skill for the package or concern you are changing; load additional skills only when the task spans multiple packages or concerns.
 <!-- intent-skills:end -->
+ 
