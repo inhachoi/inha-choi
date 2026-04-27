@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { NavLink } from "react-router-dom";
 import styled from "@emotion/styled";
+import { Link } from "@tanstack/react-router";
 
 interface Props {
   children: ReactNode;
@@ -11,7 +11,7 @@ export function TextButton({ children, toGo }: Props) {
   return <Container to={toGo}>{children}</Container>;
 }
 
-const Container = styled(NavLink)`
+const Container = styled(Link)`
   cursor: pointer;
   position: relative;
   text-decoration: none;
@@ -35,7 +35,7 @@ const Container = styled(NavLink)`
     }
   }
 
-  &.active {
+  &[data-status="active"] {
     &::after {
       width: 100%;
     }

@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
+import { useNavigate } from "@tanstack/react-router";
 
 import { logo } from "../assets";
 
@@ -10,7 +10,7 @@ export function LogoButton() {
     <Img
       src={logo}
       alt="홈페이지 로고"
-      onClick={() => navigate("/")}
+      onClick={() => navigate({ to: "/" })}
       loading="lazy"
     />
   );

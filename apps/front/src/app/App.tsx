@@ -1,20 +1,9 @@
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider } from "@tanstack/react-router";
 
-import { Footer,NavigationBar } from "@/widgets";
-
-import { AppRouter } from "./routes/AppRouter";
-import { GlobalStyles } from "./styles/GlobalStyles";
+import { router } from "./router";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <GlobalStyles />
-
-      <NavigationBar />
-      <AppRouter />
-      <Footer />
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
