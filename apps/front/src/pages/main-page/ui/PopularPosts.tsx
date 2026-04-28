@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { formatYearMonth } from "@/shared/lib";
+import { formatYearMonth, linkToSlug } from "@/shared/lib";
 import { Article, Skeleton, Title } from "@/shared/ui";
 
 import { usePopularPosts } from "../model";
@@ -29,10 +29,11 @@ export function PopularPosts() {
             <Article
               key={post.link}
               title={post.title}
-              link={post.link}
               thumbnail={post.thumbnail}
               likes={post.likes}
               released_at={formatYearMonth(post.released_at)}
+              to="/$slug"
+              params={{ slug: linkToSlug(post.link) }}
             />
           ))}
     </Container>

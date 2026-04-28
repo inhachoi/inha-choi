@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { formatYearMonth } from "@/shared/lib";
+import { formatYearMonth, linkToSlug } from "@/shared/lib";
 import { Article } from "@/shared/ui";
 
 import { usePostsVirtualizer } from "../model";
@@ -25,10 +25,11 @@ export const PostsList = () => {
           >
             <Article
               title={post.title}
-              link={post.link}
               thumbnail={post.thumbnail}
               likes={post.likes}
               released_at={formatYearMonth(post.released_at)}
+              to="/posts/$slug"
+              params={{ slug: linkToSlug(post.link) }}
             />
           </Row>
         );
