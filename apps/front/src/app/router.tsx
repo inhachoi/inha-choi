@@ -12,14 +12,20 @@ const rootRoute = createRootRoute({
   component: RootLayout,
 });
 
-const indexRoute = createRoute({
+// pathless layout route — renders MainPage for both / and /$slug
+const mainLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/",
+  id: "mainLayout",
   component: lazyRouteComponent(() => import("@/pages/main-page")),
 });
 
+const indexRoute = createRoute({
+  getParentRoute: () => mainLayoutRoute,
+  path: "/",
+});
+
 const indexPostModalRoute = createRoute({
-  getParentRoute: () => indexRoute,
+  getParentRoute: () => mainLayoutRoute,
   path: "$slug",
   component: lazyRouteComponent(
     () => import("@/pages/main-page/ui/PostModal"),
@@ -78,7 +84,7 @@ const splatRoute = createRoute({
 });
 
 const routeTree = rootRoute.addChildren([
-  indexRoute.addChildren([indexPostModalRoute]),
+  mainLayoutRoute.addChildren([indexRoute, indexPostModalRoute]),
   postsRoute.addChildren([postsPostModalRoute]),
   guestbookRoute,
   chatRoute,
