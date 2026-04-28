@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Outlet } from "@tanstack/react-router";
 
 import { Contribution } from "./Contribution";
 import { Introduce } from "./Introduce";
@@ -14,6 +15,7 @@ export default function MainPage() {
         <PopularPosts />
         <Contribution />
       </Content>
+      <Outlet />
     </Container>
   );
 }
