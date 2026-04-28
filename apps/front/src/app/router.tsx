@@ -18,10 +18,26 @@ const indexRoute = createRoute({
   component: lazyRouteComponent(() => import("@/pages/main-page")),
 });
 
+const indexPostModalRoute = createRoute({
+  getParentRoute: () => indexRoute,
+  path: "$slug",
+  component: lazyRouteComponent(
+    () => import("@/pages/main-page/ui/PostModal"),
+  ),
+});
+
 const postsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/posts",
   component: lazyRouteComponent(() => import("@/pages/posts-page")),
+});
+
+const postsPostModalRoute = createRoute({
+  getParentRoute: () => postsRoute,
+  path: "$slug",
+  component: lazyRouteComponent(
+    () => import("@/pages/posts-page/ui/PostModal"),
+  ),
 });
 
 const guestbookRoute = createRoute({
@@ -62,8 +78,8 @@ const splatRoute = createRoute({
 });
 
 const routeTree = rootRoute.addChildren([
-  indexRoute,
-  postsRoute,
+  indexRoute.addChildren([indexPostModalRoute]),
+  postsRoute.addChildren([postsPostModalRoute]),
   guestbookRoute,
   chatRoute,
   gamesRoute.addChildren([gamesIndexRoute, gamesGameIdRoute]),
