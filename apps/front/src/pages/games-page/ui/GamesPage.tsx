@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
 import styled from "@emotion/styled";
+import { useNavigate, useParams } from "@tanstack/react-router";
 
 import MemoryCardGame from "./MemoryCardGame";
 import ReactionGame from "./ReactionGame";
@@ -16,10 +16,9 @@ function isValidGameId(id: string): id is GameId {
 }
 
 export default function GamesPage() {
-  const { gameId } = useParams<{ gameId: string }>();
+  const { gameId } = useParams({ from: "/games/$gameId" });
   const navigate = useNavigate();
-  const activeGame: GameId =
-    gameId && isValidGameId(gameId) ? gameId : "memory";
+  const activeGame: GameId = isValidGameId(gameId) ? gameId : "memory";
 
   return (
     <Container>
@@ -28,7 +27,7 @@ export default function GamesPage() {
           <Tab
             key={game.id}
             isActive={activeGame === game.id}
-            onClick={() => navigate(`/games/${game.id}`)}
+            onClick={() => navigate({ to: "/games/$gameId", params: { gameId: game.id } })}
           >
             {game.label}
           </Tab>

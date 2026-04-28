@@ -1,32 +1,34 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
-import { overlay } from "overlay-kit";
+import { Link } from "@tanstack/react-router";
 
 import { HeartIcon } from "../assets";
 
 import { Date } from "./Date";
-import { IframeModal } from "./IframeModal";
 import { Skeleton } from "./Skeleton";
 
 interface Props {
   title: string;
-  link: string;
   thumbnail: string;
   likes: number;
   released_at: string;
+  to: string;
+  params: Record<string, string>;
 }
 
-export function Article({ title, link, thumbnail, likes, released_at }: Props) {
+export function Article({
+  title,
+  thumbnail,
+  likes,
+  released_at,
+  to,
+  params,
+}: Props) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <Container
-      onClick={() => {
-        overlay.open(({ isOpen, close }) => (
-          <IframeModal url={link} isOpen={isOpen} onClose={close} />
-        ));
-      }}
-    >
+    // params type can't be statically inferred from dynamic `to`, safe at runtime
+    <Container to={to} params={params as never}>
       <ThumbnailWrapper>
         {!loaded && <Skeleton width="100%" height="100%" borderRadius="0" />}
         <Thumbnail
@@ -53,7 +55,7 @@ export function Article({ title, link, thumbnail, likes, released_at }: Props) {
   );
 }
 
-const Container = styled.div`
+const Container = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,6 +68,7 @@ const Container = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   color: var(--color-text-primary);
+  text-decoration: none;
 
   transition:
     transform 0.25s ease,

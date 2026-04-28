@@ -4,9 +4,9 @@ import {
   boolock,
   dongnaebangnae,
   inhachoi,
-  refreigerator,
   MdnIcon,
   ReactIcon,
+  refreigerator,
 } from "@/shared/assets";
 
 export const PROJECTS = [

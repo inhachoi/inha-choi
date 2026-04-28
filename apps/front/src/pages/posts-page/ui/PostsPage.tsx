@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Outlet } from "@tanstack/react-router";
 
 import { PostsList } from "./PostsList";
 
@@ -10,6 +11,7 @@ export default function PostsPage() {
         <PostsCount>26 posts</PostsCount>
         <PostsList />
       </PostsLayout>
+      <Outlet />
     </Container>
   );
 }

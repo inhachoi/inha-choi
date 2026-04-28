@@ -12,6 +12,7 @@
     "concurrently": "^9.2.1"
   },
   "dependencies": {
+    "@tanstack/router": "0.0.1-beta.53",
     "react-error-boundary": "^6.0.0"
   }
 }
