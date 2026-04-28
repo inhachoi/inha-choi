@@ -38,3 +38,7 @@
 
 close #이슈번호 (해당되는 경우)
 ```
+
+## 환경 설정
+
+- gh CLI 경로: `C:\Program Files\GitHub CLI`
