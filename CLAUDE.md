@@ -16,6 +16,20 @@
 - 커밋은 작업 단위로 세분화할 것
 - 새 패키지 추가 시 반드시 `pnpm add` 사용할 것 (npm, yarn 금지)
 
+## 커밋 규칙
+
+형식:
+
+```
+<type>: <한 줄 요약>
+
+- 세부 내용 1
+- 세부 내용 2
+```
+
+- type 예시: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`
+- 요약 다음 한 줄 띄고 bullet point로 세부 내용 나열
+
 ## PR 생성 규칙
 
 "PR 올려줘" 요청 시 아래를 따를 것:
