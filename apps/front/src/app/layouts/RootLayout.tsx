@@ -1,20 +1,16 @@
 import styled from "@emotion/styled";
 import { Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
-import { GlobalStyles } from "@/app/styles/GlobalStyles";
 import { Footer, NavigationBar } from "@/widgets";
 
 export function RootLayout() {
   return (
     <>
-      <GlobalStyles />
       <NavigationBar />
       <PageLayout>
         <Outlet />
       </PageLayout>
       <Footer />
-      {import.meta.env.DEV && <TanStackRouterDevtools />}
     </>
   );
 }
