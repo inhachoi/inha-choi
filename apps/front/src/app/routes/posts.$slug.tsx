@@ -35,20 +35,21 @@ export const Route = createFileRoute("/posts/$slug")({
     return fetchVelogPost(params.slug);
   },
   head: ({ loaderData }) => {
-    const title = loaderData?.title
+    const tabTitle = loaderData?.title
       ? `${loaderData.title} | 개발자 최경일`
       : "블로그 | 개발자 최경일";
+    const ogTitle = loaderData?.title ?? "블로그 | 개발자 최경일";
     const description = loaderData?.short_description ?? "최경일의 개발 블로그";
     const image = loaderData?.thumbnail ?? FALLBACK_IMAGE;
 
     return {
       meta: [
-        { title },
+        { title: tabTitle },
         { key: "description", name: "description", content: description },
-        { key: "og:title", property: "og:title", content: title },
+        { key: "og:title", property: "og:title", content: ogTitle },
         { key: "og:description", property: "og:description", content: description },
         { key: "og:image", property: "og:image", content: image },
-        { key: "twitter:title", name: "twitter:title", content: title },
+        { key: "twitter:title", name: "twitter:title", content: ogTitle },
         { key: "twitter:description", name: "twitter:description", content: description },
         { key: "twitter:image", name: "twitter:image", content: image },
       ],
