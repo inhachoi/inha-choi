@@ -30,7 +30,10 @@ async function fetchVelogPost(slug: string) {
 }
 
 export const Route = createFileRoute("/_mainLayout/$slug")({
-  loader: ({ params }) => fetchVelogPost(params.slug),
+  loader: ({ params }) => {
+    if (typeof window !== "undefined") return null;
+    return fetchVelogPost(params.slug);
+  },
   head: ({ loaderData }) => {
     const title = loaderData?.title
       ? `${loaderData.title} | 개발자 최경일`
