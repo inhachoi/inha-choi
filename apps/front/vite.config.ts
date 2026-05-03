@@ -6,7 +6,7 @@ import svgr from "vite-plugin-svgr";
 
 const __dirname = path.dirname(__filename);
 
-const STATIC_PAGES = ["/", "/posts", "/guestbook", "/chat", "/games"];
+const STATIC_PAGES = ["/", "/posts", "/guestbook", "/chat", "/games", "/games/memory", "/games/reaction"];
 
 async function fetchAllVelogSlugs(): Promise<string[]> {
   const slugs: string[] = [];
