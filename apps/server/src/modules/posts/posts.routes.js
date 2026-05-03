@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
             title
             url_slug
             thumbnail
+            short_description
             likes
             released_at
           }
@@ -49,6 +50,7 @@ router.get("/", async (req, res) => {
         title: p.title,
         link: `https://velog.io/@chlruddlf73/${p.url_slug}`,
         thumbnail: p.thumbnail,
+        description: p.short_description,
         likes: p.likes,
         released_at: p.released_at,
       })),
