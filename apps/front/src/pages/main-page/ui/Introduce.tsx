@@ -7,7 +7,7 @@ import { FOOD_NAMES } from "../config";
 
 export function Introduce() {
   return (
-    <Container>
+    <Container data-nosnippet>
       <Content>
         <GlitchText>
           안녕하세요! <br />
