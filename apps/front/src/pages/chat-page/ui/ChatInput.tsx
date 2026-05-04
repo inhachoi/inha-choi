@@ -20,7 +20,7 @@ export function ChatInput({ value, onChange, onSend, disabled }: Props) {
   }, [value]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -30,6 +30,10 @@ export function ChatInput({ value, onChange, onSend, disabled }: Props) {
     const trimmed = value.trim();
     if (!trimmed || disabled) return;
     onSend(trimmed);
+    // IME 조합 중인 마지막 글자가 DOM에 잔류하는 것을 막기 위해 직접 초기화
+    if (textareaRef.current) {
+      textareaRef.current.value = "";
+    }
   };
 
   return (
