@@ -42,9 +42,6 @@ importers:
       '@tanstack/react-virtual':
         specifier: ^3.13.18
         version: 3.13.18(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@toss/tds-colors':
-        specifier: ^0.1.0
-        version: 0.1.0
       motion:
         specifier: ^12.23.25
         version: 12.23.25(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -1044,9 +1041,6 @@ packages:
     resolution: {integrity: sha512-olW33+Cn+bsCsZKPwEGhlkqS6w3M2slFv11JIobdnCFKMLG97oAI2kWKdx5/zsywTL8flpnoIgaZZPlQTFYhdQ==}
     engines: {node: '>=20.19'}
     hasBin: true
-
-  '@toss/tds-colors@0.1.0':
-    resolution: {integrity: sha512-NVV6vpcqobw8NBD7EKFS+muvmiyDsUItzzko9ib2RufU2DywlSb4A/4EyBO9EFV/Ff28ODrWySIuS6MjzDpiPw==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -4114,8 +4108,6 @@ snapshots:
   '@tanstack/virtual-core@3.13.18': {}
 
   '@tanstack/virtual-file-routes@1.161.7': {}
-
-  '@toss/tds-colors@0.1.0': {}
 
   '@types/babel__core@7.20.5':
     dependencies:

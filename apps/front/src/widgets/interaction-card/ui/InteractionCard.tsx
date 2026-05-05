@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
-import { colors } from "@toss/tds-colors";
 
 import { Skeleton } from "@/shared/ui";
 
@@ -73,7 +72,7 @@ const Img = styled.img<{ loaded: boolean }>`
   position: ${({ loaded }) => (loaded ? "static" : "absolute")};
   transition: opacity 0.3s ease;
   border-radius: 100%;
-  box-shadow: 2px 10px 20px ${colors.grey400};
+  box-shadow: 2px 10px 20px #b0b8c1;
 
   @media (max-width: 768px) {
     width: 200px;
