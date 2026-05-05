@@ -5,6 +5,22 @@
 - 각 슬라이스는 index.ts (Public API)를 통해서만 외부에 노출할 것
 - 슬라이스 간 직접 import 금지 (같은 레이어 내 cross-import 금지)
 
+## 기술 스택
+
+- 클라이언트 상태: Zustand
+- 스타일링: Emotion (`@emotion/react`, `@emotion/styled`)
+- 서버 상태 / 캐싱: TanStack Query
+- 라우팅: TanStack Router (TanStack Start 기반)
+- 가상화: TanStack Virtual
+- 애니메이션: Motion (Framer Motion)
+- 모달 / 오버레이: overlay-kit
+- 에러 트래킹: Sentry
+
+## 스타일 규칙
+
+- 컬러 토큰: CSS 커스텀 변수(`--color-*`) 사용
+- 다크모드: `data-theme="dark"` 속성 기반 (Zustand `useTheme` 스토어로 제어)
+
 ## 작업 규칙
 
 - 작업 후 반드시 `pnpm --filter front lint --fix` 실행할 것
