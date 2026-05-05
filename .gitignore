@@ -6,6 +6,6 @@ build
 .env.local
 .vscode
 .DS_Store
-.claude/settings.local.json
+.claude/settings.json
 *-service-account.json
 inha-choi-blog-*.json
