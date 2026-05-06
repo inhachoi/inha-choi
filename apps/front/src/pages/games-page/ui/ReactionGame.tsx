@@ -1,163 +1,23 @@
-import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 
-const TOTAL_ROUNDS = 3;
-const AUTO_ADVANCE_SECONDS = 3;
-
-// 일반 인구 기준 반응속도 분포 [ms, 상위 %]
-// 출처: 반응속도 관련 연구 논문 평균 (일반 성인 기준, 평균 약 250ms)
-// 상위 X% = 전체 중 상위 X%에 속함 (낮을수록 빠름)
-const PERCENTILE_TABLE: [number, number][] = [
-  [0, 1],
-  [150, 1],
-  [170, 3],
-  [190, 8],
-  [210, 15],
-  [230, 25],
-  [250, 40],
-  [270, 55],
-  [300, 70],
-  [340, 82],
-  [390, 91],
-  [470, 96],
-  [600, 99],
-  [Infinity, 100],
-];
-
-type GameState = "idle" | "waiting" | "active" | "result" | "done";
-
-function getTopPercent(ms: number): number {
-  for (let i = 0; i < PERCENTILE_TABLE.length - 1; i++) {
-    const [ms1, p1] = PERCENTILE_TABLE[i];
-    const [ms2, p2] = PERCENTILE_TABLE[i + 1];
-    if (ms <= ms2) {
-      const t = (ms - ms1) / (ms2 - ms1);
-      return Math.round(p1 + t * (p2 - p1));
-    }
-  }
-  return 100;
-}
-
-function getAverage(records: number[]) {
-  return Math.round(records.reduce((a, b) => a + b, 0) / records.length);
-}
-
-function getBest(records: number[]) {
-  return Math.min(...records);
-}
+import { getAverage, getBest, getTopPercent,TOTAL_ROUNDS } from "../lib";
+import { useReactionGame } from "../model";
 
 export default function ReactionGame() {
-  const [gameState, setGameState] = useState<GameState>("idle");
-  const [round, setRound] = useState(1);
-  const [records, setRecords] = useState<number[]>([]);
-  const [currentResult, setCurrentResult] = useState<number | null>(null);
-  const [earlyClick, setEarlyClick] = useState(false);
-  const [waitingAttempt, setWaitingAttempt] = useState(0);
-  const [resultCountdown, setResultCountdown] = useState(AUTO_ADVANCE_SECONDS);
-  const startTimeRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (gameState !== "waiting") return;
-    const delay = Math.random() * 3000 + 1000;
-    const t = setTimeout(() => {
-      startTimeRef.current = Date.now();
-      setGameState("active");
-    }, delay);
-    return () => clearTimeout(t);
-  }, [gameState, waitingAttempt]);
-
-  useEffect(() => {
-    if (gameState !== "result") return;
-    const advanceTimer = setTimeout(() => {
-      if (round >= TOTAL_ROUNDS) {
-        setGameState("done");
-      } else {
-        setRound((r) => r + 1);
-        setResultCountdown(AUTO_ADVANCE_SECONDS);
-        setCurrentResult(null);
-        setEarlyClick(false);
-        setGameState("waiting");
-      }
-    }, AUTO_ADVANCE_SECONDS * 1000);
-    const countdownInterval = setInterval(() => {
-      setResultCountdown((c) => Math.max(0, c - 1));
-    }, 1000);
-    return () => {
-      clearTimeout(advanceTimer);
-      clearInterval(countdownInterval);
-    };
-  }, [gameState, round]);
-
-  const startGame = useCallback(() => {
-    setGameState("waiting");
-    setRound(1);
-    setRecords([]);
-    setCurrentResult(null);
-    setEarlyClick(false);
-    setWaitingAttempt(0);
-    setResultCountdown(AUTO_ADVANCE_SECONDS);
-  }, []);
-
-  const handleBoxClick = useCallback(() => {
-    if (gameState === "idle") {
-      startGame();
-    } else if (gameState === "waiting") {
-      setEarlyClick(true);
-      setWaitingAttempt((a) => a + 1);
-    } else if (gameState === "active") {
-      const elapsed = Date.now() - (startTimeRef.current ?? Date.now());
-      setCurrentResult(elapsed);
-      setRecords((prev) => [...prev, elapsed]);
-      setResultCountdown(AUTO_ADVANCE_SECONDS);
-      setGameState("result");
-    }
-  }, [gameState, startGame]);
-
-  const reset = () => {
-    setGameState("idle");
-    setRound(1);
-    setRecords([]);
-    setCurrentResult(null);
-    setEarlyClick(false);
-    setWaitingAttempt(0);
-    setResultCountdown(AUTO_ADVANCE_SECONDS);
-  };
+  const {
+    gameState,
+    round,
+    records,
+    earlyClick,
+    bgColor,
+    mainText,
+    subText,
+    handleBoxClick,
+    reset,
+  } = useReactionGame();
 
   const isBoxClickable =
     gameState === "idle" || gameState === "waiting" || gameState === "active";
-
-  const bgColor =
-    gameState === "idle"
-      ? "#000"
-      : gameState === "waiting"
-        ? "#ef4444"
-        : gameState === "active"
-          ? "#22c55e"
-          : undefined;
-
-  const mainText = () => {
-    switch (gameState) {
-      case "idle":
-        return "시작";
-      case "waiting":
-        return "기다리세요...";
-      case "active":
-        return "지금!";
-      case "result":
-        return currentResult !== null ? `${currentResult}ms` : "";
-      case "done":
-        return "";
-    }
-  };
-
-  const subText = () => {
-    if (earlyClick && gameState === "waiting") return "너무 빨라요!";
-    if (gameState === "result")
-      return `${resultCountdown}초 후 ${round >= TOTAL_ROUNDS ? "결과" : "다음 라운드"}`;
-    if (gameState === "waiting" && !earlyClick)
-      return "초록색으로 바뀌면 클릭하세요";
-    return "";
-  };
 
   return (
     <Wrapper>
@@ -175,18 +35,15 @@ export default function ReactionGame() {
           bgColor={bgColor}
           isClickable={isBoxClickable}
         >
-            <MainText
-            isActive={gameState === "active"}
-            onColoredBg={gameState !== "result"}
-          >
-            {mainText()}
+          <MainText isActive={gameState === "active"} onColoredBg={gameState !== "result"}>
+            {mainText}
           </MainText>
           {gameState !== "idle" && (
             <SubText
               isWarning={earlyClick && gameState === "waiting"}
               onColoredBg={gameState === "waiting" || gameState === "active"}
             >
-              {subText()}
+              {subText}
             </SubText>
           )}
         </GameBox>
@@ -258,7 +115,6 @@ const GameBox = styled.div<{ bgColor?: string; isClickable: boolean }>`
   transition: background-color 0.15s ease;
   user-select: none;
 `;
-
 
 const MainText = styled.div<{ isActive: boolean; onColoredBg: boolean }>`
   font-size: ${({ isActive }) => (isActive ? "3rem" : "2rem")};

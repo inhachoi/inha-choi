@@ -1,27 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
 import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
-const EMOJIS = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼"];
-const PREVIEW_SECONDS = 5;
-
-interface CardDTO {
-  id: number;
-  emoji: string;
-  isFlipped: boolean;
-  isMatched: boolean;
-}
-
-function createCards(): CardDTO[] {
-  const doubled = [...EMOJIS, ...EMOJIS];
-  const shuffled = doubled.sort(() => Math.random() - 0.5);
-  return shuffled.map((emoji, i) => ({
-    id: i,
-    emoji,
-    isFlipped: false,
-    isMatched: false,
-  }));
-}
+import { useMemoryGame } from "../model";
 
 function formatTime(s: number) {
   const m = Math.floor(s / 60);
@@ -30,115 +10,24 @@ function formatTime(s: number) {
 }
 
 export default function MemoryCardGame() {
-  const [cards, setCards] = useState<CardDTO[]>(createCards);
-  const [flipped, setFlipped] = useState<number[]>([]);
-  const [moves, setMoves] = useState(0);
-  const [isChecking, setIsChecking] = useState(false);
-  const [time, setTime] = useState(0);
-  const [started, setStarted] = useState(false);
-  const [previewing, setPreviewing] = useState(true);
-  const [previewCountdown, setPreviewCountdown] = useState(PREVIEW_SECONDS);
-  const [wrongCards, setWrongCards] = useState<number[]>([]);
-  const [justMatchedCards, setJustMatchedCards] = useState<number[]>([]);
-
-  const won = cards.length > 0 && cards.every((c) => c.isMatched);
-
-  useEffect(() => {
-    if (!previewing) return;
-    const totalTimer = setTimeout(() => {
-      setPreviewing(false);
-    }, PREVIEW_SECONDS * 1000);
-    const countdownInterval = setInterval(() => {
-      setPreviewCountdown((c) => Math.max(0, c - 1));
-    }, 1000);
-    return () => {
-      clearTimeout(totalTimer);
-      clearInterval(countdownInterval);
-    };
-  }, [previewing]);
-
-  useEffect(() => {
-    if (!started || won) return;
-    const interval = setInterval(() => setTime((t) => t + 1), 1000);
-    return () => clearInterval(interval);
-  }, [started, won]);
-
-  const handleCardClick = useCallback(
-    (id: number) => {
-      if (previewing || isChecking) return;
-      const card = cards[id];
-      if (card.isFlipped || card.isMatched) return;
-      if (flipped.length === 2) return;
-
-      if (!started) setStarted(true);
-
-      const newFlipped = [...flipped, id];
-      setCards((prev) =>
-        prev.map((c) => (c.id === id ? { ...c, isFlipped: true } : c)),
-      );
-      setFlipped(newFlipped);
-
-      if (newFlipped.length === 2) {
-        setMoves((m) => m + 1);
-        setIsChecking(true);
-        const [a, b] = newFlipped;
-
-        const FLIP_DURATION = 400;
-
-        if (cards[a].emoji === cards[b].emoji) {
-          setTimeout(() => {
-            setJustMatchedCards([a, b]);
-            setTimeout(() => {
-              setCards((prev) =>
-                prev.map((c) =>
-                  c.id === a || c.id === b ? { ...c, isMatched: true } : c,
-                ),
-              );
-              setJustMatchedCards([]);
-              setFlipped([]);
-              setIsChecking(false);
-            }, 600);
-          }, FLIP_DURATION);
-        } else {
-          setTimeout(() => {
-            setWrongCards([a, b]);
-            setTimeout(() => {
-              setCards((prev) =>
-                prev.map((c) =>
-                  c.id === a || c.id === b ? { ...c, isFlipped: false } : c,
-                ),
-              );
-              setWrongCards([]);
-              setFlipped([]);
-              setIsChecking(false);
-            }, 600);
-          }, FLIP_DURATION);
-        }
-      }
-    },
-    [cards, flipped, isChecking, previewing, started],
-  );
-
-  const reset = () => {
-    setCards(createCards());
-    setFlipped([]);
-    setMoves(0);
-    setIsChecking(false);
-    setTime(0);
-    setStarted(false);
-    setPreviewing(true);
-    setPreviewCountdown(PREVIEW_SECONDS);
-    setWrongCards([]);
-    setJustMatchedCards([]);
-  };
+  const {
+    cards,
+    moves,
+    time,
+    previewing,
+    previewCountdown,
+    won,
+    wrongCards,
+    justMatchedCards,
+    handleCardClick,
+    reset,
+  } = useMemoryGame();
 
   return (
     <Wrapper>
       <Stats>
         <StatItem>
-          {previewing
-            ? `🕐 ${previewCountdown}초 후 시작`
-            : `⏱ ${formatTime(time)}`}
+          {previewing ? `🕐 ${previewCountdown}초 후 시작` : `⏱ ${formatTime(time)}`}
         </StatItem>
         <StatItem>🔄 {moves}회</StatItem>
         <ResetButton onClick={reset}>새 게임</ResetButton>
@@ -152,9 +41,7 @@ export default function MemoryCardGame() {
             isPreviewing={previewing}
             isWrong={wrongCards.includes(card.id)}
           >
-            <CardInner
-              isRevealed={card.isFlipped || card.isMatched || previewing}
-            >
+            <CardInner isRevealed={card.isFlipped || card.isMatched || previewing}>
               <CardBack>?</CardBack>
               <CardFront
                 isMatched={card.isMatched}
@@ -258,8 +145,7 @@ const CardInner = styled.div<{ isRevealed: boolean }>`
   height: 100%;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
-  transform: ${({ isRevealed }) =>
-    isRevealed ? "rotateY(180deg)" : "rotateY(0deg)"};
+  transform: ${({ isRevealed }) => (isRevealed ? "rotateY(180deg)" : "rotateY(0deg)")};
 `;
 
 const cardFaceBase = css`
@@ -296,11 +182,11 @@ const CardFront = styled.div<{
   ${cardFaceBase}
   border: 2px solid
     ${({ isMatched, isJustMatched, isWrong }) => {
-    if (isWrong) return "#ef4444";
-    if (isJustMatched) return "#22c55e";
-    if (isMatched) return "var(--color-text-secondary)";
-    return "var(--color-border)";
-  }};
+      if (isWrong) return "#ef4444";
+      if (isJustMatched) return "#22c55e";
+      if (isMatched) return "var(--color-text-secondary)";
+      return "var(--color-border)";
+    }};
   background: ${({ isMatched, isJustMatched, isWrong }) => {
     if (isWrong) return "rgba(239, 68, 68, 0.15)";
     if (isJustMatched) return "rgba(34, 197, 94, 0.15)";
