@@ -1,14 +1,9 @@
-import { useEffect } from "react";
 import styled from "@emotion/styled";
 
 import { useTheme } from "@/shared/model";
 
 export function ThemeToggleButton() {
-  const { isDark, toggle, syncFromStorage } = useTheme();
-
-  useEffect(() => {
-    syncFromStorage();
-  }, [syncFromStorage]);
+  const { isDark, toggle } = useTheme();
 
   return (
     <Button
