@@ -7,36 +7,88 @@ on:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install @lhci/cli
+        run: npm install -g @lhci/cli
 
-      - name: Build
-        run: pnpm --filter front build
+      # ── 1. base(main) 측정 ────────────────────────────────────
+      - name: Checkout base branch
+        run: git checkout ${{ github.base_ref }}
 
-      - name: Start preview server
+      - name: Install & build (base)
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm --filter front build
+
+      - name: Start preview server (base)
         run: pnpm --filter front preview &
 
-      - name: Wait for server to be ready
+      - name: Wait for server (base)
         run: npx wait-on@latest http://localhost:4173 --timeout 30000
 
-      - name: Run Lighthouse CI
-        uses: treosh/lighthouse-ci-action@v11
+      - name: Collect Lighthouse (base)
+        run: |
+          lhci collect \
+            --url=http://localhost:4173/ \
+            --url=http://localhost:4173/posts \
+            --url=http://localhost:4173/chat \
+            --url=http://localhost:4173/games \
+            --url=http://localhost:4173/guestbook \
+            --numberOfRuns=1 \
+            --settings.chromeFlags="--no-sandbox"
+          mv .lighthouseci base-results
+
+      - name: Kill preview server
+        run: fuser -k 4173/tcp || true
+
+      # ── 2. PR branch 측정 ─────────────────────────────────────
+      - name: Checkout PR branch
+        run: git checkout ${{ github.head_ref }}
+
+      - name: Install & build (PR)
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm --filter front build
+
+      - name: Start preview server (PR)
+        run: pnpm --filter front preview &
+
+      - name: Wait for server (PR)
+        run: npx wait-on@latest http://localhost:4173 --timeout 30000
+
+      - name: Collect Lighthouse (PR)
+        run: |
+          lhci collect \
+            --url=http://localhost:4173/ \
+            --url=http://localhost:4173/posts \
+            --url=http://localhost:4173/chat \
+            --url=http://localhost:4173/games \
+            --url=http://localhost:4173/guestbook \
+            --numberOfRuns=1 \
+            --settings.chromeFlags="--no-sandbox"
+          mv .lighthouseci pr-results
+
+      # ── 3. 비교 코멘트 게시 ───────────────────────────────────
+      - name: Generate comparison comment
+        id: comment
+        run: node .github/scripts/lighthouse-comment.mjs
+
+      - name: Post PR comment
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          urls: |
-            http://localhost:4173/
-            http://localhost:4173/posts
-            http://localhost:4173/guestbook
-          uploadArtifacts: true
-          temporaryPublicStorage: true
+          header: lighthouse
+          message: ${{ steps.comment.outputs.comment }}
