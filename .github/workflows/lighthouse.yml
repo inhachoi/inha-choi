@@ -49,7 +49,7 @@ jobs:
             --url=http://localhost:4173/games \
             --url=http://localhost:4173/guestbook \
             --numberOfRuns=1 \
-            --settings.chromeFlags="--no-sandbox"
+            --settings.chromeFlags="--no-sandbox --disable-dev-shm-usage"
           mv .lighthouseci base-results
 
       - name: Kill preview server
@@ -79,7 +79,7 @@ jobs:
             --url=http://localhost:4173/games \
             --url=http://localhost:4173/guestbook \
             --numberOfRuns=1 \
-            --settings.chromeFlags="--no-sandbox"
+            --settings.chromeFlags="--no-sandbox --disable-dev-shm-usage"
           mv .lighthouseci pr-results
 
       # ── 3. 비교 코멘트 게시 ───────────────────────────────────

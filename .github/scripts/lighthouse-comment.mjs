@@ -1,4 +1,4 @@
-import { readFileSync, appendFileSync } from "fs";
+import { readFileSync, readdirSync, appendFileSync } from "fs";
 
 const PAGES = ["/", "/posts", "/chat", "/games", "/guestbook"];
 
@@ -9,19 +9,39 @@ const CATEGORIES = [
   { key: "seo", label: "SEO" },
 ];
 
-function readManifest(dir) {
-  const manifest = JSON.parse(readFileSync(`./${dir}/manifest.json`, "utf-8"));
+function readResults(dir) {
   const results = {};
+  const dirPath = `./${dir}`;
 
-  for (const entry of manifest) {
-    const path = new URL(entry.url).pathname || "/";
-    if (!entry.isRepresentativeRun) continue;
-    results[path] = {
-      performance: Math.round((entry.summary.performance ?? 0) * 100),
-      accessibility: Math.round((entry.summary.accessibility ?? 0) * 100),
-      "best-practices": Math.round((entry.summary["best-practices"] ?? 0) * 100),
-      seo: Math.round((entry.summary.seo ?? 0) * 100),
-    };
+  let files;
+  try {
+    files = readdirSync(dirPath).filter((f) => /^lhr-.+\.json$/.test(f));
+  } catch {
+    console.error(`[lighthouse] ${dirPath} 디렉토리를 읽을 수 없음`);
+    return results;
+  }
+
+  const seen = new Set();
+
+  for (const file of files) {
+    try {
+      const lhr = JSON.parse(readFileSync(`${dirPath}/${file}`, "utf-8"));
+      const url = lhr.requestedUrl ?? lhr.finalUrl;
+      if (!url) continue;
+
+      const page = new URL(url).pathname || "/";
+      if (seen.has(page)) continue;
+      seen.add(page);
+
+      results[page] = {
+        performance: Math.round((lhr.categories?.performance?.score ?? 0) * 100),
+        accessibility: Math.round((lhr.categories?.accessibility?.score ?? 0) * 100),
+        "best-practices": Math.round((lhr.categories?.["best-practices"]?.score ?? 0) * 100),
+        seo: Math.round((lhr.categories?.seo?.score ?? 0) * 100),
+      };
+    } catch {
+      // skip invalid files
+    }
   }
 
   return results;
@@ -40,8 +60,8 @@ function diff(after, before) {
   return "±0";
 }
 
-const base = readManifest("base-results");
-const pr = readManifest("pr-results");
+const base = readResults("base-results");
+const pr = readResults("pr-results");
 
 const now = new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
 
