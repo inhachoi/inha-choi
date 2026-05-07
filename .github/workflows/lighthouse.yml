@@ -8,6 +8,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pull-requests: write
 
     steps:
@@ -19,15 +20,15 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
 
-      - name: Install @lhci/cli
-        run: npm install -g @lhci/cli
+      - name: Install CI tools
+        run: pnpm add --global @lhci/cli@0.15.1 wait-on@9.0.5
 
       # ── 1. base(main) 측정 ────────────────────────────────────
-      - name: Checkout base branch
-        run: git checkout ${{ github.base_ref }}
+      - name: Checkout base SHA
+        run: git checkout ${{ github.event.pull_request.base.sha }}
 
       - name: Install & build (base)
         run: |
@@ -38,7 +39,7 @@ jobs:
         run: pnpm --filter front preview &
 
       - name: Wait for server (base)
-        run: npx wait-on@latest http://localhost:4173 --timeout 30000
+        run: wait-on http://localhost:4173 --timeout 30000
 
       - name: Collect Lighthouse (base)
         run: |
@@ -56,8 +57,8 @@ jobs:
         run: fuser -k 4173/tcp || true
 
       # ── 2. PR branch 측정 ─────────────────────────────────────
-      - name: Checkout PR branch
-        run: git checkout ${{ github.head_ref }}
+      - name: Checkout PR SHA
+        run: git checkout ${{ github.event.pull_request.head.sha }}
 
       - name: Install & build (PR)
         run: |
@@ -68,7 +69,7 @@ jobs:
         run: pnpm --filter front preview &
 
       - name: Wait for server (PR)
-        run: npx wait-on@latest http://localhost:4173 --timeout 30000
+        run: wait-on http://localhost:4173 --timeout 30000
 
       - name: Collect Lighthouse (PR)
         run: |
