@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { buildMeta, fetchVelogPost, SITE_URL } from "@/app/lib";
+import { buildPageHead, fetchVelogPost, SITE_URL } from "@/app/lib";
 import PostModal from "@/pages/posts-page/ui/PostModal";
 
 export const Route = createFileRoute("/posts/$slug")({
@@ -9,7 +9,7 @@ export const Route = createFileRoute("/posts/$slug")({
     return fetchVelogPost(params.slug);
   },
   head: ({ loaderData, params }) => ({
-    meta: buildMeta({
+    ...buildPageHead({
       title: loaderData?.title ? `${loaderData.title} | 개발자 최경일` : "블로그 | 개발자 최경일",
       description: loaderData?.short_description ?? "최경일의 개발 블로그",
       url: `${SITE_URL}/posts/${params.slug}`,

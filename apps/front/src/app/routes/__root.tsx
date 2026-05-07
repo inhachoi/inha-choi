@@ -28,6 +28,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/logo.png" },
+      { rel: "sitemap", type: "application/xml", href: "/sitemap.xml" },
       {
         rel: "stylesheet",
         href: "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css",

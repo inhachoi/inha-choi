@@ -25,3 +25,15 @@ export function buildMeta({
     { key: "twitter:image", name: "twitter:image", content: img },
   ];
 }
+
+export function buildPageHead(params: {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+}) {
+  return {
+    meta: buildMeta(params),
+    links: [{ key: "canonical", rel: "canonical", href: params.url }],
+  };
+}
