@@ -36,7 +36,7 @@ jobs:
           pnpm --filter front build
 
       - name: Start preview server (base)
-        run: pnpm --filter front preview &
+        run: pnpm --filter front preview --port 4173 --strictPort &
 
       - name: Wait for server (base)
         run: wait-on http://localhost:4173 --timeout 30000
@@ -66,7 +66,7 @@ jobs:
           pnpm --filter front build
 
       - name: Start preview server (PR)
-        run: pnpm --filter front preview &
+        run: pnpm --filter front preview --port 4173 --strictPort &
 
       - name: Wait for server (PR)
         run: wait-on http://localhost:4173 --timeout 30000
@@ -82,6 +82,10 @@ jobs:
             --numberOfRuns=1 \
             --settings.chromeFlags="--no-sandbox --disable-dev-shm-usage"
           mv .lighthouseci pr-results
+
+      - name: Kill preview server (PR)
+        if: always()
+        run: fuser -k 4173/tcp || true
 
       # ── 3. 비교 코멘트 게시 ───────────────────────────────────
       - name: Generate comparison comment

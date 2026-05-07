@@ -39,8 +39,8 @@ function readResults(dir) {
         "best-practices": Math.round((lhr.categories?.["best-practices"]?.score ?? 0) * 100),
         seo: Math.round((lhr.categories?.seo?.score ?? 0) * 100),
       };
-    } catch {
-      // skip invalid files
+    } catch (e) {
+      console.warn(`[lighthouse] ${file} 파싱 실패:`, e.message);
     }
   }
 
