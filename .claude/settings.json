@@ -1,0 +1,65 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(python3 *)",
+      "Bash(mkdir *)",
+      "Bash(mv *)",
+      "Bash(gh pr *)",
+      "Bash(gh auth *)",
+      "Bash(node_modules/.bin/tsr generate *)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:console.groq.com)",
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "WebFetch(domain:frontend-fundamentals.com)",
+      "WebFetch(domain:feature-sliced.design)",
+      "PowerShell(*)"
+    ],
+    "deny": [
+      "Bash(npm install *)",
+      "Bash(npm i *)",
+      "Bash(yarn *)",
+      "Bash(rm -rf *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard *)",
+      "Read(apps/server/.env)",
+      "Read(apps/server/.env.local)",
+      "Read(apps/server/.env.production)",
+      "Read(**/.env)",
+      "Read(**/.env.local)",
+      "Read(**/.env.production)",
+      "Write(apps/server/.env)",
+      "Write(apps/server/.env.local)",
+      "Write(apps/server/.env.production)",
+      "Write(**/.env)",
+      "Write(**/.env.local)",
+      "Write(**/.env.production)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "$obj = @{hookSpecificOutput=@{hookEventName='UserPromptSubmit';additionalContext='[SKILL CHECK] 구현 작업 전 반드시 Skill 도구로 관련 스킬을 먼저 호출할 것. 체크 목록: superpowers:brainstorming (기능 추가/변경 전), good-code (컴포넌트/코드 작성 시), good-debug (버그/에러 발생 시), good-bundling (빌드 설정/패키지 추가 시), good-a11y (UI 컴포넌트 작성 시), superpowers:verification-before-completion (완료 선언 전). 스킬 체크 생략은 허용되지 않음.'}}; $obj | ConvertTo-Json -Compress",
+            "statusMessage": "스킬 체크 리마인더 주입 중..."
+          }
+        ]
+      }
+    ]
+  }
+}
