@@ -1,10 +1,10 @@
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
-import { RootLayout } from "@/app/layouts/RootLayout";
-import { FALLBACK_OG_IMAGE, SITE_NAME, SITE_URL } from "@/app/lib";
-import { AppProviders } from "@/app/providers/AppProviders";
-import { GlobalStyles } from "@/app/styles/GlobalStyles";
+import { AppProviders } from "@/app/AppProviders";
+import { GlobalStyles } from "@/app/GlobalStyles";
+import { RootLayout } from "@/app/RootLayout";
+import { FALLBACK_OG_IMAGE, SITE_NAME, SITE_URL } from "@/shared/config";
 
 export const Route = createRootRoute({
   head: () => ({

@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { buildPageHead, fetchVelogPost, SITE_URL } from "@/app/lib";
 import PostModal from "@/pages/main-page/ui/PostModal";
+import { fetchVelogPost } from "@/shared/api";
+import { SITE_URL } from "@/shared/config";
+import { buildPageHead } from "@/shared/lib";
 
 export const Route = createFileRoute("/_mainLayout/$slug")({
   loader: ({ params }) => {

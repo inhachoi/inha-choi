@@ -1,4 +1,4 @@
-import { VELOG_API_URL, VELOG_USERNAME } from "./constants";
+import { VELOG_API_URL, VELOG_USERNAME } from "@/shared/config";
 
 export async function fetchVelogPost(slug: string): Promise<{
   title: string;

@@ -1,4 +1,4 @@
-import { FALLBACK_OG_IMAGE } from "./constants";
+import { FALLBACK_OG_IMAGE } from "@/shared/config";
 
 export function buildMeta({
   title,

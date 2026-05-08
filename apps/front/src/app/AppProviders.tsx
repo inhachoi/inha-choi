@@ -3,7 +3,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { OverlayProvider } from "overlay-kit";
 
-import ErrorBoundaryFallback from "../error/ErrorBoundaryFallback";
+import ErrorBoundaryFallback from "./ErrorBoundaryFallback";
 
 const queryClient = new QueryClient();
 

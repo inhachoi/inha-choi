@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { buildPageHead, SITE_URL } from "@/app/lib";
 import PostsPage from "@/pages/posts-page";
+import { SITE_URL } from "@/shared/config";
+import { buildPageHead } from "@/shared/lib";
 
 export const Route = createFileRoute("/posts")({
   head: () => ({

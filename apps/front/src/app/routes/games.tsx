@@ -1,6 +1,7 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-import { buildPageHead, SITE_URL } from "@/app/lib";
+import { SITE_URL } from "@/shared/config";
+import { buildPageHead } from "@/shared/lib";
 
 export const Route = createFileRoute("/games")({
   head: () => ({

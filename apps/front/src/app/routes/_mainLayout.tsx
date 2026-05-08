@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { buildPageHead, SITE_NAME, SITE_URL } from "@/app/lib";
 import MainPage from "@/pages/main-page";
+import { SITE_NAME, SITE_URL } from "@/shared/config";
+import { buildPageHead } from "@/shared/lib";
 
 export const Route = createFileRoute("/_mainLayout")({
   head: () => ({
