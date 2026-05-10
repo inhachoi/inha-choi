@@ -115,7 +115,7 @@ export default defineConfig(async () => {
         async writeBundle({ dir }: { dir?: string }) {
           if (!dir || dir.includes("server")) return;
           const posts = await fetchVelogPostsForLlms();
-          writeFileSync(path.join(dir, "llms.txt"), buildLlmsTxtContent(posts), "utf-8");
+          writeFileSync(path.join(dir, "llms.txt"), "﻿" + buildLlmsTxtContent(posts), "utf-8");
           console.log("[llms.txt] Generated successfully");
         },
       },
