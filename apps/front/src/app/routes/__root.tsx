@@ -5,6 +5,7 @@ import { AppProviders } from "@/app/AppProviders";
 import { GlobalStyles } from "@/app/GlobalStyles";
 import { RootLayout } from "@/app/RootLayout";
 import { FALLBACK_OG_IMAGE, SITE_NAME, SITE_URL } from "@/shared/config";
+import { buildJsonLd } from "@/shared/lib";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -19,6 +20,7 @@ export const Route = createRootRoute({
       { key: "og:image:alt", property: "og:image:alt", content: "개발자 최경일의 프로필 사진" },
       { key: "og:site_name", property: "og:site_name", content: SITE_NAME },
       { key: "og:type", property: "og:type", content: "website" },
+      { key: "author", name: "author", content: "최경일" },
       { key: "article:author", property: "article:author", content: "https://github.com/inhachoi" },
       { key: "twitter:card", name: "twitter:card", content: "summary_large_image" },
       { key: "twitter:title", name: "twitter:title", content: SITE_NAME },
@@ -39,6 +41,23 @@ export const Route = createRootRoute({
         src: "https://www.googletagmanager.com/gtag/js?id=G-X3JHD025QV",
         async: true,
       },
+      buildJsonLd({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            name: "최경일",
+            url: SITE_URL,
+            jobTitle: "프론트엔드 개발자",
+            sameAs: ["https://github.com/inhachoi", "https://velog.io/@chlruddlf73"],
+          },
+          {
+            "@type": "WebSite",
+            name: SITE_NAME,
+            url: SITE_URL,
+          },
+        ],
+      }),
     ],
   }),
   component: Root,
