@@ -4,6 +4,7 @@ export async function fetchVelogPost(slug: string): Promise<{
   title: string;
   thumbnail: string | null;
   short_description: string;
+  released_at: string;
 } | null> {
   try {
     const res = await fetch(VELOG_API_URL, {
@@ -16,6 +17,7 @@ export async function fetchVelogPost(slug: string): Promise<{
             title
             thumbnail
             short_description
+            released_at
           }
         }`,
         variables: { username: VELOG_USERNAME, url_slug: slug },

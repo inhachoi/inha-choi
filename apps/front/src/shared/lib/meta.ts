@@ -37,3 +37,7 @@ export function buildPageHead(params: {
     links: [{ key: "canonical", rel: "canonical", href: params.url }],
   };
 }
+
+export function buildJsonLd(data: object) {
+  return { type: "application/ld+json", children: JSON.stringify(data) };
+}
