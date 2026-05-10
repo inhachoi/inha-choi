@@ -1,5 +1,6 @@
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
+import { writeFileSync } from "node:fs";
 import path from "node:path";
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
@@ -40,6 +41,49 @@ async function fetchAllVelogSlugs(): Promise<string[]> {
   return slugs;
 }
 
+async function fetchVelogPostsForLlms(): Promise<Array<{ title: string; url_slug: string; short_description: string }>> {
+  try {
+    const res = await fetch("https://v2.velog.io/graphql", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        operationName: "Posts",
+        query: `query Posts($username: String, $limit: Int) {
+          posts(username: $username, limit: $limit) {
+            title
+            url_slug
+            short_description
+          }
+        }`,
+        variables: { username: "chlruddlf73", limit: 20 },
+      }),
+    });
+    const json = await res.json() as { data?: { posts?: Array<{ title: string; url_slug: string; short_description: string }> } };
+    return json.data?.posts ?? [];
+  } catch {
+    return [];
+  }
+}
+
+function buildLlmsTxtContent(posts: Array<{ title: string; url_slug: string; short_description: string }>): string {
+  const postLines = posts
+    .map((p) => `- [${p.title}](https://www.gyeung-il.com/posts/${p.url_slug}): ${p.short_description}`)
+    .join("\n");
+
+  return `# 개발자 최경일 (gyeung-il.com)
+> UX와 소통에 집중하는 프론트엔드 개발자 최경일의 개인 홈페이지.
+
+## 주요 페이지
+- [블로그](https://www.gyeung-il.com/posts): 프론트엔드 개발 관련 글 모음
+- [방명록](https://www.gyeung-il.com/guestbook): 방문자 메시지
+- [AI 채팅](https://www.gyeung-il.com/chat): Claude 기반 AI 채팅
+- [미니게임](https://www.gyeung-il.com/games): 직접 만든 미니게임 모음
+
+## 최근 블로그 포스트
+${postLines}
+`;
+}
+
 export default defineConfig(async () => {
   const slugs = await fetchAllVelogSlugs();
   const postPages = slugs.flatMap((slug) => [
@@ -66,6 +110,15 @@ export default defineConfig(async () => {
     }),
       react(),
       svgr(),
+      {
+        name: "generate-llms-txt",
+        async writeBundle({ dir }: { dir?: string }) {
+          if (!dir || dir.includes("server")) return;
+          const posts = await fetchVelogPostsForLlms();
+          writeFileSync(path.join(dir, "llms.txt"), buildLlmsTxtContent(posts), "utf-8");
+          console.log("[llms.txt] Generated successfully");
+        },
+      },
     ],
 
     server: {
